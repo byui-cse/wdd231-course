@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDD 231 Web Frontend Development</title>
+    
+    
+<meta name="description" content="Curriculum for the BYUI WDD 231 course">
+  <link rel="canonical" href="https://wdd231.netlify.app/ponder/accessibility-practice/">
+    <meta name="author" content="Shane T">
+      <meta
+        name="generator" content="Eleventy v2.0.1">
+        
+        <meta property="og:site_name" content="WDD 231 Web Frontend Development">
+          <meta property="og:title" content="Accessibility Practice">
+            <meta property="og:description" content="Curriculum for the BYUI WDD 231 course">
+              <meta property="og:url" content="https://wdd231.netlify.app/ponder/accessibility-practice/">
+                <meta property="og:locale" content="en_us">
+                  <meta name="twitter:card" content="summary">
+                      <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+                        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32">
+                          <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16">
+                            <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+                              <link rel="manifest" href="/site.webmanifest">
+                                <meta
+                                  name="theme-color" content="#7134ff">
+                                  
+                                  <link type="application/atom+xml" rel="alternate" href="https://wdd231.netlify.app/feed.xml" title="WDD 231 Web Frontend Development">
+    <script>/* Font loading: Critical FOFT with preload, see:
+   https://www.zachleat.com/web/comprehensive-webfonts/#critical-foft-with-preload */
+    /* (function () { if ("fonts" in document) { // Optimization for Repeat Views if
+   (sessionStorage.fontsLoadedCriticalFoftPreload) { document.documentElement.className += " fonts-loaded-2"; return; }
+   document .fonts .load("1em 'DM Sans Subset'") .then(function () {
+     document.documentElement.className += " fonts-loaded-1";
+     Promise.all(
+       [document.fonts.load("400 1em 'DM Sans'"), document.fonts.load("700 1em 'DM Sans'"), document.fonts.load("italic 1em 'DM Sans'"), document.fonts.load("italic 700 1em 'DM Sans'")]
+     ).then(function () {
+       document.documentElement.className += " fonts-loaded-2";
+       // Optimization for Repeat Views
+       sessionStorage.fontsLoadedCriticalFoftPreload = true;
+     });
+   }); } })(); */
+  </script>
+  
+  <script type="module" crossorigin src="/assets/js/main.8cb112e1.js"></script>
+  <link rel="stylesheet" href="/assets/css/main.99ed7464.css">
+</head>
+<body>
+  <a href="#main" class="skiplink">Skip to main content</a>
+  <div class="layout" role="document">
+    <header class="site-header">
+  <div class="headerBanner ">
+    <div class="">
+      <h1>
+        <span>WEB</span>
+        Frontend Development</h1>
+      <h2>WDD 231</h2>
+    </div>
+  </div>
+  <div>
+    <nav class="nav nav--primary" role="navigation" tabindex="-1">
+    
+    <ul class="nav__menu"><li class="nav__item">
+                    <a class="nav__link" href="/" >
+                        Home
+                    </a>
+                </li><li class="nav__item">
+                    <a class="nav__link" href="/semester/" >
+                        Semester
+                    </a>
+                </li><li class="nav__item">
+                    <a class="nav__link" href="/block/" >
+                        Block
+                    </a>
+                </li></ul>
+</nav>
+
+  </div>
+</header>
+    <main id="main" class="main">
+      
+<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-coy.css" rel="stylesheet">
+  <article class="container">
+    <h1>Accessibility Practice</h1>
+    <hr>
+      <h2>Activity Instructions</h2>
+      <p>
+      </p>
+      <p>Estimated Time: 60 minutes</p>
+      <div class="bigSteps">
+        <hr>
+<h2 id="introduction" tabindex="-1">Introduction <a class="direct-link" href="#introduction" aria-hidden="true">#</a></h2>
+<p>Definition of web accessibility:</p>
+<blockquote>
+<p>&quot;Accessibility is the inclusive practice of eliminating barriers for people with disabilities, ensuring equal access to information and functionality on websites.&quot;</p>
+</blockquote>
+<p>You may be wondering, why do I need to worry about accessibility? Web accessibility doesn't just help people with disabilities. It often results in a better overall user experience. Designing for accessibility means creating clear and well-organized content, which benefits all users, not just those with disabilities. Accessible websites also tend to have better SEO. Search engines prioritize websites that are user-friendly and provide a positive experience for all visitors. And if that's not enough, many countries, including the United States with the Americans with Disabilities Act (ADA), have laws requiring accessibility for digital content. Non-compliance can lead to legal issues and discrimination claims.</p>
+<p>What does accessibility look like for a website? Well, at BYU-Idaho we start with this <a href="https://webmailbyui.sharepoint.com/sites/digitalaccessibilityhub/SitePages/HTML.aspx">HTML Checklist</a>, created by the Accessibility Services office. If you can answer &quot;yes&quot; to all of the questions, then your website is probably accessible. Go ahead and take a look at the questions on that page. Eventually, you'll need to know how to do all of those things in order to make an accessible website.</p>
+<p>For the purposes of this class, though, you'll just be expected to implement these accessibility concepts:</p>
+<ul>
+<li>Headings</li>
+<li>Link Text</li>
+<li>Color Contrast and Fonts</li>
+<li>Alt Text</li>
+<li>Semantic Elements</li>
+</ul>
+<h2 id="01-headings" tabindex="-1"><strong>01</strong> Headings <a class="direct-link" href="#01-headings" aria-hidden="true">#</a></h2>
+<p>Headings should:</p>
+<ul>
+<li>Provide structure and navigation points.</li>
+<li>Be in a hierarchical, logical order.</li>
+<li>Provide an outline for the content.</li>
+<li>Break content into logical chunks.</li>
+<li>Be descriptive to the content they contain.</li>
+</ul>
+<p>Headings should <strong>not</strong> be used just to style content.</p>
+<h3 id="heading-levels" tabindex="-1">Heading Levels <a class="direct-link" href="#heading-levels" aria-hidden="true">#</a></h3>
+<p>There are six heading levels in HTML. If more than six heading levels are needed, you'll need to split the content at major sections. Only use one heading level 1 on a page.</p>
+<h3 id="skipping-levels" tabindex="-1">Skipping Levels <a class="direct-link" href="#skipping-levels" aria-hidden="true">#</a></h3>
+<p>When closing sub-sections, you can skip up to a higher level, but when adding a new sub-section, you should never skip a level (e.g., heading 4 may proceed heading 2, but heading 2 should never directly proceed heading 4).</p>
+<h4 id="incorrect-heading-structure-example" tabindex="-1">Incorrect Heading Structure Example <a class="direct-link" href="#incorrect-heading-structure-example" aria-hidden="true">#</a></h4>
+<pre>
+ &#x2022; H1
+ &#x2022; H1
+         - H3
+     &#9900; H2
+            &#x2022; H4
+
+</pre>
+<h4 id="correct-heading-structure-example" tabindex="-1">Correct Heading Structure Example <a class="direct-link" href="#correct-heading-structure-example" aria-hidden="true">#</a></h4>
+<ul>
+<li>H1
+<ul>
+<li>H2
+<ul>
+<li>H3
+<ul>
+<li>H4</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>H2
+<ul>
+<li>H3</li>
+<li>H3</li>
+</ul>
+</li>
+<li>H2</li>
+<li>H2</li>
+</ul>
+</li>
+</ul>
+<h4 id="additional-heading-help" tabindex="-1">Additional Heading Help <a class="direct-link" href="#additional-heading-help" aria-hidden="true">#</a></h4>
+<ul>
+<li>Heading 1 – Main content description/title</li>
+<li>Heading 2 – Sub-section of Heading 1 (broad main idea)</li>
+<li>Heading 3 – Sub-section of Heading 2 (specific idea)</li>
+<li>Heading 4 – Sub-section of Heading 3 (examples, details)</li>
+<li>Heading 2 – Next broad main idea</li>
+</ul>
+<h2 id="02-link-text" tabindex="-1">02 Link Text <a class="direct-link" href="#02-link-text" aria-hidden="true">#</a></h2>
+<p>When you're adding links to your website, the text you use for those links should be meaningful. Instead of generic phrases like &quot;click here&quot;, use words that tell people what they'll find when they click. Imagine someone coming across your link without the surrounding text. Would they still understand where the link goes?</p>
+<h3 id="link-text-example-1:" tabindex="-1">Link Text Example 1: <a class="direct-link" href="#link-text-example-1:" aria-hidden="true">#</a></h3>
+<p><a href="https://webaim.org/intro/">Here</a> is a great resource for getting started with web accessibility.</p>
+<details>
+<summary>Answer 1</summary>
+<p><strong>Why it's bad:</strong> This link text doesn't tell users where the link will take them or what they'll find when they click. It's generic and doesn't offer any context.</p>
+</details>
+<h3 id="link-text-example-2:" tabindex="-1">Link Text Example 2: <a class="direct-link" href="#link-text-example-2:" aria-hidden="true">#</a></h3>
+<p><a href="https://webaim.org/intro/">WebAIM: Introduction to Web Accessibility</a> is a great resource for getting started with web accessibility.</p>
+<details>
+<summary>Answer 2</summary>
+<p><strong>Why it's good:</strong> This link text is descriptive and specific. It clearly informs users about the content they'll access by clicking the link.</p>
+</details>
+<h3 id="links-vs.-buttons:" tabindex="-1">Links vs. Buttons: <a class="direct-link" href="#links-vs.-buttons:" aria-hidden="true">#</a></h3>
+<p>Links and buttons are not interchangeable elements.<br>
+A <strong>link</strong> takes you to a new page. A <strong>button</strong> does an action on the current page. It's important to be clear whether something is a link or a button. It's like knowing whether you're opening a door to a different room or flicking on a light switch in the room you're in.</p>
+<h3 id="other-considerations:" tabindex="-1">Other considerations: <a class="direct-link" href="#other-considerations:" aria-hidden="true">#</a></h3>
+<ul>
+<li>If you have multiple links going to the same place on a webpage, they should all have the same link text. Otherwise, they should all be unique.</li>
+<li>Links should be visually distinct (underlined and a different color)</li>
+<li>Links should look consistent throughout the content</li>
+<li>Link text should short while still being descriptive. Don't link to entire sentences or paragraphs.</li>
+</ul>
+<h2 id="03-color-contrast-and-fonts" tabindex="-1">03 Color Contrast and Fonts <a class="direct-link" href="#03-color-contrast-and-fonts" aria-hidden="true">#</a></h2>
+<h3 id="contrast" tabindex="-1">Contrast <a class="direct-link" href="#contrast" aria-hidden="true">#</a></h3>
+<p>Sufficient contrast should be present between text and background (4.5:1). With large text or adjacent important visual elements (informational images, graphics, etc.) contrast should be at least 3:1. Logos, incidental icons, and decorative elements have no required contrast ratio. Use a color contrast checker to find these numbers.</p>
+<p>Keep in mind that some color combinations may be difficult to differentiate between for some colorblindness or visual impairments. You may find it helpful to test your digital content in grayscale to verify color is not the only means used to communicate information and that contrast is sufficient.</p>
+<h3 id="changing-your-screen-to-grayscale" tabindex="-1">Changing Your Screen to grayscale <a class="direct-link" href="#changing-your-screen-to-grayscale" aria-hidden="true">#</a></h3>
+<h4 id="mac-instructions" tabindex="-1">Mac Instructions <a class="direct-link" href="#mac-instructions" aria-hidden="true">#</a></h4>
+<ol>
+<li>Open settings</li>
+<li>Accessibility</li>
+<li>Display</li>
+<li>Scroll to &quot;Color Filters&quot;</li>
+<li>Toggle on color filters and make sure the filter type is &quot;Grayscale&quot;</li>
+</ol>
+<h4 id="windows-instructions" tabindex="-1">Windows Instructions <a class="direct-link" href="#windows-instructions" aria-hidden="true">#</a></h4>
+<ol>
+<li>Windows button</li>
+<li>Settings</li>
+<li>Accessibility</li>
+<li>Color Filters</li>
+<li>Toggle Grayscale</li>
+</ol>
+<h3 id="fonts" tabindex="-1">Fonts <a class="direct-link" href="#fonts" aria-hidden="true">#</a></h3>
+<p>The choice of typefaces and fonts significantly affects text readability on websites.</p>
+<ul>
+<li>Users often scan text in patterns, and interruptions can hinder comprehension.</li>
+<li>To enhance readability, use simple and familiar fonts, avoid complexity, and limit font variations.</li>
+<li>Consider adequate spacing, contrast between text and background, and font size.</li>
+<li>Real text is more adaptable than text within images, making it more accessible.</li>
+<li>Embedded fonts should prioritize readability.</li>
+</ul>
+<p>Please read: <a href="https://webaim.org/techniques/fonts/">Typefaces and Fonts</a></p>
+<h2 id="sensory-characteristics" tabindex="-1">Sensory Characteristics <a class="direct-link" href="#sensory-characteristics" aria-hidden="true">#</a></h2>
+<p>Color should never be the only means of conveying information. Watch this short video about the <a href="https://www.youtube.com/watch?v=8_eVF0LPs0s">Use of Color Alone to Convey Information</a>.</p>
+<p>A classic example where we use more than one sensory characteristic is with links. Accessible links, like the ones you often see, are underlined and have a distinct color. Even if the color isn't visible, the presence of the underline makes it clear that it's a link.</p>
+<h3 id="tools" tabindex="-1">Tools <a class="direct-link" href="#tools" aria-hidden="true">#</a></h3>
+<p><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a> - color contrast checker (has eye drop color picker feature)<br>
+<a href="https://color.adobe.com/create/color-accessibility">Adobe Color</a> - color-blind safe palettes and color contrast checker</p>
+<h2 id="04-alt-text" tabindex="-1">04 Alt Text <a class="direct-link" href="#04-alt-text" aria-hidden="true">#</a></h2>
+<p>Alt text is a short text alternative to the image. In general, alt text is limited to approximately 250 characters or less.</p>
+<p>Alt text is <strong>not</strong>:<br>
+- repetitive<br>
+- additional<br>
+- source or filename</p>
+<p>Alt text goes in the alt attribute of an image tag.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+<p>Now, let's talk about decorative images. These are the ones that don't really convey important information. For these, you can use empty alt text <code>alt=&quot;&quot;</code>. This tells assistive technology to skip these images.</p>
+<p>On the flip side, there are images that serve a specific function, like buttons or icons. For these, the alt text should describe that function. For example, a logo that takes you to the home page should have alt text that says &quot;Home&quot;. It shouldn't describe the logo. Alt text for images that are links should follow the same rules as the link text section.</p>
+<p>Pay attention to the purpose and context of the image. These may change the way a description is written and where the description is provided. The same image can have different alt text depending on its context.</p>
+<p>Use the <a href="https://poet.diagramcenter.org/">POET Training Tool</a> to practice when and how to write alt text.</p>
+<h2 id="05-semantic-elements" tabindex="-1">05 Semantic Elements <a class="direct-link" href="#05-semantic-elements" aria-hidden="true">#</a></h2>
+<p>Whenever you can, opt for the actual HTML tags that represent the content or action you're including. For example, instead of dressing up a div to look like a button, just use the button tag.</p>
+<h3 id="why-semantic" tabindex="-1">Why Semantic? <a class="direct-link" href="#why-semantic" aria-hidden="true">#</a></h3>
+<p>Using semantic HTML elements brings inherent accessibility features to your web content. These elements, like headings, buttons, and lists, are designed with accessibility in mind from the start. Here's why it matters:</p>
+<p><strong>Clear Structure:</strong> Semantic elements provide a structured format, making content easy to understand, not just visually but also for assistive technology.</p>
+<p><strong>Defined Roles:</strong> Each element has a specific role, enabling assistive technologies to interpret their purpose accurately. For example, a button element is recognized as something clickable.</p>
+<p>Like we talked about earlier with the definition of accessibility, having equivalent effecviveness and ease of use is easier when you use semantic elements. For example, when you open an article, what's your first instinct? Probably skimming through the headings, right? Using semantic headings ensures that users with assistive technology can also enjoy a similar skimming experience.</p>
+<h3 id="keyboard-accessibility" tabindex="-1">Keyboard accessibility <a class="direct-link" href="#keyboard-accessibility" aria-hidden="true">#</a></h3>
+<p>By incorporating semantic HTML elements, you're also enhancing the keyboard-friendliness of your web content. Semantic elements naturally support keyboard navigation and add keyboard focus to clickable elements, allowing users who rely on keyboards to smoothly traverse your content, whether it's links, buttons, or headings. By just using the semantic elements, you save yourself a lot of time trying to replicate the same keyboard focus and navigation.</p>
+<h3 id="screen-reader" tabindex="-1">Screen reader <a class="direct-link" href="#screen-reader" aria-hidden="true">#</a></h3>
+<p>Using a screen reader and keyboard navigation puts yourself in the shoes of users with visual impairments. It helps you catch and fix accessibility issues, making your websites more user-friendly for everyone. Plus, it's a cool way to expand your skills and create websites that work well for a diverse audience. You should be able to navigate any website using the Tab (and Shift + Tab), Enter, and arrow keys. If you want to try it, here are the instructions for Mac and Windows.</p>
+<h4 id="mac-instructions-1" tabindex="-1">Mac Instructions <a class="direct-link" href="#mac-instructions-1" aria-hidden="true">#</a></h4>
+<ol>
+<li>Open settings</li>
+<li>Accessibility</li>
+<li>Voice Over</li>
+<li>Toggle on</li>
+</ol>
+<h4 id="windows-instructions-1" tabindex="-1">Windows Instructions <a class="direct-link" href="#windows-instructions-1" aria-hidden="true">#</a></h4>
+<ol>
+<li>Open settings</li>
+<li>Accessibility</li>
+<li>Narrator</li>
+<li>Toggle on</li>
+</ol>
+<h2 id="activity" tabindex="-1">Activity <a class="direct-link" href="#activity" aria-hidden="true">#</a></h2>
+<h3 id="comparison:-exploring-the-good-and-not-so-good" tabindex="-1">Comparison: Exploring the Good and Not-So-Good <a class="direct-link" href="#comparison:-exploring-the-good-and-not-so-good" aria-hidden="true">#</a></h3>
+<p>First we'll look at a bad example. Open a new tab and search for any news site. If you don't want to find your own, here's <a href="https://www.nbcnews.com/">NBC News</a>. Right click on the page and select inspect (or use F12), then navigate to the lighthouse tab. Double check that the settings include an accessibility report and that you're testing &quot;Desktop&quot; if that's applicable. Begin the assessment by selecting the &quot;Analyze page load&quot; button. Once it loads, scroll to the accessibility section and take note of the errors. Do you see any of the issues we've talked about so far? Do they have good heading structure? Alt text? Link text? Semantic elements? Color contrast?</p>
+<p>For both of these examples, you can try using your computer's built-in screen reader and see how it goes.</p>
+<p>Now let's look at a good example of web accessibility. <a href="https://webaim.org/">WebAIM</a> is a reputable source for web accessibility resources and is known for its high accessibility standards. Use the Lighthouse tool like before to evaluate the accessibility of the WebAIM website</p>
+<h3 id="practice" tabindex="-1">Practice <a class="direct-link" href="#practice" aria-hidden="true">#</a></h3>
+<p>The second part of the activity focuses on hands-on practice. Pick a past website project, such as your WDD130 final project or any other site you've created. Run the Lighthouse tool on your chosen project and check its accessibility score. The goal is to have a lighthouse score of at least 95%.</p>
+<p>Go through and remediate your site, focusing especially on the errors that fall into the 5 categories of accessibility we've talked about. Run the lighthouse tool again and see your accessibility score go up! Try to get as close to 95% or higher as possible.</p>
+
+      </div>
+    </article>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner container">
+    <p>
+      <span>&copy; 2024 Shane Thompson</span>
+    </p>
+  </div>
+</footer>
+  </div>
+  
+</body></html>

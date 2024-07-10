@@ -1,0 +1,6 @@
+# www.robotstxt.org
+
+User-agent: *
+Disallow: /build.txt
+
+Sitemap: https://wdd231.netlify.app/sitemap.xml

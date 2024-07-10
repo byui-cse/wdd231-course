@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDD 231 Web Frontend Development</title>
+    
+    
+<meta name="description" content="Curriculum for the BYUI WDD 231 course">
+  <link rel="canonical" href="https://wdd231.netlify.app/">
+    <meta name="author" content="Shane T">
+      <meta name="generator" content="Eleventy v2.0.1">
+        
+        <meta property="og:site_name" content="WDD 231 Web Frontend Development">
+          <meta property="og:title" content="WDD 231 Web Frontend Development">
+            <meta property="og:description" content="Curriculum for the BYUI WDD 231 course">
+              <meta property="og:url" content="https://wdd231.netlify.app/">
+                <meta property="og:locale" content="en_us">
+                  <meta name="twitter:card" content="summary">
+                      <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+                        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32">
+                          <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16">
+                            <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+                              <link rel="manifest" href="/site.webmanifest">
+                                <meta name="theme-color" content="#7134ff">
+                                  
+                                  <link type="application/atom+xml" rel="alternate" href="https://wdd231.netlify.app/feed.xml" title="WDD 231 Web Frontend Development">
+    <style>@charset "UTF-8";*,:after,:before{box-sizing:border-box}html{line-sizing:normal}body{margin:0}h1{font-size:2rem}h2{font-size:1.5rem}h1{margin:.67em 0}header,main,nav{display:block}:root{--textColor:#1a1a1a;--text-dark:var(--textColor);--primaryColor:#004fa8;--focusColor:#7b2d26;--backgroundColor:#ffffff;--header-background:#004fa8;--callout-background-color:#006db650;--linkColor:#004fa8;--linkVisited:#561e4c;--codeColor:#004fa8;--kbdColor:#004fa8;--textLight:#f0f3f5}@media (prefers-color-scheme:dark){:root{--color-mode:"dark"}:root:not([data-user-color-scheme]){--backgroundColor:#1a1a1a;--textColor:#eeeeee;--codeColor:#a8e3fc;--linkColor:#a8e3fc;--primaryColor:#004fa8;--linkVisited:#a8709e}}body{font-family:Trebuchet MS,Lucida Sans Unicode,Lucida Grande,Lucida Sans,Arial,sans-serif}:root{--mq-small:"screen and (max-width: 47.9375em)";--mq-medium:"screen and (min-width: 48em)";--mq-large:"only screen and (min-width: 64.0625em)";--mq-x-large:"screen and (min-width: 90em)"}:root{--spacing-none:0;--spacing-xx-small:.25rem;--spacing-x-small:.5rem;--spacing-small:.75rem;--spacing-medium:1rem;--spacing-large:1.5rem;--spacing-x-large:2rem;--spacing-xx-large:6rem;--container-max-width:80rem}:root{--fluid-min-width:320;--fluid-max-width:1500;--fluid-min-size:18;--fluid-max-size:22;--fluid-min-ratio:1.2;--fluid-max-ratio:1.5;--fluid-screen:100vw;--fluid-bp:calc((var(--fluid-screen) - ((var(--fluid-min-width) / 16) * 1rem)) / ((var(--fluid-max-width) / 16) - (var(--fluid-min-width) / 16)))}@media screen and (min-width:1500px){:root{--fluid-screen:calc(var(--fluid-max-width) * 1px)}}:root{--fluid-min-scale-0:var(--fluid-min-ratio);--fluid-min-scale-1:calc(var(--fluid-min-scale-0) * var(--fluid-min-ratio));--fluid-min-scale-2:calc(var(--fluid-min-scale-1) * var(--fluid-min-ratio));--fluid-min-scale-3:calc(var(--fluid-min-scale-2) * var(--fluid-min-ratio));--fluid-min-scale-4:calc(var(--fluid-min-scale-3) * var(--fluid-min-ratio));--fluid-min-scale-5:calc(var(--fluid-min-scale-4) * var(--fluid-min-ratio));--fluid-max-scale-0:var(--fluid-max-ratio);--fluid-max-scale-1:calc(var(--fluid-max-scale-0) * var(--fluid-max-ratio));--fluid-max-scale-2:calc(var(--fluid-max-scale-1) * var(--fluid-max-ratio));--fluid-max-scale-3:calc(var(--fluid-max-scale-2) * var(--fluid-max-ratio));--fluid-max-scale-4:calc(var(--fluid-max-scale-3) * var(--fluid-max-ratio));--fluid-max-scale-5:calc(var(--fluid-max-scale-4) * var(--fluid-max-ratio));--fluid-min-size-0:calc(var(--fluid-min-size) / 16);--fluid-min-size-1:calc(var(--fluid-min-size) * var(--fluid-min-scale-0) / 16);--fluid-min-size-2:calc(var(--fluid-min-size) * var(--fluid-min-scale-1) / 16);--fluid-min-size-3:calc(var(--fluid-min-size) * var(--fluid-min-scale-2) / 16);--fluid-min-size-4:calc(var(--fluid-min-size) * var(--fluid-min-scale-3) / 16);--fluid-min-size-5:calc(var(--fluid-min-size) * var(--fluid-min-scale-4) / 16);--fluid-max-size-0:calc(var(--fluid-max-size) / 16);--fluid-max-size-1:calc(var(--fluid-max-size) * var(--fluid-max-scale-0) / 16);--fluid-max-size-2:calc(var(--fluid-max-size) * var(--fluid-max-scale-1) / 16);--fluid-max-size-3:calc(var(--fluid-max-size) * var(--fluid-max-scale-2) / 16);--fluid-max-size-4:calc(var(--fluid-max-size) * var(--fluid-max-scale-3) / 16);--fluid-max-size-5:calc(var(--fluid-max-size) * var(--fluid-max-scale-4) / 16);--fluid-0:calc(((var(--fluid-min-size-0) * 1rem) + (var(--fluid-max-size-0) - var(--fluid-min-size-0)) * var(--fluid-bp)));--fluid-1:calc(((var(--fluid-min-size-1) * 1rem) + (var(--fluid-max-size-1) - var(--fluid-min-size-1)) * var(--fluid-bp)));--fluid-2:calc(((var(--fluid-min-size-2) * 1rem) + (var(--fluid-max-size-2) - var(--fluid-min-size-2)) * var(--fluid-bp)));--fluid-3:calc(((var(--fluid-min-size-3) * 1rem) + (var(--fluid-max-size-3) - var(--fluid-min-size-3)) * var(--fluid-bp)));--fluid-4:calc(((var(--fluid-min-size-4) * 1rem) + (var(--fluid-max-size-4) - var(--fluid-min-size-4)) * var(--fluid-bp)));--fluid-5:calc(((var(--fluid-min-size-5) * 1rem) + (var(--fluid-max-size-5) - var(--fluid-min-size-5)) * var(--fluid-bp)))}.skiplink{clip:rect(1px,1px,1px,1px);height:1px;overflow:hidden;position:absolute;width:1px}:active,:focus{border:none;outline:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4}::-moz-focus-inner{border-style:none;padding:0}:-moz-focusring{outline:ButtonText dotted 1px}:-moz-ui-invalid{box-shadow:none}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}body{color:var(--textColor);background-color:var(--backgroundColor);padding-right:var(--scrollbarComp);overflow-x:hidden;font-size:var(--fluid-0)}h1{font-size:var(--fluid-3);margin-bottom:.5em}h2{font-size:var(--fluid-2);margin-top:1em;margin-bottom:.5em}a{color:var(--linkColor);text-decoration:underline;border-bottom:2px solid var(--linkColor)}a:visited{color:var(--linkVisited);border-bottom:2px solid var(--linkVisited)}ol,ul{font-size:var(--fluid-0);line-height:1.5}ol[class],ul[class]{padding:0}li,p{font-size:var(--fluid-0);line-height:1.5;max-width:76ch}body{overflow-x:hidden}.layout{display:flex;flex-direction:column;min-height:100%;min-height:100vh;position:relative;max-width:var(--container-max-width);margin:0 auto}.container{width:100%;margin:0 auto;max-width:var(--container-max-width);padding:2rem 1rem;padding:2rem clamp(var(--spacing-medium),3.75vw,var(--spacing-x-large))}.site-header .nav--primary ul{font-size:var(--fluid-1);margin:.75rem 0;display:flex;list-style-type:none}.site-header .nav--primary a{margin:.25em}.headerBanner{padding:.2em 0;background-color:var(--header-background);font-family:Lucida Console,Lucida Grande,Lucida Sans,Arial,sans-serif;text-transform:uppercase;letter-spacing:-4px}.headerBanner>div{display:flex;flex-flow:row wrap;justify-content:space-between;margin:.3em auto;padding:.3em;background:linear-gradient(to right,#000 0,#000 20%,rgba(0,0,0,0) 100%)}.headerBanner h1{color:var(--textLight);font-size:2.8rem;margin:5px;flex:0 1 10em;line-height:.9;display:flex}@media screen and (max-width:500px){.headerBanner h1{font-size:9vw}}.headerBanner h1>span{font-size:100%;writing-mode:vertical-lr;line-height:1.3;transform:rotate(180deg);padding-top:.2em;margin-right:-.2em}.headerBanner h2{align-self:flex-end;margin-right:1.5em;margin-bottom:5px;font-size:2rem;color:var(--textLight);letter-spacing:1px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif}</style>
+    <script>/* Font loading: Critical FOFT with preload, see:
+   https://www.zachleat.com/web/comprehensive-webfonts/#critical-foft-with-preload */
+    /* (function () { if ("fonts" in document) { // Optimization for Repeat Views if
+   (sessionStorage.fontsLoadedCriticalFoftPreload) { document.documentElement.className += " fonts-loaded-2"; return; }
+   document .fonts .load("1em 'DM Sans Subset'") .then(function () {
+     document.documentElement.className += " fonts-loaded-1";
+     Promise.all(
+       [document.fonts.load("400 1em 'DM Sans'"), document.fonts.load("700 1em 'DM Sans'"), document.fonts.load("italic 1em 'DM Sans'"), document.fonts.load("italic 700 1em 'DM Sans'")]
+     ).then(function () {
+       document.documentElement.className += " fonts-loaded-2";
+       // Optimization for Repeat Views
+       sessionStorage.fontsLoadedCriticalFoftPreload = true;
+     });
+   }); } })(); */
+  </script>
+  
+  <script type="module" crossorigin="" src="/assets/js/main.8cb112e1.js"></script>
+  <link rel="stylesheet" href="/assets/css/main.99ed7464.css" media="print" onload="this.media='all'">
+</head>
+<body>
+  <a href="#main" class="skiplink">Skip to main content</a>
+  <div class="layout" role="document">
+    <header class="site-header">
+  <div class="headerBanner ">
+    <div class="">
+      <h1>
+        <span>WEB</span>
+        Frontend Development</h1>
+      <h2>WDD 231</h2>
+    </div>
+  </div>
+  <div>
+    <nav class="nav nav--primary" role="navigation" tabindex="-1">
+    
+    <ul class="nav__menu"><li class="nav__item nav__item--active">
+                    <a class="nav__link" href="#main"  aria-current="page" >
+                        Home
+                    </a>
+                </li><li class="nav__item">
+                    <a class="nav__link" href="/semester/" >
+                        Semester
+                    </a>
+                </li><li class="nav__item">
+                    <a class="nav__link" href="/block/" >
+                        Block
+                    </a>
+                </li></ul>
+</nav>
+
+  </div>
+</header>
+    <main id="main" class="main">
+      
+<div class="container">
+  <h1>Units</h1>
+  
+  <ol class="postlist">
+  
+    <li class="postlist-item">
+      <a href="/block/unit1/" class="postlist-link">
+        <h2>
+          
+            Unit One - Introduction
+          
+        </h2>
+      </a>
+      <p>This Unit will review concepts in HTML, CSS, and Javascript. It will also instruct how to setup our environment for the course.</p>
+      
+        
+        block,
+      
+        
+        HTML basics,
+      
+        
+        CSS basics,
+      
+        
+        Build tools,
+      
+    </li>
+  
+    <li class="postlist-item">
+      <a href="/block/unit2/" class="postlist-link">
+        <h2>
+          
+            Unit Two - Responsive Design
+          
+        </h2>
+      </a>
+      <p>This unit will introduce the tools and concepts behind responsive web pages. It will also discuss making comparisions and branching in Javascript. Finally it will introduce DOM events</p>
+      
+        
+        block,
+      
+        
+        Responsive design,
+      
+        
+        Media Queries,
+      
+        
+        JS debugging,
+      
+        
+        JS operators,
+      
+        
+        coercion,
+      
+        
+        DOM events,
+      
+    </li>
+  
+    <li class="postlist-item">
+      <a href="/block/unit3/" class="postlist-link">
+        <h2>
+          
+            Unit Three - Accessibility
+          
+        </h2>
+      </a>
+      <p>This unit will teach the importance of making our pages accessible along with methods to do so. Javascript Functions and Array methods will also be introduced</p>
+      
+        
+        block,
+      
+        
+        accessibility,
+      
+        
+        css custom properties,
+      
+        
+        arrays,
+      
+        
+        functions,
+      
+    </li>
+  
+    <li class="postlist-item">
+      <a href="/block/unit4/" class="postlist-link">
+        <h2>
+          
+            Unit Four - Forms
+          
+        </h2>
+      </a>
+      <p>This unit will dive into building HTML forms and styling them with CSS. Javascript objects and ES modules will also be introduced</p>
+      
+        
+        block,
+      
+        
+        forms,
+      
+        
+        assessibility,
+      
+        
+        Javascript objects,
+      
+        
+        ES modules,
+      
+    </li>
+  
+    <li class="postlist-item">
+      <a href="/block/unit5/" class="postlist-link">
+        <h2>
+          
+            Unit Five - Flexbox and Performance
+          
+        </h2>
+      </a>
+      <p>This unit will introduce CSS Flexbox as another tool for building webpage layouts. We will also learn how to further organize our code with ES Modules.</p>
+      
+        
+        block,
+      
+        
+        es modules,
+      
+        
+        seo,
+      
+        
+        flexbox,
+      
+        
+        lighthouse,
+      
+    </li>
+  
+    <li class="postlist-item">
+      <a href="/block/unit6/" class="postlist-link">
+        <h2>
+          
+            Unit Six - Personal Project
+          
+        </h2>
+      </a>
+      <p>This unit will be spent mostly in planning and building a web application of your own design.</p>
+      
+        
+        block,
+      
+        
+        design basics,
+      
+        
+        final project,
+      
+    </li>
+  
+</ol>
+</div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner container">
+    <p>
+      <span>&copy; 2024 Shane Thompson</span>
+    </p>
+  </div>
+</footer>
+  </div>
+  
+  
+<noscript><link rel="stylesheet" href="/assets/css/main.99ed7464.css"></noscript>
+  
+</body></html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>WDD 231 Web Frontend Development</title>
+    <subtitle>Curriculum for the BYUI WDD 231 course</subtitle>
+    <link href="https://wdd231.netlify.app/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="https://wdd231.netlify.app" rel="alternate" type="text/html"/>
+    <author>
+        <name>WDD 231 Web Frontend Development</name>
+    </author>
+    
+    <id>https://wdd231.netlify.app/</id></feed>
