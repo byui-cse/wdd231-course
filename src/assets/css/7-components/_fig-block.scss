@@ -1,0 +1,23 @@
+.fig-block {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 1em auto;
+}
+
+.fig-block > * {
+	max-width: 100%;
+	flex: 1 1 auto;
+}
+
+.fig-block figure {
+	text-align: center;
+}
+.fig-block figure > a {
+	text-decoration: none;
+	border-bottom: none;
+}
+.fig-block figcaption {
+	font-size: 0.8em;
+	margin-top: .5em;
+	text-align: center;
+}

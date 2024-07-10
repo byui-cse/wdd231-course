@@ -1,0 +1,12 @@
+.callout,
+blockquote {
+	display: block;
+
+	margin: 15px auto;
+	width: 90%;
+	max-width: 80ch;
+	padding: 10px;
+	// border: 1px solid black;
+	color: var(--text-dark);
+	background: var(--callout-background-color);
+}

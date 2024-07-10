@@ -1,0 +1,55 @@
+.bigSteps{
+// 	> ol {
+// 		counter-reset: sub-counter;
+// 		list-style: none;
+
+// 	  > li {
+// 		counter-increment: sub-counter;
+// 		margin-bottom: 0.6em;
+// 	}
+// 	  > li::before {
+// 		content: counters(sub-counter, '.') '.';
+// 		font-weight: bold;
+// 		padding-right: 0.5em;
+// 	}
+// }
+	> h2 > strong {
+		font-size: 3rem;
+
+		margin-right: 0.5rem;
+		font-family: 'Impact', serif;
+		line-height: 1;
+	}
+
+	// > ol {
+	// list-style: none;
+	// counter-reset: my-counter;
+	// margin: 0;
+	// padding: 0;
+	// > li {
+	// 	counter-increment: my-counter;
+	// 	margin-bottom: 0.5rem;
+	// }
+
+	//  > li::before {
+	// 	content: counter(my-counter);
+	// 	font-weight: bold;
+	// 	font-size: 3rem;
+	// 	margin-right: 0.5rem;
+	// 	font-family: 'Impact', serif;
+	// 	line-height: 1;
+	// }
+	//  > li:nth-child(-n + 9):before {
+	// 	content: '0' counter(my-counter);
+	// }
+
+
+// > li > h3,
+//  > li > h2 {
+// 	display: inline-block;
+// }
+// }
+//  > li > p:first-child {
+// 	display: inline-block;
+// }
+}

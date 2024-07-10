@@ -1,0 +1,20 @@
+h1 {
+    font-size: var(--fluid-3);
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: var(--fluid-2);
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: var(--fluid-1);
+    margin-bottom: 1rem;
+}
+
+h4, h5, h6 {
+    font-size: var(--fluid-0);
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,20 @@
+<ol class="postlist">
+  {% for post in postslist %}
+    <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+      <a href="{{ post.url | url }}" class="postlist-link">
+        <h2>
+          {% if post.data.title %}
+            {{ post.data.title }}
+          {% else %}
+            <code>{{ post.url }}</code>
+          {% endif %}
+        </h2>
+      </a>
+      <p>{{ post.data.summary }}</p>
+      {% for tag in post.data.tags | filterTagList %}
+        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+        {{ tag }},
+      {% endfor %}
+    </li>
+  {% endfor %}
+</ol>

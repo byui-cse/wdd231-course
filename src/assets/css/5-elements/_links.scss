@@ -1,0 +1,18 @@
+a {
+    color: var(--linkColor);
+    text-decoration: underline;
+		border-bottom: 2px solid var(--linkColor);
+
+		&:visited {
+			color: var(--linkVisited);
+			border-bottom: 2px solid var(--linkVisited);
+		}
+		&:hover {
+			color: var(--primaryColor);
+			border-bottom: 2px solid var(--primaryColor);
+		}
+    svg {
+        display: inline-block;
+        fill: currentColor;
+    }
+}
