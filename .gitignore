@@ -16,3 +16,6 @@ _site/
 
 # Local Netlify folder
 .netlify
+
+gh-pages
+gh-pages.pub
