@@ -3,6 +3,13 @@ title: Unit 1 Readings - Part 1.
 time: 30min
 ---
 
+### Review as needed
+
+- [HTML Introduction](https://byui-cit.github.io/learning-modules/modules/html/html-intro/)
+- [CSS Introduction](https://byui-cit.github.io/learning-modules/modules/css/css-intro/)
+- [CSS Diner](https://flukeout.github.io)  CSS review and practice
+- [Running Javascript](https://byui-cit.github.io/learning-modules/modules/js/introduction/ponder1/)
+- [Practice with the DOM](https://byui-cit.github.io/learning-modules/modules/js/dom-basics/ponder1/)
 - **CSS Selectors**:  
 "What are CSS selectors?", "Can you give an example of a CSS selector?", "How do I use multiple selectors in one rule?", "What is a CSS combinator?", "What is a pseudo-class in CSS?"
 - **Javascript variables**:  
