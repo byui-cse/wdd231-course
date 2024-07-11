@@ -1,6 +1,6 @@
 ---
 title: Unit 2 Exploration.
-layout: prepare
+
 time: 30min
 ---
 

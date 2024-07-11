@@ -1,6 +1,6 @@
 ---
 title: Unit 4 Exploration.
-layout: prepare
+
 time: 30min
 ---
 

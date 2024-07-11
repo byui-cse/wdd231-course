@@ -1,6 +1,6 @@
 ---
 title: Unit 5 Exploration.
-layout: prepare
+
 time: 30min
 ---
 
