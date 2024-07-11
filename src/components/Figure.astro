@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"img">;
+
+const { src, alt, class: className, ...props } = Astro.props;
+---
+
+<figure class:list={[className]} {...props}>
+  <img src={import.meta.env.BASE_URL + src} alt={alt} />
+  <figcaption><slot /></figcaption>
+</figure>
+
+<style>
+  figure {
+    text-align: center;
+  }
+  figure > a {
+    text-decoration: none;
+    border-bottom: none;
+  }
+  figcaption {
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    text-align: center;
+  }
+</style>
