@@ -10,338 +10,221 @@ time: 2 hours
 
 Complete the following assignment individually. Feel free however to work together with your classmates to accomplish the task. You are all solving the same problems and have different insights.
 
-## **01** Review the provided project files and code
+## **01** Review the provided screenshots
 
-Begin by opening up the NPS project you cloned to your computer during the previous activity. Open the `package.json` file. This file is the blueprint for the project. It lists the tools and libraries the project will use, and has a section with some scripts to make common commands easy to run.
-
-There is currently only one tool, or dependency in or project currently: Vite. This tool is called a bundler. It has the ability to run different processes on our files to get them ready for production. It also has a development web server built into it. We will use this server instead of the one provided by the Live Server extention you are probably familiar with to preview our changes.
-
-Open up the `src` folder and take a look at the files there. This is where the code we write will live. There is already a couple of javascript files, a CSS file, and an `index.html`.  You will rarely be making any changes outside of this folder.
-
-Before we can view the site we have to actually install the tools we said we need. Open a command prompt in VS Code and type the following `dir` if you are running windows, or `ls` if you are on a mac. In the files that are listed you should see the `package.json` if you don't see that you need to change directories until you get the right one.
-
-Then type: `npm install`. This looks at the list of dependencies in teh `package.json` file and installs them into the project. It will create a new directory called `node_modules`.  You can delete that folder at any time and rebuild it with the command above.
-
-Finally type `npm run start`. This will start up our development environment and should open the page in your default browser.
-
-## **02** Finish the HTML
-
-Open up the `index.html` file. You see a fair amount of code in there already. Below is a summary of the major sections provided:
-
-```html
-<body>
-    <p class="disclaimer"></p>
-    <div class="skip-links" aria-label="short-cut links" role="navigation"></div>
-    <header>
-      <section class="global-header"></section>
-      <section id="park-header"></section>
-    </header>
-    <main id="main"></main>
-    <footer id="park-footer"></footer>
-  </body>
-  ```
-
-If you goto the page in the browser, click on the URL then hit `tab` a couple times you will see the purpose of the section with the class `skip-links` This is to make navigating the site easier for folks who use a keyboard instead of a mouse.  Check out the CSS file to see how that is hidden and shown.
-
-Notice that there are two headers as well. Open up the real page for [Yellowstone National Park](https://www.nps.gov/yell/index.htm). The first header (global) is the same across all NPS websites. The other header is specific to the park. 
-
-The page has a unique way of providing the icons as well. If you look inside the global-header you will see something that looks like this:
-
-```html
-<svg class="icon">
-    <use
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xlink:href="/images/sprite.symbol.svg#search"
-    ></use>
-</svg>
-```
-
-The icons are all svgs and can be found in the file `images/sprite.symbol.svg`. Look through that file to see what icons you have access to.  This course is not going to dive deep into SVGs, but this provides an example of one way they can be used.
-
-The next step is to finish writing the HTML for both headers: the global and the park. Refer back to the real website as you do this. See the following image to see what your page should look like when you are done with this week. Just hard code the values for the park name etc for now. We will change that later.
-
-Note! You do not need to build the menu that is shown when you click the `Menu` button this week.
+We are going to be building a simplified version of the NPS park page. Review the mockups below to get a feel for the changes we will make and what your page should look like when you are done.
 
 import Figure from "../../components/Figure.astro";
 
-<Figure src="/images/nps1-finish.webp" alt="Part 1 finished">Week 1 Finish point</Figure>
+<Figure src="/images/nps-homepage-complete-lg.webp" alt="Part 2 finished large screen">Week 2 Finish point large screen</Figure>
+<Figure src="/images/nps-homepage-complete-sm.webp" alt="Part 2 finished small screen">Week 2 Finish point small screen</Figure>
 
+Here are a few things in particular to note:
 
+- We will use the full park name for the main headline (h1)
+- We will only have 3 sections on our page: "Current Conditions", "Fees and Passes", and "Visitor Centers". We will build those actual pages later
+- The footer has also been simplified to just the address and phone number for the park.
+
+After reviewing the mockups type `npm run start` to start. Remember that this will start up our development environment and should open the page in your default browser.
+
+## **02** Finish the HTML
+
+Open up the `index.html` file. We need to add `section`s to our `main` element to hold the new content. Give them a class as well. Something like `intro` for the first and `info` for the second will work.
+
+Next open up the `main.js` file. Since we are pulling the content from a dataset, we will add the rest of the HTML with Javascript!
+
+First let's do a little organization. Let's take the code we wrote last week and wrap it up into a function. It should look like the following:
+
+```javascript
+function setHeaderInfo(data) {
+  // insert data into disclaimer section
+  const disclaimer = document.querySelector(".disclaimer > a");
+  disclaimer.href = data.url;
+  disclaimer.innerHTML = data.fullName;
+  // update the title of the site. Notice that we can select things in the head just like in the body with querySelector
+  document.querySelector("head > title").textContent = data.fullName;
+  // set the banner image
+  document.querySelector(".hero-banner > img").src = data.images[0].url;
+  // use the template function above to set the rest of the park specific info in the header
+  document.querySelector(".hero-banner__content").innerHTML =
+    parkInfoTemplate(data);
+}
+```
+
+Remember to run your new function as well!
+
+Next we should make a list of the other things we need to do:
+
+1. Set the information in the `intro` section. This will be the park full name, and the description from our data.
+2. Create a template function that will create a component consisting of an image, headline, and paragraph. If you check out the real [Yellowstone site](https://www.nps.gov/yell/index.htm) you will notice that the image and headline are also links. You can call this function `mediaCardTemplate(info)`
+3. We know that we want to create certain blocks, but they are not directly represented in our data. We could just hard code everything, but what if we want to change the content sections later? We should represent the sections in data...to make it easier to change later if necessary. We will create a new array called `parkInfoLinks` and add the following objects to it:
+
+```javascript
+const parkInfoLinks = [
+  {
+    name: "Current Conditions &#x203A;",
+    link: "conditions.html",
+    image: parkData.images[2].url,
+    description:
+      "See what conditions to expect in the park before leaving on your trip!"
+  },
+  {
+    name: "Fees and Passes &#x203A;",
+    link: "fees.html",
+    image: parkData.images[3].url,
+    description: "Learn about the fees and passes that are available."
+  },
+  {
+    name: "Visitor Centers &#x203A;",
+    link: "visitor_centers.html",
+    image: parkData.images[9].url,
+    description: "Learn about the visitor centers in the park."
+  }
+];
+```
+
+4. Loop through this new array and run the `mediaCardTemplate` function once for each content area. Then take the HTML returned and insert it into the `info` section. (Hint: `map` works great for things like this)
+5. Create another template function that will create the information in the footer. If you look at the data you will see that there are multiple phone numbers and addresses. We need to make sure to output the `Mailing` address and the `Voice` phone number.
+6. Use all our template functions to set the information in the `intro`, `info`, and `park-footer` sections. I would recommend creating a set of functions like `setParkIntro(data)`, `setParkInfo(data)`, and `setParkFooter(data)`
+7. Don't forget to call all the functions!
+
+Most of this should be review. Similar to what we did last week. There is one part that is new however, filtering to the correct address and phone number in the footer template.
+
+If you look at the data your were given (open up the `parkService.mjs` file) you will see that the contact information is marked with a `type` field. We can use the [Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method to get to just the right one. `Find` returns the first match. So to find the `Mailing` address you could do something like this:
+```javascript
+function getMailingAddress(addresses) {
+  const mailing = addresses.find((address) => address.type === "Mailing");
+  return mailing;
+}
+```
+
+To use this we could call it and store the data returned...then insert that into our HTML. 
+
+```javascript
+function footerTemplate(info) {
+  const mailing = getMailingAddress(info.addresses);
+  const voice = getVoicePhone(info.contacts.phoneNumbers)
+  
+  return `<section class="contact">
+  <h3>Contact Info</h3>
+  <h4>Mailing Address:</h4>
+  <div><p>${mailing.line1}<p>
+  <p>${mailing.city}, ${mailing.stateCode} ${mailing.postalCode}</p></div>
+  <h4>Phone:</h4>
+  <p>${voice}</p>
+  </section>`;
+}
+```
 
 Once you have completed this step feel free to review the instructor's code. Don't just copy and paste this into your file! Review it, note the differences, and then add or remove whatever you think appropriate once you understand what the differences mean.
 
 <details>
-<summary>Click here to see the instructor's code</summary>
+<summary>Click here to see the new template functions</summary>
 
-```html
-<header>
-    <section class="global-header">
-    <a href="index.html" class="site-title"
-        ><span class="logo" role="presentation"></span>
-        <h1>National Park Service</h1></a
-    >
-    <div class="global-header__right">
-        <a class="search-icon" href="#park-footer">
-        <svg class="icon">
-            <use
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xlink:href="/images/sprite.symbol.svg#search"
-            ></use>
-        </svg>
-        <span class="visually-hidden">Search</span>
-        </a>
-        <button id="global-nav-toggle">
-        <svg class="icon">
-            <use
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xlink:href="/images/sprite.symbol.svg#menu"
-            ></use>
-        </svg>
-        <span class="visually-hidden">Open</span> Menu
-        </button>
-    </div>
-    </section>
-    <section id="park-header">
-    <div class="hero-banner">
-        <img src="" alt="" />
-        <div class="hero-banner__content">
-        <a href="#" class="hero-banner__title">Yellowstone</a>
-        <p class="hero-banner__subtitle">
-            <span>National Park</span>
-            <span>ID, MT, WY</span>
-        </p>
-        </div>
-    </div>
-    <nav class="park-nav">
-        <ul>
-        <li>
-            <a href="#">
-            <span>Info</span>
-            <svg class="icon" role="presentation" focusable="false">
-                <use
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xlink:href="/images/sprite.symbol.svg#info"
-                ></use>
-            </svg>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-            <span>Alerts</span>
-            <svg class="icon" role="presentation" focusable="false">
-                <use
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xlink:href="/images/sprite.symbol.svg#alert"
-                ></use>
-            </svg>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-            <span>Maps</span>
-            <svg class="icon" role="presentation" focusable="false">
-                <use
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xlink:href="/images/sprite.symbol.svg#location"
-                ></use>
-            </svg>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-            <span>Calendar</span>
-            <svg class="icon" role="presentation" focusable="false">
-                <use
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xlink:href="/images/sprite.symbol.svg#calendar"
-                ></use>
-            </svg>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-            <span>Fees</span>
-            <svg class="icon" role="presentation" focusable="false">
-                <use
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xlink:href="/images/sprite.symbol.svg#fee-22"
-                ></use>
-            </svg>
-            </a>
-        </li>
-        </ul>
-    </nav>
-    </section>
-</header>
+```javascript
+function mediaCardTemplate(info) {
+  return `<div class="media-card">
+  <a href="${info.link}">
+  <img src="${info.image}" alt="${info.name}" class="media-card__img">
+  <h3 class="media-card__title">${info.name}</h3>
+  </a>
+ <p>${info.description}</p>
+   </div>`;
+}
+function getMailingAddress(addresses) {
+  const mailing = addresses.find((address) => address.type === "Mailing");
+  return mailing;
+}
+function getVoicePhone(numbers) {
+  const voice = numbers.find((number) => number.type === "Voice");
+  return voice.phoneNumber;
+}
+function footerTemplate(info) {
+  const mailing = getMailingAddress(info.addresses);
+  const voice = getVoicePhone(info.contacts.phoneNumbers);
+
+  return `<section class="contact">
+  <h3>Contact Info</h3>
+  <h4>Mailing Address:</h4>
+  <div><p>${mailing.line1}<p>
+  <p>${mailing.city}, ${mailing.stateCode} ${mailing.postalCode}</p></div>
+  <h4>Phone:</h4>
+  <p>${voice}</p>
+</section>
 ```
 
 </details>
-
-## **03** Begin Styling
-
-Open up the `style.css` file. Note you were given some CSS to get you started. All those custom properties were taken from the actual site. You won't need all of them, but they should prove helpful as you style. Refer back to the real site often as you are styling. Your goal is to make it as close as possible. Below are a few things to note:
-
-- You should resize your browser to be narrow...like a mobile screen. You can do this either through the developer tools, or just by changing the width of your browser
-- Start with the global styles. What font should be used for the body copy and headlines?  What color(s) should links be? Should the base font size be increased? (yes!), etc
-- Your fonts and colors can be found in the custom properties at the top of the file. Use them!
-- It would be good to add a rule to make our images responsive. We never want an image to be bigger than the space it has available. So you will see that a rule has been added to make this happen.
-- You will probably need to use both flexbox and grid to accomplish the layout.
-- For now to get the styling done, use `https://www.nps.gov/common/uploads/structured_data/3C7D5920-1DD8-B71B-0B83F012ED802CEA.jpg` for the banner image. If the sizing is giving you trouble...check out the `object-fit` property.
-- Once you get the background colors set you can get rid of the rule at the bottom: `svg`
-
-Continue adding css until your page matches the screenshot above.
-
-Once you have completed this step feel free to review the instructor's code. Don't just copy and paste this into your file! Review it, note the differences, and then add or remove whatever you think appropriate once you understand what the differences mean. Your sizes and spacings may not match mine exactly...that is ok. I didn't match the original perfectly.
 
 <details>
-<summary>Click here to see the instructor's code</summary>
+<summary>Click here to see the set functions</summary>
 
-```css
-/* Global navbar styling */
-
-.global-header {
-  background-color: var(--bs-black);
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  fill: white;
-}
-
-.global-header a:link,
-.global-header a:visited,
-#park-header a:link,
-#park-header a:visited {
-  color: white;
-  text-decoration: none;
-}
-.global-header .icon {
-  width: 20px;
-  height: 20px;
+```javascript
+function setHeaderInfo(data) {
+  // insert data into disclaimer section
+  const disclaimer = document.querySelector(".disclaimer > a");
+  disclaimer.href = data.url;
+  disclaimer.innerHTML = data.fullName;
+  // update the title of the site. Notice that we can select things in the head just like in the body with querySelector
+  document.querySelector("head > title").textContent = data.fullName;
+  // set the banner image
+  document.querySelector(".hero-banner > img").src = data.images[0].url;
+  // use the template function above to set the rest of the park specific info in the header
+  document.querySelector(".hero-banner__content").innerHTML =
+    parkInfoTemplate(data);
 }
 
-.global-header__right {
-  display: flex;
-  align-items: center;
-}
-.global-header__right .search-icon {
-  padding: 0 1rem;
-  margin-top: 6px;
-}
-.global-header__right button {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  padding: 1.2em;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  border-left: 1px solid var(--bs-grey-5);
+function setParkIntro(data) {
+  const introEl = document.querySelector(".intro");
+  introEl.innerHTML = `<h1>${parkData.fullName}</h1>
+  <p>${parkData.description}</p>`;
 }
 
-/* Hero banner */
-.hero-banner {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.hero-banner > img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  grid-column: 1/2;
-  grid-row: 1/3;
+function setParkInfoLinks(data) {
+  const infoEl = document.querySelector(".info");
+  const html = data.map(mediaCardTemplate);
+  infoEl.innerHTML = html.join("");
 }
 
-.hero-banner__content {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  grid-column: 1/2;
-  grid-row: 2/3;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  padding: 0.5em 1em;
+function setFooter(data) {
+  const footerEl = document.querySelector("#park-footer");
+  footerEl.innerHTML = footerTemplate(data);
 }
 
-.hero-banner__title {
-  font-size: 1.8em;
-}
-
-.hero-banner__subtitle {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.8rem;
-}
-/* Park nav styling */
-
-.park-nav > ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  background-color: var(--bs-black);
-  font-size: 0.8rem;
-}
-.park-nav a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8em 2em;
-}
-.park-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-.park-nav svg {
-  width: 24px;
-  height: 24px;
-}
+setHeaderInfo(parkData);
+setParkIntro(parkData);
+setParkInfoLinks(parkInfoLinks);
+setFooter(parkData);
 ```
 
 </details>
 
-## **04** Make it dynamic
+## **03** Finish Styling
 
-The last step is to dynmaically load in all the info specific to this park. For this week we will be using data provided in a file called `js/parkService.mjs` Open that file up now. It has information about Yellowstone National Park, and so we will all make that site for now. Starting with part 2 however you will be able to choose any park you want!
+Open up the `style.css` file and begin styling the new content. Refer back to the real and the mockups often as you are styling. If there is a difference with the mockups and the real site go with the mockup. 
 
-You should see a large javascript object, and a function that is exported that just returns the object.
+Continue adding css until your page matches the mockups above. The background for the footer is actually an image. Here is the image: 
+<Figure src="/images/topo_pattern.png" alt="topo pattern background for the footer">Topo pattern background for the footer</Figure>
 
-Now open up `js/main.js`. You will notice that the function is imported so we can use it. In fact it is already being called and the results set into a variable called `parkData`.
+## **04** Refactor
 
-To finish we need to use the DOM methods to select each part of the page that needs dynamic data, then pull the appropriate data out of the variable. Let's make a list!
+If you go back and look at the `main.js` file you will see that it has gotten quite large. We should take a minute to organize our code. This process of improving your code is called `refactoring`. Doing this regularly will make things easier for you as your code grows in size and complexity.
 
-1. Update the link in the disclaimer area to read the name of the park and navigate to that park's official site.
-2. Update the title of the page to read the name of the park.
-3. Use the first image in the list in the data for the hero image.
-4. Update the name, designation, and states of the park in the hero.
+We can first consider the new data that we built: `parkInfoLinks`. It feels a little out of place in `main.js`. Let's move it to `parkService.mjs` instead. Then we can export it and if it is needed in other pages it will be easy to get. Remember to import it back into `main.js` You will also need to update the `image` property of each record. It references `parkData` and in it's new location the data is found in `park`
 
-As a review we will do the first one together.
+Second: the template functions. Templates are things that are sometimes re-used across a project. Let's gather them all together in one place to make them easy to find. Create a new file called `templates.mjs`, copy and paste the functions into that file, and export them. Then go back to `main.js` and import the templates we need.
 
-Remember that to manipulate any HTML element we first have to use the DOM methods to select it into our Javascript code. Commonly we use `document.querySelector` to do this. To update the link in the disclaimer we can use the `.disclaimer` selector, then we need to update two things: the `href` with the URL and the `innerHTML` with the name of the park. Review the following code:
-
-```javascript
-const disclaimer = document.querySelector(".disclaimer");
-disclaimer.href = parkData.url;
-disclaimer.innerHTML = parkData.fullName;
-```
-
-For the name, designation, and states of the park you could select each of those independently, or we could just create a simple template funtion and build it all at once. That function would look like the following:
-
-```javascript
-function parkInfoTemplate(info) {
-  return `<a href="/" class="hero-banner__title">${info.name}</a>
-  <p class="hero-banner__subtitle">
-    <span>${info.designation}</span>
-    <span>${info.states}</span>
-  </p>`;
-}
-```
-
-Finish the last two items on your own.
+After refactoring it is important to test and make sure that everything still works. Do that now.
 
 ## **05** Commit and push to Github
 
 Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
 
 After verifying that your page updated, submit the URL to your page in Ilearn. This will be the Netlify URL we setup earlier.
+
+## Instructor's Solution
+
+As a part of this activity, you are expected to look over a solution from the instructor, to compare your approach to that one. One of the questions on the I-Learn submission will ask you to provide insights from this comparison.
+
+Please DO NOT open the solution until you have worked through this activity for at least one hour. At the end of the hour, if you are still struggling with some of the core requirements, you are welcome to view the instructor's solution and use it to help you complete your own code. Even if you use the instructor's code to help you, you are welcome to report that you finished the core requirements, if you code them up yourself.
+
+After working with your team for the one hour activity, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-2).

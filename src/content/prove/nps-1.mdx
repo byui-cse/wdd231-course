@@ -16,11 +16,11 @@ Begin by opening up the NPS project you cloned to your computer during the previ
 
 There is currently only one tool, or dependency in or project currently: Vite. This tool is called a bundler. It has the ability to run different processes on our files to get them ready for production. It also has a development web server built into it. We will use this server instead of the one provided by the Live Server extention you are probably familiar with to preview our changes.
 
-Open up the `src` folder and take a look at the files there. This is where the code we write will live. There is already a couple of javascript files, a CSS file, and an `index.html`.  You will rarely be making any changes outside of this folder.
+Open up the `src` folder and take a look at the files there. This is where the code we write will live. There are already a couple of javascript files, a CSS file, and an `index.html`.  You will rarely be making any changes outside of this folder.
 
 Before we can view the site we have to actually install the tools we said we need. Open a command prompt in VS Code and type the following `dir` if you are running windows, or `ls` if you are on a mac. In the files that are listed you should see the `package.json` if you don't see that you need to change directories until you get the right one.
 
-Then type: `npm install`. This looks at the list of dependencies in teh `package.json` file and installs them into the project. It will create a new directory called `node_modules`.  You can delete that folder at any time and rebuild it with the command above.
+Then type: `npm install`. This looks at the list of dependencies in the `package.json` file and installs them into the project. It will create a new directory called `node_modules`.  You can delete that folder at any time and rebuild it with the command above.
 
 Finally type `npm run start`. This will start up our development environment and should open the page in your default browser.
 
@@ -65,8 +65,6 @@ Note! You do not need to build the menu that is shown when you click the `Menu` 
 import Figure from "../../components/Figure.astro";
 
 <Figure src="/images/nps1-finish.webp" alt="Part 1 finished">Week 1 Finish point</Figure>
-
-
 
 Once you have completed this step feel free to review the instructor's code. Don't just copy and paste this into your file! Review it, note the differences, and then add or remove whatever you think appropriate once you understand what the differences mean.
 
@@ -345,3 +343,11 @@ Finish the last two items on your own.
 Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
 
 After verifying that your page updated, submit the URL to your page in Ilearn. This will be the Netlify URL we setup earlier.
+
+## Instructor's Solution
+
+As a part of this activity, you are expected to look over a solution from the instructor, to compare your approach to that one. One of the questions on the I-Learn submission will ask you to provide insights from this comparison.
+
+Please DO NOT open the solution until you have worked through this activity for at least one hour. At the end of the hour, if you are still struggling with some of the core requirements, you are welcome to view the instructor's solution and use it to help you complete your own code. Even if you use the instructor's code to help you, you are welcome to report that you finished the core requirements, if you code them up yourself.
+
+After working with your team for the one hour activity, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-1).
