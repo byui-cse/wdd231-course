@@ -207,11 +207,40 @@ Continue adding css until your page matches the mockups above. The background fo
 
 ## **04** Refactor
 
-If you go back and look at the `main.js` file you will see that it has gotten quite large. We should take a minute to organize our code. This process of improving your code is called `refactoring`. Doing this regularly will make things easier for you as your code grows in size and complexity.
+If you go back and look at the `main.js` file you will see that it has gotten quite large. We should take a minute to organize our code. This process of improving your code is called `refactoring`. This process has us look for places where we can make our code more efficient, and DRY (Don't Repeat Yourself). We can look for code that we might want to reuse, and move it into modules. Sometimes we are able to identify code that we need to re-use as we write it, but often it does not become apparent until later. Analyzing and tweaking our code regularly will make things easier for you as your code grows in size and complexity.
 
 We can first consider the new data that we built: `parkInfoLinks`. It feels a little out of place in `main.js`. Let's move it to `parkService.mjs` instead. Then we can export it and if it is needed in other pages it will be easy to get. Remember to import it back into `main.js` You will also need to update the `image` property of each record. It references `parkData` and in it's new location the data is found in `park`
 
 Second: the template functions. Templates are things that are sometimes re-used across a project. Let's gather them all together in one place to make them easy to find. Create a new file called `templates.mjs`, copy and paste the functions into that file, and export them. Then go back to `main.js` and import the templates we need.
+
+Finally we're going to have to set the header and footer info on every page. In order to avoid re-writing those functions over and over let's put them in a module as well. Create one more file called `setHeaderFooter.mjs`. Copy the `setHeaderInfo` and `setFooter` functions from `main.js` into this new file. Then since I can't think of an instance where we would set one and not the other, create one more function called `setHeaderFooter` and make it the default export. Call the two functions in that one. Note that you will also need pass the data into that function as well.
+
+Clean up `main.js` by importing in the new functions and templates and calling them. Also if you have not done so, remove all the code that we moved from `main.js` into the modules. Your `main.js` file should look something like this when you are done:
+
+```javascript
+import { getParkData, parkInfoLinks } from "./parkService.mjs";
+import setHeaderFooter from "./setHeaderFooter.mjs";
+import { mediaCardTemplate } from "./templates.mjs";
+const parkData = getParkData();
+
+function setParkIntro(data) {
+  const introEl = document.querySelector(".intro");
+  introEl.innerHTML = `<h1>${parkData.fullName}</h1>
+  <p>${parkData.description}</p>`;
+}
+
+function setParkInfoLinks(data) {
+  const infoEl = document.querySelector(".info");
+  // we have multiple links to build...so we map to transform the array of objects into an array of HTML strings.
+  const html = data.map(mediaCardTemplate);
+  // join the array of strings into one string and insert it into the section
+  infoEl.insertAdjacentHTML("afterbegin", html.join(""));
+}
+
+setHeaderFooter(parkData);
+setParkIntro(parkData);
+setParkInfoLinks(parkInfoLinks);
+```
 
 After refactoring it is important to test and make sure that everything still works. Do that now.
 
@@ -227,4 +256,4 @@ As a part of this activity, you are expected to look over a solution from the in
 
 Please DO NOT open the solution until you have worked through this activity for at least one hour. At the end of the hour, if you are still struggling with some of the core requirements, you are welcome to view the instructor's solution and use it to help you complete your own code. Even if you use the instructor's code to help you, you are welcome to report that you finished the core requirements, if you code them up yourself.
 
-After working with your team for the one hour activity, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-1b).
+After working as far as you can, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-1b).

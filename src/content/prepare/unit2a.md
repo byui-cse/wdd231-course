@@ -4,17 +4,10 @@ title: Unit 2 Exploration.
 time: 30min
 ---
 
-- Responsive Web Design: "What is responsive web design?", "How are css media queries used in responsive design?","What part does the viewport meta tag play in responsive design?"
-- CSS Reset/Normalize: "What is a CSS Reset?", "What is CSS Normalize?", "Should I use these?"
-- Debugging Javascript: "What are techniques for debugging Javascript code?", "How can I use breakpoints in the browser?"
+- APIs (Application Programming Interface): "What is an API?", "How could I use the national park service api to get information about Yellowstone national park?" "How could I use the national park service api to get information about all national parks?",  "How could I use the national park service api to get information about all national parks in a specific state?"
+- JSON (Javascript Object Notation): "What is JSON?", "What does it mean to parse JSON?", "How could I parse JSON in Javascript?", "What does it mean to stringify?" "How could I stringify JSON in Javascript?" "What is the difference between JSON and XML?"
 
-Questions that might be helpful could be:
-
-- What problems can arise when...?
-- Can you give me a specific example? (or another example)
-- Are there any other ways to do this?
-- Can you give me more information on...?
-
+<!-- 
 ### Prompt
 
 After you have asked a few questions about the topics above, try entering the following into the Chat prompt and use it to review and solidify your understanding:
@@ -38,4 +31,4 @@ Given this information, help students understand the topics by providing explana
 Ask students to explain their thinking. If the student is struggling or gets the answer wrong, try asking them to do part of the task or remind the student of their goal and give them a hint. If students improve, then praise them and show excitement. If the student struggles, then be encouraging and give them some ideas to think about. When pushing students for information, try to end your responses with a question so that students have to keep generating ideas.
 
 Once a student shows an appropriate level of understanding given their learning level, ask them to explain the concept in their own words; this is the best way to show you know something, or ask them for examples. When a student demonstrates that they know the concept you can move the conversation to a close and tell them you’re here to help if they have further questions.
-```
+``` -->

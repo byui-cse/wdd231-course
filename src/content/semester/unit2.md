@@ -1,29 +1,26 @@
 ---
-title: Unit Two - Responsive Design
-summary: This unit will introduce the tools and concepts behind responsive web pages. It will also discuss making comparisions and branching in Javascript. Finally it will introduce DOM events
+title: Unit Two - Working with APIs
+summary: This unit will introduce the tools and concepts behind Application Programming Interfaces (API). We will also introduce the team project.
 tags: [
-	Responsive design,
-	Media Queries,
-	JS debugging,
-	JS operators,
-	coercion,
-	DOM events
+	API,
+	JSON,
+	planning
 ]
 ---
 
 ## Prepare
 
 [Week 3 Exploration](../../prepare/unit2a)
-[Week 4 Exploration](../../prepare/unit2b)
+<!-- [Week 4 Exploration](../../prepare/unit2b) -->
 
 ## Ponder
 
 - [Practice with Media Queries](https://byui-cit.github.io/learning-modules/modules/css/media-queries/ponder1/)
 - [Debugging Practice](https://byui-cit.github.io/learning-modules/modules/js/debugging/ponder1/)
 - [Practice with DOM Events](https://byui-cit.github.io/learning-modules/modules/js/dom-events/ponder1/)
-<!-- https://byui-cit.github.io/learning-modules/modules/js/operators/ponder1/ -->
+
 
 ## Prove
 
-[Cool Pics part 1](../../prove/cool-pics-1)
-[Cool Pics part 2](../../prove/cool-pics-2)
+[NPS 3](../../prove/nps-3)
+[Team 1](../../prove/team-1)
