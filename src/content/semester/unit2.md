@@ -10,17 +10,17 @@ tags: [
 
 ## Prepare
 
-[Week 3 Exploration](../../prepare/unit2a)
+- [Week 3 Exploration](../../prepare/unit2a)
 <!-- [Week 4 Exploration](../../prepare/unit2b) -->
 
 ## Ponder
 
-- [Practice with Media Queries](https://byui-cit.github.io/learning-modules/modules/css/media-queries/ponder1/)
+<!-- - [Practice with Media Queries](https://byui-cit.github.io/learning-modules/modules/css/media-queries/ponder1/)
 - [Debugging Practice](https://byui-cit.github.io/learning-modules/modules/js/debugging/ponder1/)
-- [Practice with DOM Events](https://byui-cit.github.io/learning-modules/modules/js/dom-events/ponder1/)
+- [Practice with DOM Events](https://byui-cit.github.io/learning-modules/modules/js/dom-events/ponder1/) -->
 
 
 ## Prove
 
-[NPS 3](../../prove/nps-3)
-[Team 1](../../prove/team-1)
+- [NPS 3](../../prove/nps-3)
+- [Team 1](../../prove/team-1)

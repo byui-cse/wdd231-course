@@ -1,0 +1,239 @@
+---
+title: NPS - part 3
+description: This activity will have you use the free National Park Service api to recreate a simplified version of an NPS website for the park or monument of your choice. Part three will have us connect to the NPS API to pull data for the park of our choice. We will use this data direct from the API for the rest of the project.
+time: 2 hours
+---
+
+
+
+## Instructions
+
+Complete the following assignment individually. Feel free however to work together with your classmates to accomplish the task. You are all solving the same problems and have different insights.
+
+## **01** Request an API key.
+
+Begin by visiting the documentation for the [NPS API](https://www.nps.gov/subjects/developer/api-documentation.htm). This documentation will be vital for us as we look for all the data we need to build our site. Many API's control access to themselves through the use of a key. We will need to request a key first before we can do anything else. Follow the link at the top of the page: [Get Started Page](https://www.nps.gov/subjects/developer/get-started.htm) Fill out the form and a key will be emailed to you.
+
+We need to use this key in our code, but we do want to protect it as best we can. Placing it in our code and sending it to Github would not be a good idea. It is also common in web development to have different environments. Development where things don't matter, and production where they do are two examples. A common way to keep things safe and accomodate different setups is by the use of a `.env` file. We can put secrets in them because we will instruct Git to ignore them and not ever add them to the repo. If you open the `.gitignore` file in fact you will see that `.env` has already been added.
+
+You have also been given a sample .env file named `.env.sample`  We will need to rename this file to just `.env`. If you open it then you will also notice that it has one line in it currently `VITE_NPS_API_KEY=yourkeyhere`. You should copy/paste your api key in where it says "yourkeyhere".
+
+You should also go back to the NPS API page and click on the green "Authorize" button. If you put your key in there also then you can use the tools built into that page to explore the API. For example, after you put your key in, go down to the section that says: `GET /parks`. Click on that and it should open up. Click the "Try it out" button and then type `yell` in the `parkCode` box. Then hit the blue "Execute" button. It should retrieve the data for Yellowstone park that we have been using thus far.
+
+Try typing `abli` in the parkCode box. Now you should see info for the Abraham Lincoln Historical Park. Spend a few more minutes exploring some of the other API endpoints to see what data is available.
+
+## **02** Fetch some data
+
+Open up the `parkService.mjs` file. Currently this file has a large object in it, with a simple function to return the data when called. We need to rewrite this function to pull from the API instead. We learned earlier about `Fetch`, which is the tool we will use to do this. 
+
+First we need to know the URL for the resource we are requesting. The first part of this will always be the same. If we look on the [Getting Started page](https://www.nps.gov/subjects/developer/get-started.htm) we requested the key from you will see this example: `https://developer.nps.gov/api/v1/alerts?parkCode=acad,dena`
+
+Everything before the `alerts` is the base URL. We will need to use that with every request. Add the following line to the top of your `parkService.mjs` file: `const baseUrl = "https://developer.nps.gov/api/v1/";`
+
+Each request will follow a similar pattern: `baseUrl` + `resourcePath` + `parameters`. We have the baseUrl, but how do we know the rest?  Use the documentation! Let's say we wanted to find out about any alerts for Yellowstone. If we scan  the documentation we can see that the alerts resource is under the `alerts` endpoint. We can also see that the alerts resource has a `parkCode` parameter. We can use this information to build our request. Use the "Try It Out" feature. Type "yell" into the `parkCode` box. Then type "10" into the `limit` box. This will limit the results to at most 10 records. Click "Execute". Notice that before the results the tool shows us what URL it built to make the request.
+
+```bash
+https://developer.nps.gov/api/v1/alerts?parkCode=yell&limit=10
+```
+In this case the `resourcePath` is `alerts`, and the parameters are `?parkCode=yell&limit=10`. The "?" is a special character in URLs. It tells the browser that everything after it is a parameter. The parameters are key/value pairs. The key is the name of the parameter, and the value is the value of the parameter. In this case we have two parameters: `parkCode` and `limit`. The `parkCode` is set to `yell` and the `limit` is set to `10`. Multiple parameters are separated by an `&` character.
+
+Let's update the `getParkData` function with this information.
+
+```javascript
+export async function getParkData() {
+    let data = {}
+  const response = await fetch(baseUrl + "parks" + "?parkCode=yell");
+  // check to make sure the reponse was ok.
+  if (response.ok) {
+    // convert to JSON
+    data = await response.json();
+  } else throw new Error("response not ok")
+    return data;
+  
+}
+  ```
+
+If you goto the page in the browser and open up the developer tools you will see several errors. One of which is the error we threw in our function `response not ok`. But why was it not ok? If you look at the network tab and click on the line that says `park` (it should be red). Then click on the Preview tab. Here we can see the exact error that was returned. The request was made, but the response was a 403, this means we were not authorized!
+
+```json
+{
+  "error": {
+    "code": "API_KEY_MISSING",
+    "message": "An API key was not provided. Please get one at https://www.nps.gov/subjects/developer/get-started.htm"
+  }
+}
+```
+
+We need to send our API key! Add another line right below the `baseUrl` in the `parkService` file: `const apiKey = import.meta.env.VITE_NPS_API_KEY;` The value there is a special variable that Vite makes available to us. It reads all the stuff in our `.env` file on startup and we can access it in this way.
+
+Next we need to send the key in the `header` of our request. See below how this is done.
+
+```javascript
+const baseUrl = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
+export async function getParkData() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  const data = {};
+  const response = await fetch(baseUrl + "parks" + "?parkCode=yell", options);
+  // check to make sure the reponse was ok.
+  if (response.ok) {
+    // convert to JSON
+    data = await response.json();
+  } else throw new Error("response not ok");
+    return data;
+  
+}
+```
+
+If you modify your function, save it, and view your page in the browser you will still see no data! Click back on the Network tab in the developer tools. This time `parks` should not be red, and if you view the Preview you will see that data was returned. So why didn't it work?
+
+## **03** Fix it!
+
+Remember that Fetch is asynchronous. That means that the browser will kick off the request and then move along without waiting for it to finish. In order to give us some control `Promises` and then `async/await` were added to the language. We need to tell our program to wait until the data is available before it tries to use it. You may have noticed that in the `getParkData` function we used some `await`s. We also need to `await` our call to that function when we use it in `main.js`
+
+Open up `main.js`. Async/await works best inside of a function so we will need to make some changes to use it. Create a new function called `init()`, make sure to designate it as `async`. Move the line where we call the `getParkData` function into this new function, then move the other function calls in there as well. In the end it should look like this:
+
+```javascript
+async function init() {
+  const parkData = await getParkData();
+
+  setHeaderFooter(parkData);
+  setParkIntro(parkData);
+  setParkInfoLinks(parkInfoLinks);
+}
+
+init();
+```
+We need to make one last change. When you looked in the Network tab of your browser at the data returned it looked like this:
+```json
+{
+    data:[{id: "F58C6D24-8D10-4573-9826-65D42B8B83AD", url: "https://www.nps.gov/yell/index.htm",…}]
+    limit:"50",
+    start:"0",
+    total:"1"
+}
+```
+
+This is different from what we were working on before. The information we are looking for is in `data`, and `data` is an array. We only need the first row of that array returned. So we need to make one more change to the `getParkInfo` function
+
+```javascript
+export async function getParkData() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + "parks" + "?parkCode=yell", options);
+  // check to make sure the reponse was ok.
+  if (response.ok) {
+    // convert to JSON
+    data = await response.json();
+  } else throw new Error("response not ok");
+  // return just the first row of the data object
+  return data.data[0];
+}
+```
+
+Now if you check it should be working again.
+
+## **04** Try another park
+
+Try changing the park you are requesting to `glac`. What happened? The header, intro, and footer all updated. But the images in the middle did not!  Why not? If you look at the `parkInfoLinks` array you will notice that the image paths are hard coded. We need to change that. 
+
+We need to loop through the `parkInfoLinks` array, and the array of images returned from the api and update. I would create a new function `getInfoLinks`. Export that instead of the array directly. Update the image urls using images data that is passed in. `Array.map` is your friend here. Give that a try, if you get stuck check below.
+
+<details>
+<summary>Hint</summary>
+```javascript
+export function getInfoLinks(data) {
+    // Why index + 2 below? no real reason. we don't want index 0 since that is the one we used for the banner...I decided to skip an image.
+  const withUpdatedImages = parkInfoLinks.map((item, index) => {
+    item.image = data[index + 2].url;
+    return item;
+  });
+  return withUpdatedImages;
+}
+```
+
+```javascript
+// main.js
+async function init() {
+  const parkData = await getParkData();
+  const links = getInfoLinks(parkData.images);
+  setHeaderFooter(parkData);
+  setParkIntro(parkData);
+  setParkInfoLinks(links);
+}
+```
+
+</details>
+
+## **05** Refactor
+
+Once again we should review our code and see if there are any optimizations to be made. There is one in this case. We will be pulling more than just the park info from the api. For example what if we wanted detailed information about the Visitor centers? Referring back to the API docs there is a `visitorcenters` endpoint. If we made a new function called `getVisitorCenterData` it might look like this:
+
+```javascript
+export async function getVisitorCenterData() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + "visitorcenters" + "?parkCode=yell", options);
+  // check to make sure the reponse was ok.
+  if (response.ok) {
+    // convert to JSON
+    data = await response.json();
+  } else throw new Error("response not ok");
+  return data.data[0];
+}
+```
+
+Notice how much repetition there is between `getVisitorCenterData` and `getParkData`. Over 90%!  This is a good place for some optimization. Create a new function called `getJson(url)`. Move most of the logic from `getParkData` to the new function. After you are done they should look like this:
+
+```javascript
+async function getJson(url) {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + url, options);
+  if (response.ok) {
+    data = await response.json();
+  } else throw new Error("response not ok");
+  return data;
+}
+
+export async function getParkData() {
+  const parkData = await getJson("parks?parkCode=yell");
+  return parkData.data[0];
+}
+```
+
+Now when we need to request data from different API endpoints it will be much easier with much less duplicated code.
+
+## **05** Commit and push to Github
+
+Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
+
+After verifying that your page updated, submit the URL to your page in Ilearn. This will be the Netlify URL we setup earlier.
+
+## Instructor's Solution
+
+As a part of this activity, you are expected to look over a solution from the instructor, to compare your approach to that one. One of the questions on the I-Learn submission will ask you to provide insights from this comparison.
+
+Please DO NOT open the solution until you have worked through this activity for at least one hour. At the end of the hour, if you are still struggling with some of the core requirements, you are welcome to view the instructor's solution and use it to help you complete your own code. Even if you use the instructor's code to help you, you are welcome to report that you finished the core requirements, if you code them up yourself.
+
+After working as far as you can, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-2).

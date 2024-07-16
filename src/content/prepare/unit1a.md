@@ -15,4 +15,4 @@ time: 30min
 - **Javascript variables**:  
 "Can you explain how to declare and use variables in javascript?", "What is the difference between let and const?", "Why do variables need to be declared?", "What are primitives in Javascript?", "What are literals in Javascript?", "What does it mean to be weakly typed?", "How can I store lists in Javascript?"
 - **Manipulating documents (DOM) with javascript**:  
-"What is the Document Object Model?", "How can I manipulate an html document with javascript?", "How can I add elements to the DOM?", "How can I remove elements from the DOM?", "How can I add or remove attributes from elements in the DOM?","Why would I do this?"
+"What is the Document Object Model?", "How can I manipulate an html document with javascript?", "How can I add elements to the DOM?", "How can I remove elements from the DOM?", "How can I add or remove attributes from elements in the DOM?","What is the difference between element.innerHTML and element.insertAdjacentHTML?"
