@@ -145,9 +145,9 @@ Now if you check it should be working again.
 
 ## **04** Try another park
 
-Try changing the park you are requesting to `glac`. What happened? The header, intro, and footer all updated. But the images in the middle did not!  Why not? If you look at the `parkInfoLinks` array you will notice that the image paths are hard coded. We need to change that. 
+Try changing the park you are requesting to `glac` in the `getParkData` function. What happened? The header, intro, and footer all updated. But the images in the middle did not!  Why not? If you look at the `parkInfoLinks` array you will notice that the image paths are hard coded. We need to change that. 
 
-We need to loop through the `parkInfoLinks` array, and the array of images returned from the api and update. I would create a new function `getInfoLinks`. Export that instead of the array directly. Update the image urls using images data that is passed in. `Array.map` is your friend here. Give that a try, if you get stuck check below.
+We need to loop through the `parkInfoLinks` array, and use the array of images returned from the api to update. I would create a new function `getInfoLinks`. Export that instead of the array directly. Update the image urls using images data that is passed in. `Array.map` is your friend here. Give that a try, if you get stuck check below.
 
 <details>
 <summary>Hint</summary>
@@ -174,6 +174,8 @@ async function init() {
 ```
 
 </details>
+
+Feel free to pick any park you want to set your version to. You do not need to keep it on Yellowstone. Just set the `parkCode` to the correct one for the location you choose. You may need to adjust the images you are picking to make sure that they all work together. (They are the same size and shape)
 
 ## **05** Refactor
 

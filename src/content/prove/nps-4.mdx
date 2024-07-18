@@ -1,0 +1,263 @@
+---
+title: NPS - part 4
+description: This activity will have you use the free National Park Service api to recreate a simplified version of an NPS website for the park or monument of your choice. Part four will add our first child page-the Current Conditions.
+time: 2 hours
+---
+
+
+
+## Instructions
+
+Complete the following assignment individually. Feel free however to work together with your classmates to accomplish the task. You are all solving the same problems and have different insights.
+
+## **01** Review the provided screenshots
+
+For our first child page we will be building a simplified version of the [NPS Current Conditions](https://www.nps.gov/yell/planyourvisit/conditions.htm) page (Yellowstone is given as an example). Review the mockups below to get a feel for the changes we will make and what your page should look like when you are done.
+
+import Figure from "../../components/Figure.astro";
+
+<Figure src="/images/nps-conditions-lg.webp" alt="Part 3 finished large screen">Part 3 Finish point large screen</Figure>
+<Figure src="/images/nps-conditions-sm.webp" alt="Part 3 finished small screen">Part 3 Finish point small screen</Figure>
+
+Here are a few things in particular to note:
+
+- We are leaving out a lot of the sections. We have kept: Alerts, Visitor Services, and a list of Activities available at the park.
+- Some of the information will be found in the general park info we pulled for the last part. Review the [NPS API documentation](https://www.nps.gov/subjects/developer/api-documentation.htm) again to see where we might get the rest of the data we need.
+- The NPS page uses accordians to hide and show information to keep the page from becoming overwhelming. Note that all are closed when the page loads, you click to open a section, then if you click to open another section the previous closes. You can only have one open at a time.
+- The borders do go all the way around those accordian boxes...on the screenshots the lines went a little weird.
+
+After reviewing the mockups type `npm run start` to start. Remember that this will start up our development environment and should open the page in your default browser.
+
+## **02** Begin the new page
+
+Our new page will share many features from the Home page. So it would make sense to use the `index.html` as a starting point. Duplicate that page, call the new one `conditions.html`. Create a `conditions.js` file as well in the `js` folder. Update the `script` element to point to this new file.
+
+Next we need to clear out the rest of the content in `main`. Then we need to create some elements for the new content. We need three: "Alerts", "Visitor Services", and "Activities", make sure to add a class or id to each so we can manipulate them later.
+
+As you consider your HTML structure keep semantics in mind. We have a *list* of alerts, a *list* of visitor centers, and a *list* of activities. In addition on the NPS page much of the content is hidden by default. How can we easily create this? Check out the [details element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details). It has good support [caniuse](https://caniuse.com/?search=details) at 97%. And it even has the ability to only allow one  open at a time (see the `name` attribute). We will use this element to create our accordians.
+
+>Some of you may have noticed if you visited the caniuse link above that while `details` has 97% support, `details:name` only has 82% support in browsers. So 18% of the people that visit the site will not have that feature work. That seems like a lot. Is it really ok to use `name`?
+>
+>Remember what the `name` attribute does for a `details` element. All details with the same name will be linked together so that only one can be open at a time. If that did not work what effect would it have on the page? Could the visitors still see all the content? Would the layout of the page still work? Would the page still be usable? Would the user experience still be good? For all of these questions the answer is "yes".  So while it would be nice to have the feature, it is not a deal breaker if it doesn't work.
+>
+> This idea of making sure that the core functionality of a page works for all users is called [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement). Once you have ensured the core functionality, it is ok to add bells and whistles that may not work for everyone but will not negatively impact the core functionality. It is a good idea to keep in mind when building web pages.
+
+Next open up the `conditions.js` file. We need to add the code back in to set the header and footer info.
+
+*After* you have completed your version of this step, take a look at the example below.
+
+<details>
+
+<summary>Example 1</summary>
+
+```html
+<main id="main">
+      <h1>Current Conditions</h1>
+      <section class="alerts">
+        <h2>Alerts</h2>
+        <ul></ul>
+      </section>
+      <section class="visitor">
+        <h2>Visitor Services</h2>
+        <details name="current-details">
+          <summary>Visitor Centers</summary>
+          <ul></ul>
+        </details>
+      </section>
+      <section class="activities">
+        <h2>Activities</h2>
+        <details name="current-details">
+          <summary>All Activities</summary>
+          <ul></ul>
+        </details>
+      </section>
+    </main>
+```
+
+```javascript
+import { getParkData } from "./parkService.mjs";
+import setHeaderFooter from "./setHeaderFooter.mjs";
+
+async function init() {
+  const parkData = await getParkData();
+  setHeaderFooter(parkData);
+}
+
+init();
+```
+
+</details>
+
+Check your new page to make sure the header and footer info is set to your park.
+
+Next we should make a list of the other things we need to do:
+
+1. Get the alerts from the api and create a template to use to display them.
+2. Get the infomation from the API for the Visitor Centers and display a list of them. We should also show an opening and closing date...and an indicator of whether the location is currently open.
+3. Get the list of activities for the park and display them.
+
+## **03** Alerts Section
+
+Some of this should feel like review. It is similar to what we did last week. See how far you can get on the first task. You will need to create a new function in `parkService.mjs` to retrieve the alerts. It will look very similar to the `getParkData` function. I would also recommend a new `setAlerts` function that will actually resemble the `setParkInfoLinks` function in `main.js`
+
+Then you will need a new template function that will build each alert. Refer to API documentation to know where the data you need is located in the data you will retrieve, and the Mockups above for this. You can find alert icons in the `sprite-symbol.svg` file. Note that alerts have a category and that there are several alert icons available. On the official site the title color changes to match the icon color. If you want yours to do this also then you will need to add some more custom properties to the `:root` of your CSS file:
+
+```css
+  --alert-closure: #cb2027;
+  --alert-caution: #ed7e31;
+  --alert-information: #2451a9;
+  --alert-danger: #720f04;
+```
+
+Then you should also add the following CSS rules to the "Utility Styles" section of your stylesheet.
+
+```css
+.alert-information {
+  color: var(--alert-information);
+}
+.alert-danger {
+  color: var(--alert-danger);
+}
+.alert-closure {
+  color: var(--alert-closure);
+}
+.alert-caution {
+  color: var(--alert-caution);
+}
+```
+
+Write the code to display the information, and then style it. Once you are done (or if you get stuck) compare with the example below. Remember to **not** copy and paste the code. You will gain much more if you review the example and then fix your code. The goal here is not to simply finish the activity, but to learn more about web development.
+
+<details>
+
+<summary>Example 2</summary>
+
+### templates.js
+
+```javascript
+// templates.mjs
+export function alertTemplate(alert) {
+  let alertType = "";
+  // most of the alerts are one word and line up with the icons nicely. "Park Closure" is the exception
+  switch (alert.category) {
+    case "Park Closure":
+      alertType = "closure";
+      break;
+    default:
+      alertType = alert.category.toLowerCase();
+  }
+  return `<li class="alert">
+  <svg class="icon" focusable="false" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#alert-${alertType}"></use></svg>
+  <div>
+    <h3 class="alert-${alertType}">${alert.title}</h3>
+    <p>${alert.description}</p>
+  </div></li>`;
+}
+```
+
+### conditions.js
+
+```javascript
+// conditions.js
+import { getParkData, getParkAlerts } from "./parkService.mjs";
+import { alertTemplate } from "./templates.mjs";
+import setHeaderFooter from "./setHeaderFooter.mjs";
+
+function setAlerts(alerts) {
+  const alertsContainer = document.querySelector(".alerts > ul");
+  alertsContainer.innerHTML = "";
+  const html = alerts.map(alertTemplate);
+  alertsContainer.insertAdjacentHTML("beforeend", html.join(""));
+}
+
+async function init() {
+  const parkData = await getParkData();
+  const alerts = await getParkAlerts(parkData.parkCode);
+  setHeaderFooter(parkData);
+  setAlerts(alerts);
+}
+
+init();
+```
+
+### styles.css
+
+```css
+/* alerts */
+
+.alerts > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.alert {
+  margin: 0.5rem;
+  padding: 0.5rem 0 0.8rem 0;
+  display: flex;
+  gap: 1em;
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+.alert h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert svg {
+  height: 30px;
+  width: 30px;
+  margin: 0.25em;
+  flex: 0 0 auto;
+}
+```
+
+</details>
+
+## **04** Visitor Services Section
+
+Review the image below to see what the open Visitor centers section should look like.
+
+<Figure src="/images/nps-conditions-visitor-lg.webp" alt="Visitor section open large screen">Visitor Section large screen</Figure>
+<Figure src="/images/nps-conditions-visitor-sm.webp" alt="Visitor section open small screen">Visitor Section small screen</Figure>
+
+We will need to get this information from the API. Here is a list of steps to get you started.
+
+1. Create a new function in `parkService.mjs` called `getVisitorCenterData(parkCode)`.
+2. Review the API docs to see what your URL should look like.
+3. Create a new template function to output each visitor center. Let's output the `name`, `description`, and `directionsInfo` for each center.
+4. Use the `getVisitorCenterData` function in `conditions.js` to get our data.
+5. Create a new function in `conditions.js` called `setVisitorCenters` that will use the template function with our list of centers and create and insert the HTML into our document just like we've done before.
+6. Style the new section. 
+
+
+## **05** Activities Section
+
+We already have the information for the activities section. It came with the general park info. Refer to the mockup below and complete it. The small screen is just a narrower version of the large in this case.
+
+<Figure src="/images/nps-conditions-activities-lg.webp" alt="Activities section large screen">Activities Section large screen</Figure>
+
+## **06** Optional Stretch - Change the open/close indicator on the details boxes
+
+If you look at the real NPS website you will see that the accordians have an arrow that points up or down depending on whether it is open or closed. And it is on the far right instead of the left. We can make this change to ours as well...but this step is **optional**. 
+
+If you want to give it a try check out this article [20 simple ways to style the HTML details element](https://www.sitepoint.com/style-html-details-element/). Follow the instructions in the custom marker section.
+
+You can use this url for the arrow image: `https://byui-cse.github.io/wdd231-course/images/arrow.svg`
+
+## **07** Commit and push to Github
+
+Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
+
+After verifying that your page updated, submit the URL to your page in Ilearn. This will be the Netlify URL we setup earlier.
+
+## Instructor's Solution
+
+As a part of this activity, you are expected to look over a solution from the instructor, to compare your approach to that one. One of the questions on the I-Learn submission will ask you to provide insights from this comparison.
+
+Please DO NOT open the solution until you have worked through this activity for at least one hour. At the end of the hour, if you are still struggling with some of the core requirements, you are welcome to view the instructor's solution and use it to help you complete your own code. Even if you use the instructor's code to help you, you are welcome to report that you finished the core requirements, if you code them up yourself.
+
+After working as far as you can, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-3).
