@@ -15,10 +15,9 @@ tags: [
 
 ## Ponder
 
-<!-- - [Practice with Media Queries](https://byui-cit.github.io/learning-modules/modules/css/media-queries/ponder1/)
-- [Debugging Practice](https://byui-cit.github.io/learning-modules/modules/js/debugging/ponder1/)
-- [Practice with DOM Events](https://byui-cit.github.io/learning-modules/modules/js/dom-events/ponder1/) -->
-
+- [Practice with JSON](https://byui-cit.github.io/learning-modules/modules/js/json/ponder1/)
+- [Practice with APIs](https://byui-cit.github.io/learning-modules/modules/js/apis/ponder1/)
+<!-- - [Debugging Practice](https://byui-cit.github.io/learning-modules/modules/js/debugging/ponder1/) -->
 
 ## Prove
 

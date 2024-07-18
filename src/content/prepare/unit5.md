@@ -4,12 +4,12 @@ title: Unit 5 Exploration.
 time: 60min
 ---
 
-- Flexbox: What is CSS Flexbox?, How can I use Flexbox to style web pages?, What is the difference between CSS Grid and Flexbox? When should I use Flexbox over Grid?
-- Lighthouse: What is the Chrome Lighthouse tool?, How can it be used to optimize webpages?
-- Social Media Meta: "What are social media meta tags in html?", "Why are they important?", "Which ones should I use?"
-- Search Engine Optimization: What is Search Engine Optimization? How can I apply it to a webpage?
-- Javascript sorting and filtering: How can I sort an array with Javascript?, How can I filter an array in Javascript?, How can I sort an array of objects in Javascipt?, How can I filter an array of objects in Javascipt?
+- **URL Parameters**:  
+"What is a URL parameter?", "How is a URL constructed?", "How can I use a URL parameter to pass information to a webpage with JavaScript?"
+- **User experience**:  
+"What is user experience?", "What role does performance play in the UX of my site?", "What role does accessibility play in the UX of my site?", "What role does security play in the UX of my site?",  "What role does SEO play in the UX of my site?", "How can I improve the user experience of my website?", "How can usability testing help me improve the user experience of my website?"
 
+<!-- 
 ### Prompt
 
 After you have asked a few questions about the topics above, try entering the following into the Chat prompt and use it to review and solidify your understanding:
@@ -35,4 +35,4 @@ Given this information, help students understand the topics by providing explana
 Ask students to explain their thinking. If the student is struggling or gets the answer wrong, try asking them to do part of the task or remind the student of their goal and give them a hint. If students improve, then praise them and show excitement. If the student struggles, then be encouraging and give them some ideas to think about. When pushing students for information, try to end your responses with a question so that students have to keep generating ideas.
 
 Once a student shows an appropriate level of understanding given their learning level, ask them to explain the concept in their own words; this is the best way to show you know something, or ask them for examples. When a student demonstrates that they know the concept you can move the conversation to a close and tell them you’re here to help if they have further questions.
-```
+``` -->
