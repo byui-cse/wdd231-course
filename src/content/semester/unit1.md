@@ -1,6 +1,6 @@
 ---
 title: Unit One - Introduction
-summary: This Unit will review concepts in HTML, CSS, and Javascript. It will also instruct how to setup our environment for the course.
+summary: This unit will review concepts in HTML, CSS, and Javascript. It will also instruct how to setup our environment for the course.
 tags: [
 	HTML basics,
 	CSS basics,
@@ -17,7 +17,7 @@ tags: [
 ## Ponder
 
 - [Course Setup](../../prove/setup/)
-- [Fetch Basics](https://byui-cit.github.io/learning-modules/modules/js/fetch-basics/)
+- [Practice with JSON](https://byui-cit.github.io/learning-modules/modules/js/json/ponder1/)
 
 ## Prove
 

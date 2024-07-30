@@ -15,7 +15,7 @@ tags: [
 ## Ponder
 
 - [Course Setup](../../prove/setup/)
-- [Fetch Basics](https://byui-cit.github.io/learning-modules/modules/js/fetch-basics/)
+- [Practice with JSON](https://byui-cit.github.io/learning-modules/modules/js/json/ponder1/)
 
 ## Prove
 

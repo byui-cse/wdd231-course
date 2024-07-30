@@ -15,7 +15,7 @@ tags: [
 
 ## Ponder
 
-- [Practice with JSON](https://byui-cit.github.io/learning-modules/modules/js/json/ponder1/)
+- [Fetch Basics](https://byui-cit.github.io/learning-modules/modules/js/fetch-basics/)
 - [Practice with APIs](https://byui-cit.github.io/learning-modules/modules/js/apis/ponder1/)
 <!-- - [Debugging Practice](https://byui-cit.github.io/learning-modules/modules/js/debugging/ponder1/) -->
 
