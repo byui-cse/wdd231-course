@@ -130,6 +130,7 @@ hr {
 details {
   padding: 0.5em;
   border: 1px solid;
+  margin-bottom: 1em;
 }
 
 @media (max-width: 720px) {

@@ -3,7 +3,7 @@ title: Unit Two - Working with APIs
 summary: This unit will introduce the tools and concepts behind Application Programming Interfaces (API). We will also introduce the team project.
 tags: [
 	API,
-	JSON,
+	fetch,
 	planning
 ]
 ---

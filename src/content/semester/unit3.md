@@ -15,7 +15,7 @@ tags: [
 
 ## Ponder
 
-- [Accessibility Practice](../../ponder/accessibility-practice)
+- [Accessibility Practice](https://wdd131.netlify.app/ponder/accessibility-practice)
 - [Progressive Enhancement](https://byui-cit.github.io/learning-modules/modules/design/progessive-enhancement/ponder1/)
 <!-- - [Practice with Array Methods](https://byui-cit.github.io/learning-modules/modules/js/array-methods/ponder1/)
 - [Practice with Functions](https://byui-cit.github.io/learning-modules/modules/js/organizing-functions/ponder1/) -->
