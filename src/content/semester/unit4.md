@@ -10,8 +10,8 @@ tags: [forms,
 
 ## Prepare
 
-[Week 7 Exploration](../../prepare/unit4a)
-[Week 8 Exploration](../../prepare/unit4b)
+- [Week 7 Exploration](../../prepare/unit4a)
+- [Week 8 Exploration](../../prepare/unit4b)
 
 ## Ponder
 

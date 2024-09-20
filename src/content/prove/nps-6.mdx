@@ -1,0 +1,339 @@
+---
+title: NPS - part 5
+description: This activity will have you use the free National Park Service api to recreate a simplified version of an NPS website for the park or monument of your choice. Part five will address the global navigation.
+time: 2 hours
+---
+
+## Instructions
+
+Complete the following assignment individually. Feel free however to work together with your classmates to accomplish the task. You are all solving the same problems and have different insights.
+
+## **01** Review the provided screenshots
+
+Review the following screenshots to understand how the global navigation works for the page. It looks different for the mobile and wide views. Again for this part we will be building a simplified version.  
+
+import Figure from "../../components/Figure.astro";
+
+<Figure src="/images/nps-conditions-lg.webp" alt="Part 3 finished large screen">Part 3 Finish point large screen</Figure>
+<Figure src="/images/nps-conditions-sm.webp" alt="Part 3 finished small screen">Part 3 Finish point small screen</Figure>
+
+Here are a few things in particular to note:
+
+- We will focus primarily on the second section: "Explore the National Park Service".
+- As we are not making any of the pages these links target, you can just set the href to "#", or if you would rather you could link them to the actual NPS pages.
+- The NPS page uses accordians to hide and show menus on the mobile view to keep the page from becoming overwhelming. 
+- On the widescreen view the links are all shown.
+- Note that the second section is the only one that remains in the top global navigation on wide screens as well.
+
+You were given some of the code for the navigation already. If you look in the `index.html` file you will see the following:
+
+```html
+<nav class="global-nav">
+    <h2 class="global-nav__section-heading">Explore this Park</h2>
+    <ul class="global-nav__list">
+    <li>
+        <div class="global-nav__split-button">
+        <a href="#">Plan Your Visit</a>
+        <button class="global-nav__split-button__toggle">
+            <span class="visually-hidden"
+            >Toggle submenu for Plan Your Visit</span
+            >
+            <svg class="icon" role="presentation" focusable="false">
+            <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="/images/sprite.symbol.svg#arrow"
+            ></use>
+            </svg>
+        </button>
+        </div>
+    </li>
+    </ul>
+</nav>
+```
+
+Notice that each major link category is made up of an anchor and a button. On mobile click the button will toggle the list of links open and closed. On wide screens the button will be hidden and the links all shown. It would be worth opening up one of the official NPS sites to look at the rest of the structure in the HTML for those menus. The major thing that we are missing in our page is the actual list of links.
+
+It was mentioned above that we will focus on the Second section, so we won't add any more HTML for the first. If we do our classnames and styling correct however the first section should get styled correctly when we style the second. 
+
+Remember to type `npm run start` to start up your development server. 
+
+## **02** Write the HTML to build the menus
+
+Working in the `index.html` file, add the HTML to build out the menus in the "Explore the National Park Service" section of the navigation. You can use the markup that is already there as a model for this new section.  Pay close attnetion to the screenshots above to make sure that you get all the elements necessary for both the small screen and wide screen.
+
+There are a lot of links under some of the sections. You only need to include the first 4 in each section.
+
+Note also one more addition that we will need to make. On the offical site the button that opens the main menu changes depending on whether the menu is open or closed. We need to add the code for the close version of this. If you check out the `sprite-symbol.svg` file you will see a `close` icon you can use.
+
+*After* you have completed your version of this step, take a look at the example below.
+
+<details>
+
+<summary>Example 1</summary>
+Menu toggle button changes:
+
+```html
+<button
+    id="global-nav-toggle"
+    class="global-nav__toggle"
+     >
+    <div class="global-nav__toggle--closed">
+        <svg class="icon">
+        <use
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="/images/sprite.symbol.svg#menu"
+        ></use>
+        </svg>
+        <span class="visually-hidden">Open</span> Menu
+    </div>
+    <div class="global-nav__toggle--open">
+        <svg class="icon">
+        <use
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="/images/sprite.symbol.svg#close"
+        ></use>
+        </svg>
+        Close
+    </div>
+</button>
+ ```
+
+Additions for the menu
+
+```html
+<nav class="global-nav">
+    <h2 class="global-nav__section-heading">Explore this Park</h2>
+    <ul class="global-nav__list">
+    <li>
+        <div class="global-nav__split-button">
+        <a href="#">Plan Your Visit</a>
+        <button class="global-nav__split-button__toggle">
+            <span class="visually-hidden"
+            >Toggle submenu for Plan Your Visit</span
+            >
+            <svg class="icon" role="presentation" focusable="false">
+            <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="/images/sprite.symbol.svg#arrow"
+            ></use>
+            </svg>
+        </button>
+        </div>
+    </li>
+    </ul>
+    <h2 class="global-nav__section-heading">Explore the National Park Service</h2>
+    <ul class="global-nav__list">
+    <li>
+        <div class="global-nav__split-button">
+        <a href="#">Plan Your Visit</a>
+        <button class="global-nav__split-button__toggle">
+            <span class="visually-hidden"
+            >Toggle submenu for Plan Your Visit</span
+            >
+            <svg class="icon" role="presentation" focusable="false">
+            <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="/images/sprite.symbol.svg#arrow"
+            ></use>
+            </svg>
+        </button>
+        </div>
+        <ul class="global-nav__submenu" aria-label="Plan Your Visit submenu">
+            <li><a href="#" >Find a Park</a></li>
+            <li><a href="#" >Events</a></li>
+            <li><a href="#" >Passes</a></li>
+            <li><a href="#" >Trip Ideas</a></li>
+        </ul>  
+    </li>
+    <!-- ... duplicate the section above for the rest of the link list items ... -->
+    </ul>
+</nav>
+```
+
+</details>
+
+
+## **03** Style
+
+It would be worth making a list of what needs to happen for our menu to function correctly. We will be approaching this mobile first, so lets first make a list of what needs to happen for that to look right
+
+
+1. Hide the main menu and submenus by default.
+2. Style the menu as a single column list that spans the entire width of the screen.
+3. The h2 titles should be colored blue and green. Try and use the defined colors we were given that are defined as custom properties in our CSS, but make sure that your contrast is high enough for accessibility! (It's interesting that the actual colors used in the official page are not listed in the custom properties...) 
+4. The words of the submenu category should take up most of the width, be given a lighter background, and the button should be a square at the end 
+5. When the "Menu" (`global-nav-toggle`) button is click show the main navigation (`.global-nav`) when clicked again hide the whole menu...with a transition
+6. When the submenu button (`global-nav__split-button__toggle`) is clicked, the submenu should slide down to open...with a transition.
+7. The links should be white on the dark background with no underline until hovered.
+8. the Background of the button should darken slightly when hovered.
+
+Begin writing the CSS that will style the menu. I would recommend skipping step one at first. You will want it to show while you work out the CSS. Once you have it styled correctly then hide it by default. 
+
+>How should we hide the menus?
+>
+>As you decide how to hide your submenus keep in mind that eventually we want the menus to slide open. Your first impulse might be to just do `display:none` on the element. This will indeed hide it, but you will run into problems later when you want to animate the opening and closing. What else could be done?
+>
+>We could reduce the height to 0, then restore it back to the right height when clicked...the problem is how tall should it be? If we set it to a value and the menu changes it will break. It would be a brittle solution. If we try and set the height back to `auto` the defualt we will find that the animation will not work.
+>
+>Another option we have though is `max-height`. If we set that to 0, then set it to something bigger than we need, it will animate!
+
+We will also address steps 5, 6 in the next section.
+
+### Hints and tips
+
+- It is interesting that many of the colors in the header are not in the list of custom properties provided that was taken from the actual website. The header and the content were probably created by different teams. There are some colors that can work however. Try `--bs-gray-800` and `--bs-gray-900` for the light grey menu item color and the hover color.
+- We want our page to look good, and similar to the official page, but don't lose too much time trying to make it pixel perfect.
+- Remember that flexbox is a great way to center things horizontally, and vertically...
+- A lot of the work that you need to do is simple margin and padding adjustment.
+- Remember to leave everything expanded and showing while you work to get it looking right. Then once you are done add the CSS to hide all the menus.
+
+Once you are done styling (or if you get stuck) compare with the example below. Remember to **not** copy and paste the code. You will gain much more if you review the example and then fix your code. The goal here is not to simply finish the activity, but to learn more about web development.
+
+<details>
+
+<summary>Example 2</summary>
+
+### styles.css
+
+```css
+/* Global nav styles */
+
+.global-nav {
+  width: 100%;
+  grid-column: 1/3;
+  border-top: 1px solid #333;
+  max-height: 0;
+  overflow: hidden;
+  
+}
+
+.global-nav button {
+  background-color: transparent;
+  border: 0;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.global-nav svg {
+  --icon-color: white;
+}
+.global-nav__section-heading {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1rem 0.625rem;
+  font-size: 1.25rem;
+}
+.section-heading--green {
+  color: var(--bs-light-green);
+}
+.section-heading--blue {
+  color: var(--bs-chathams-blue-3);
+}
+
+.global-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #444;
+}
+.global-nav__split-button {
+  display: flex;
+  background-color: var(--bs-gray-800);
+}
+.global-nav__split-button > a {
+  flex: 1;
+  align-self: center;
+  padding: 1rem 0.625rem;
+  display: block;
+}
+.global-nav__split-button > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  border-left: 1px solid #444;
+}
+.global-nav__split-button > button:hover,
+.global-nav__split-button > a:hover {
+  background-color: var(--bs-gray-900);
+}
+
+/* Submenu styles */
+.global-nav__submenu {
+  list-style: none;
+  padding: 0;
+  font-size: 0.8em;
+  overflow: hidden;
+  max-height: 0;
+
+}
+
+.global-nav__submenu a {
+  display: block;
+  padding: 1rem 0.625rem;
+}
+.global-nav__submenu a:hover {
+  text-decoration: underline;
+}
+
+```
+
+</details>
+
+## **04** Javascript: enable the buttons
+
+We need some Javascript to enable the buttons to actually be able to show and hide our menus. Attach an event listener to each button. First the main menu toggle, and then the sub menu toggles. Then write a function that will do the actual hiding and showing. How can we accomplish this? Well in the previous step it was recommended that you add a class to hide the sub menus. If you followed that advice then all you need to do to show them is remove the class!
+
+One you have the buttons working, add a transition to make the menu slide open over time instead of instantly.
+
+You should also put some thought into where you will put the Javascript that will control your menus. This code will need to run on every page, so it would be good to make it easily portable. What is the recommended way to do that in Javascript? An ES Module.
+
+<details>
+
+<summary>Example 4</summary>
+
+### navigation.mjs
+
+```javascript
+
+```
+
+### styles.css
+
+```css
+/* global navigation */
+
+
+```
+
+</details>
+
+## **05** Wide screen menus
+
+Finally we need to make the adjustments to our menut for a large screen. Let's make another list.
+
+1. Hide 
+
+<Figure src="/images/nps-conditions-activities-lg.webp" alt="Activities section large screen">Activities Section large screen</Figure>
+
+## **06** Optional Stretch - Change the open/close indicator on the details boxes
+
+If you look at the real NPS website you will see that the accordians have an arrow that points up or down depending on whether it is open or closed. And it is on the far right instead of the left. We can make this change to ours as well...but this step is **optional**. 
+
+If you want to give it a try check out this article [20 simple ways to style the HTML details element](https://www.sitepoint.com/style-html-details-element/). Follow the instructions in the custom marker section.
+
+You can use this url for the arrow image: `https://byui-cse.github.io/wdd231-course/images/arrow.svg`
+
+## **07** Commit and push to Github
+
+Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
+
+After verifying that your page updated, submit the URL to your page in Ilearn. This will be the Netlify URL we setup earlier.
+
+## Instructor's Solution
+
+As a part of this activity, you are expected to look over a solution from the instructor, to compare your approach to that one. One of the questions on the I-Learn submission will ask you to provide insights from this comparison.
+
+Please DO NOT open the solution until you have worked through this activity for at least one hour. At the end of the hour, if you are still struggling with some of the core requirements, you are welcome to view the instructor's solution and use it to help you complete your own code. Even if you use the instructor's code to help you, you are welcome to report that you finished the core requirements, if you code them up yourself.
+
+After working as far as you can, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-3).

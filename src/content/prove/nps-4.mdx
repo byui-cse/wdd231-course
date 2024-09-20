@@ -4,8 +4,6 @@ description: This activity will have you use the free National Park Service api 
 time: 2 hours
 ---
 
-
-
 ## Instructions
 
 Complete the following assignment individually. Feel free however to work together with your classmates to accomplish the task. You are all solving the same problems and have different insights.
@@ -30,11 +28,11 @@ After reviewing the mockups type `npm run start` to start. Remember that this wi
 
 ## **02** Begin the new page
 
-Our new page will share many features from the Home page. So it would make sense to use the `index.html` as a starting point. Duplicate that page, call the new one `conditions.html`. Create a `conditions.js` file as well in the `js` folder. Update the `script` element to point to this new file.
+Our new page will share many features from the Home page. So it would make sense to use the `index.html` as a starting point. Before we duplicate it however, let's update a couple of links. Under the banner image there is a link to `Info` and another to `Alerts`. We are going to point both of these to the new page we are about to make.  set the `href` of both of those links to `conditions.html`. Next duplicate the index page, and call the new file one `conditions.html`. Create a `conditions.js` file as well in the `js` folder. Update the `script` element to point to this new file.
 
 Next we need to clear out the rest of the content in `main`. Then we need to create some elements for the new content. We need three: "Alerts", "Visitor Services", and "Activities", make sure to add a class or id to each so we can manipulate them later.
 
-As you consider your HTML structure keep semantics in mind. We have a *list* of alerts, a *list* of visitor centers, and a *list* of activities. In addition on the NPS page much of the content is hidden by default. How can we easily create this? Check out the [details element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details). It has good support [caniuse](https://caniuse.com/?search=details) at 97%. And it even has the ability to only allow one  open at a time (see the `name` attribute). We will use this element to create our accordians.
+As you consider your HTML structure keep semantics in mind. We have a *list* of alerts, a *list* of visitor centers, and a *list* of activities. In addition on the NPS page much of the content is hidden by default. How can we easily create this? Check out the [details element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details). It has good support [caniuse](https://caniuse.com/?search=details) at 97%. And it even has the ability to only allow one open at a time (see the `name` attribute). We will use this element to create our accordians.
 
 >Some of you may have noticed if you visited the caniuse link above that while `details` has 97% support, `details:name` only has 82% support in browsers. So 18% of the people that visit the site will not have that feature work. That seems like a lot. Is it really ok to use `name`?
 >
