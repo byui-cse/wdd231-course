@@ -1,6 +1,6 @@
 ---
-title: NPS - part 5
-description: This activity will have you use the free National Park Service api to recreate a simplified version of an NPS website for the park or monument of your choice. Part five will address the global navigation.
+title: NPS - part 6
+description: This activity will have you use the free National Park Service api to recreate a simplified version of an NPS website for the park or monument of your choice. Part six will have us finish the global navigation.
 time: 2 hours
 ---
 
@@ -10,12 +10,12 @@ Complete the following assignment individually. Feel free however to work togeth
 
 ## **01** Review the provided screenshots
 
-Review the following screenshots to understand how the global navigation works for the page. It looks different for the mobile and wide views. Again for this part we will be building a simplified version.  
+Review the following screenshots to understand how the global navigation will change for this activity. It includes submenus and looks different for the mobile and wide views. Again for this part we will be building a simplified version.  
 
 import Figure from "../../components/Figure.astro";
 
-<Figure src="/images/nps-conditions-lg.webp" alt="Part 3 finished large screen">Part 3 Finish point large screen</Figure>
-<Figure src="/images/nps-conditions-sm.webp" alt="Part 3 finished small screen">Part 3 Finish point small screen</Figure>
+<Figure src="/images/nps-menu-lg-open.webp" alt="Menu open finished large screen">Menu open finished large screen</Figure>
+<Figure src="/images/nps-menu-sm-open.webp" alt="Menu open finished small screen">Menu open finished small screen</Figure>
 
 Here are a few things in particular to note:
 
@@ -63,42 +63,11 @@ Working in the `index.html` file, add the HTML to build out the menus in the "Ex
 
 There are a lot of links under some of the sections. You only need to include the first 4 in each section.
 
-Note also one more addition that we will need to make. On the offical site the button that opens the main menu changes depending on whether the menu is open or closed. We need to add the code for the close version of this. If you check out the `sprite-symbol.svg` file you will see a `close` icon you can use.
-
 *After* you have completed your version of this step, take a look at the example below.
 
 <details>
 
 <summary>Example 1</summary>
-Menu toggle button changes:
-
-```html
-<button
-    id="global-nav-toggle"
-    class="global-nav__toggle"
-     >
-    <div class="global-nav__toggle--closed">
-        <svg class="icon">
-        <use
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xlink:href="/images/sprite.symbol.svg#menu"
-        ></use>
-        </svg>
-        <span class="visually-hidden">Open</span> Menu
-    </div>
-    <div class="global-nav__toggle--open">
-        <svg class="icon">
-        <use
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xlink:href="/images/sprite.symbol.svg#close"
-        ></use>
-        </svg>
-        Close
-    </div>
-</button>
- ```
-
-Additions for the menu
 
 ```html
 <nav class="global-nav">
@@ -158,24 +127,15 @@ Additions for the menu
 It would be worth making a list of what needs to happen for our menu to function correctly. We will be approaching this mobile first, so lets first make a list of what needs to happen for that to look right
 
 
-1. Hide the main menu and submenus by default.
+1. Hide the submenus by default.
 2. Style the menu as a single column list that spans the entire width of the screen.
 3. The h2 titles should be colored blue and green. Try and use the defined colors we were given that are defined as custom properties in our CSS, but make sure that your contrast is high enough for accessibility! (It's interesting that the actual colors used in the official page are not listed in the custom properties...) 
 4. The words of the submenu category should take up most of the width, be given a lighter background, and the button should be a square at the end 
-5. When the "Menu" (`global-nav-toggle`) button is click show the main navigation (`.global-nav`) when clicked again hide the whole menu...with a transition
-6. When the submenu button (`global-nav__split-button__toggle`) is clicked, the submenu should slide down to open...with a transition.
-7. The links should be white on the dark background with no underline until hovered.
-8. the Background of the button should darken slightly when hovered.
+5. When the submenu button (`global-nav__split-button__toggle`) is clicked, the submenu should slide down to open...with a transition.
+6. The links should be white on the dark background with no underline until hovered.
+7. the Background of the button should darken slightly when hovered.
 
 Begin writing the CSS that will style the menu. I would recommend skipping step one at first. You will want it to show while you work out the CSS. Once you have it styled correctly then hide it by default. 
-
->How should we hide the menus?
->
->As you decide how to hide your submenus keep in mind that eventually we want the menus to slide open. Your first impulse might be to just do `display:none` on the element. This will indeed hide it, but you will run into problems later when you want to animate the opening and closing. What else could be done?
->
->We could reduce the height to 0, then restore it back to the right height when clicked...the problem is how tall should it be? If we set it to a value and the menu changes it will break. It would be a brittle solution. If we try and set the height back to `auto` the defualt we will find that the animation will not work.
->
->Another option we have though is `max-height`. If we set that to 0, then set it to something bigger than we need, it will animate!
 
 We will also address steps 5, 6 in the next section.
 
@@ -282,28 +242,54 @@ Once you are done styling (or if you get stuck) compare with the example below. 
 
 ## **04** Javascript: enable the buttons
 
-We need some Javascript to enable the buttons to actually be able to show and hide our menus. Attach an event listener to each button. First the main menu toggle, and then the sub menu toggles. Then write a function that will do the actual hiding and showing. How can we accomplish this? Well in the previous step it was recommended that you add a class to hide the sub menus. If you followed that advice then all you need to do to show them is remove the class!
+We need some Javascript to enable the buttons to actually be able to show and hide our menus. For now we can modify the `enableNavigation` function we wrote last week. Attach an event listener to each button. First the main menu toggle, and then the sub menu toggles. Then write a function that will do the actual hiding and showing. This should be similar to what we did for the main menubar.
 
-One you have the buttons working, add a transition to make the menu slide open over time instead of instantly.
+One challenge we need to address is that a click on a button will trigger the event, but the event should show the correct `ul` Element. Essentially we need to start at the button that triggered the event, then find the `li` that button is in, then get the `ul` that is inside of that `li`. Easy right? 😂
 
-You should also put some thought into where you will put the Javascript that will control your menus. This code will need to run on every page, so it would be good to make it easily portable. What is the recommended way to do that in Javascript? An ES Module.
+How can we do that? Check out the [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest) method.
+
+One you have the buttons working, add a transition to make the menu slide open over time instead of instantly. Finally add the Javascript/css you would need to make the submenu toggles point up or down based on whether the submenu is open or closed.
 
 <details>
 
 <summary>Example 4</summary>
 
-### navigation.mjs
+### Javascript
 
 ```javascript
+function enableNavigation() {
+  const menuButton = document.querySelector("#global-nav-toggle");
+  const subMenuToggles = document.querySelectorAll(
+    ".global-nav__split-button__toggle"
+  );
+  // when the main menu button is clicked:
+  menuButton.addEventListener("click", (ev) => {
+    // toggle the show class on the global-nav
+    document.querySelector(".global-nav").classList.toggle("show");
+    // check to see if we just opened or closed the menu
+    if (document.querySelector(".global-nav").classList.contains("show")) {
+      // if we opened it then set the aria-expanded attribute to true
+      menuButton.setAttribute("aria-expanded", true);
+    } else {
+      // if we closed it then set the aria-expanded attribute to false
+      menuButton.setAttribute("aria-expanded", false);
+    }
 
-```
-
-### styles.css
-
-```css
-/* global navigation */
-
-
+    console.log("toggle");
+  });
+  subMenuToggles.forEach((toggle) => {
+    //for each submenu toggle
+    toggle.addEventListener("click", (ev) => {
+      // find the closest li ancestor, then find the submenu inside of that li and toggle the show class
+      ev.currentTarget
+        .closest("li")
+        .querySelector(".global-nav__submenu")
+        .classList.toggle("show");
+      // toggle the rotate class on the button icon that was clicked
+      ev.currentTarget.querySelector(".icon").classList.toggle("rotate");
+    });
+  });
+}
 ```
 
 </details>
@@ -312,17 +298,125 @@ You should also put some thought into where you will put the Javascript that wil
 
 Finally we need to make the adjustments to our menut for a large screen. Let's make another list.
 
-1. Hide 
+1. Hide the `h2` for the "Explore this park" section
+2. Hide the `ul` for the "Explore this park" section
+3. Show all the submenus
+4. Have the submenus show in columns horizontally across the screen as show in the screenshot below.
 
-<Figure src="/images/nps-conditions-activities-lg.webp" alt="Activities section large screen">Activities Section large screen</Figure>
+<Figure src="/images/nps-menu-lg-open.webp" alt="Menu open finished large screen">Menu open finished large screen</Figure>
 
-## **06** Optional Stretch - Change the open/close indicator on the details boxes
+### Hints
 
-If you look at the real NPS website you will see that the accordians have an arrow that points up or down depending on whether it is open or closed. And it is on the far right instead of the left. We can make this change to ours as well...but this step is **optional**. 
+- You will need a media query to make the changes at the right time. Play around with the width of the window and pick a spot where you think it makes sense to have the menu switch. The screen needs to be wide enough to accomodate all the menus horizontally.
+- How can we select the ul for the "explore this park" section? We have a couple of options. We could just add a class to it, but there is another option as well. We want to hide the *first* `ul` in that Element. We have special selectors that can target things like that: [pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes). One of these is `:first-of-type`
+- How do we show all the submenus? Well we hid them by setting `max-height: 0`. So we just need to set that back to what it would have been. One option is `fit-content`
+- Flexbox will be great to make all the submenus flow horizontally and to space them out.
 
-If you want to give it a try check out this article [20 simple ways to style the HTML details element](https://www.sitepoint.com/style-html-details-element/). Follow the instructions in the custom marker section.
+<details>
+<summary>Code</summary>
 
-You can use this url for the arrow image: `https://byui-cse.github.io/wdd231-course/images/arrow.svg`
+```CSS
+/* Adjust for wide screens */
+
+@media (min-width: 768px) {
+  .global-nav > h2,
+  .global-nav__list:first-of-type {
+    display: none;
+  }
+  .global-nav__submenu,
+  .global-nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .global-nav__split-button {
+    background-color: inherit;
+  }
+  .global-nav__split-button > button {
+    display: none;
+  }
+  .global-nav__submenu {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+  }
+  .global-nav__submenu a {
+    padding: 0.625rem;
+  }
+}
+```
+
+</details>
+
+## **06** Refactor
+
+We have the menus working on the main page, but we need them to work on all our pages. We could take `main.js` and add it to all our pages, but there is code in that file that is specific to `index.html`. We could also just copy/paste the code for our menus into a .js file specific to each of our pages...but that would be repeating code and if we ever needed to make changes to how the menus worked we would have to find all the places we used it and change each of them.
+
+A better option would be to place the code we need to share into a module. While we are at it, we should take a close look at the `enableNavigation` function. Good functions should be small and focused. This one is not. Let's break it up into smaller pieces that are more focused.
+
+We also need a solution that will make it easy to spread this functionality to all our pages. Earlier we created a module called `setHeaderFooter` this does some work to set the correct information into the header and footer of any page. We are already using this on the two existing pages: `index.html` and `conditions.html` We can add the code to enable the menus there!
+
+Create a file called `navigation.mjs` place the functions necessary to enable the navigation into that file and export what you need. Then remove the function from `main.js`. Import the one from our new module into `setHeaderFooter.mjs` and execute it.
+
+You will need to update the HTML in `conditions.html` to add the rest of the menu. Once that is document, because we were already setting the header and footer info in `conditions.html`, this will automatically set the navigation up there as well.
+
+<details>
+<summary>Code</summary>
+### navigation.mjs
+
+```javascript
+function mainMenuHandler(ev) {
+  // toggle the show class on the global-nav
+  document.querySelector(".global-nav").classList.toggle("show");
+  // check to see if we just opened or closed the menu
+  if (document.querySelector(".global-nav").classList.contains("show")) {
+    // if we opened it then set the aria-expanded attribute to true
+    ev.target.setAttribute("aria-expanded", true);
+  } else {
+    // if we closed it then set the aria-expanded attribute to false
+    ev.target.setAttribute("aria-expanded", false);
+  }
+
+  console.log("toggle");
+}
+
+function subMenuHandler(ev) {
+  // find the closest li ancestor, then find the submenu inside of that li and toggle the show class
+  ev.currentTarget
+    .closest("li")
+    .querySelector(".global-nav__submenu")
+    .classList.toggle("show");
+  // toggle the rotate class on the button icon that was clicked
+  ev.currentTarget.querySelector(".icon").classList.toggle("rotate");
+}
+
+export default function enableNavigation() {
+  const menuButton = document.querySelector("#global-nav-toggle");
+  const subMenuToggles = document.querySelectorAll(
+    ".global-nav__split-button__toggle"
+  );
+  // when the main menu button is clicked:
+  menuButton.addEventListener("click", mainMenuHandler);
+  subMenuToggles.forEach((toggle) => {
+    //for each submenu toggle
+    toggle.addEventListener("click", subMenuHandler);
+  });
+}
+
+```
+
+### setHeaderFooter.mjs
+
+```javascript
+import enableNavigation from "./navigation.mjs";
+...
+export default function setHeaderFooter(parkData) {
+  setHeaderInfo(parkData);
+  setFooter(parkData);
+  enableNavigation();
+}
+```
+</details>
 
 ## **07** Commit and push to Github
 
@@ -336,4 +430,4 @@ As a part of this activity, you are expected to look over a solution from the in
 
 Please DO NOT open the solution until you have worked through this activity for at least one hour. At the end of the hour, if you are still struggling with some of the core requirements, you are welcome to view the instructor's solution and use it to help you complete your own code. Even if you use the instructor's code to help you, you are welcome to report that you finished the core requirements, if you code them up yourself.
 
-After working as far as you can, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-3).
+After working as far as you can, [click here for the instructor's solution](https://github.com/matkat99/nps/tree/unit-5).

@@ -10,12 +10,12 @@ Complete the following assignment individually. Feel free however to work togeth
 
 ## **01** Review the provided screenshots
 
-Review the following screenshots to understand how the global navigation works for the page. It looks different for the mobile and wide views. Again for this part we will be building a simplified version.  
+Review the following screenshot to see where we will be when we finish this activity.
 
 import Figure from "../../components/Figure.astro";
 
-<Figure src="/images/nps-conditions-lg.webp" alt="Part 3 finished large screen">Part 3 Finish point large screen</Figure>
-<Figure src="/images/nps-conditions-sm.webp" alt="Part 3 finished small screen">Part 3 Finish point small screen</Figure>
+<Figure src="/images/nps-menu-simple-open.webp" alt="Menu simple open state">Menu Simple open state</Figure>
+
 
 Here are a few things in particular to note:
 
@@ -200,17 +200,24 @@ function enableNavigation() {
     
   // when the main menu button is clicked:
   menuButton.addEventListener("click", (ev) => {
+    let target = ev.target;
     // toggle the show class on the global-nav
+
+    // check to see if target is the button or something inside the button
     
     // check to see if we just opened or closed the menu
     
-      // if we opened it then set the aria-expanded attribute to true
+      // if we opened it then set the aria-expanded attribute on the button to true
       
-      // if we closed it then set the aria-expanded attribute to false
+      // if we closed it then set the aria-expanded attribute on the button to false
       
   });
 }
 ```
+
+>Caution!
+>
+>When we click on the button we might also be clicking on the text inside the button!  In that case `ev.target` might not point to what we think it does. Before you try to set the `aria-expanded` attribute you shuold check to make sure we have the right target.  Each element has a property called `tagName` that you can use to check. We are looking for a "BUTTON". If `ev.target` isn't a button, it means we clicked on something insdie the button and we can use `Element.closest()` to get back up to the button element we were expecting.
 
 Finally we need to make sure that the text on the button changes as well.
 
@@ -240,18 +247,23 @@ function enableNavigation() {
   
   // when the main menu button is clicked:
   menuButton.addEventListener("click", (ev) => {
-    // toggle the show class on the global-nav
-    document.querySelector(".global-nav").classList.toggle("show");
-    // check to see if we just opened or closed the menu
-    if (document.querySelector(".global-nav").classList.contains("show")) {
-      // if we opened it then set the aria-expanded attribute to true
-      menuButton.setAttribute("aria-expanded", true);
-    } else {
-      // if we closed it then set the aria-expanded attribute to false
-      menuButton.setAttribute("aria-expanded", false);
-    }
+    let target = ev.target;
+  // toggle the show class on the global-nav
+  document.querySelector(".global-nav").classList.toggle("show");
+  // check to see if ev.target is the button or something inside the button
+  if (target.tagName != "BUTTON") {
+    target = target.closest("button");
+  }
+  // check to see if we just opened or closed the menu
+  if (document.querySelector(".global-nav").classList.contains("show")) {
+    // if we opened it then set the aria-expanded attribute to true
+    target.setAttribute("aria-expanded", true);
+  } else {
+    // if we closed it then set the aria-expanded attribute to false
+    target.setAttribute("aria-expanded", false);
+  }
 
-    console.log("toggle");
+  console.log("toggle");
   });
 }
 ```

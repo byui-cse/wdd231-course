@@ -11,8 +11,8 @@ tags: [es modules,
 
 ## Prepare
 
-[Week 9 Exploration](../../prepare/unit5a)
-[Week 10 Exploration](../../prepare/unit5b)
+- [Week 9 Exploration](../../prepare/unit5a)
+- [Week 10 Exploration](../../prepare/unit5b)
 
 ## Ponder
 
