@@ -10,15 +10,14 @@ tags: [forms,
 
 ## Prepare
 
-[Unit 4 Exploration](../../prepare/unit4)
+- [Unit 4 Exploration](../../prepare/unit4)
 
 ## Ponder
 
-- [Working with Forms](https://byui-cit.github.io/learning-modules/modules/js/forms/ponder1/)
-- [Practice with Objects](https://byui-cit.github.io/learning-modules/modules/js/objects/ponder1/)
-- [Practice with ES Modules](https://byui-cit.github.io/learning-modules/modules/js/organizing-modules/ponder1/)
+- [Practice with CSS Animations](https://byui-cit.github.io/learning-modules/modules/css/animations/ponder1/)
+- [Build an HTML modal](https://byui-cit.github.io/learning-modules/modules/css/modals/ponder1/)
 
 ## Prove
 
-[Credit Card Form](../../prove/credit-card-form)
-[Registration Form](../../prove/register-form-1)
+- [NPS 5](../../prove/nps-5)
+- [Team 3](../../prove/team-3)

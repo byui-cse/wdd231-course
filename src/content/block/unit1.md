@@ -1,16 +1,17 @@
 ---
 title: Unit One - Introduction
-summary: This Unit will review concepts in HTML, CSS, and Javascript. It will also instruct how to setup our environment for the course.
+summary: This unit will review concepts in HTML, CSS, and Javascript. It will also instruct how to setup our environment for the course.
 tags: [
 	HTML basics,
 	CSS basics,
-	Build tools
+	JS Variables,
+	DOM basics
 ]
 ---
 
 ## Prepare
 
-[Unit 1 Exploration](../../prepare/unit1)
+- [Unit 1 Exploration](../../prepare/unit1)
 
 ## Ponder
 
@@ -19,5 +20,5 @@ tags: [
 
 ## Prove
 
-[NPS 1](../../prove/nps-1)
-[NPS 2](../../prove/nps-2)
+- [NPS 1](../../prove/nps-1)
+- [NPS 2](../../prove/nps-2)

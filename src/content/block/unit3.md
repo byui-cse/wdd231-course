@@ -1,25 +1,25 @@
 ---
-title: Unit Three - Accessibility
-summary: This unit will teach the importance of making our pages accessible along with methods to do so. Javascript Functions and Array methods will also be introduced
+title: Unit Three - Accessibility and Compatibility
+summary: This unit will teach the importance of making our pages accessible along with methods to do so. We will also introduce the concept of Progressive Enhancement.
 tags: [
 		 	accessibility,
-			css custom properties,
-			arrays,
-			functions]
+			progressive enhancement,
+			caniuse
+			]
 ---
 
 ## Prepare
 
-[Unit 3 Exploration](../../prepare/unit3)
+- [Unit 3 Exploration](../../prepare/unit3)
 
 ## Ponder
 
-- [Accessibility Practice](../../ponder/accessibility-practice)
-- [Design a book Review Site](https://byui-cit.github.io/learning-modules/modules/design/design-basics/ponder1/)
-- [Practice with Array Methods](https://byui-cit.github.io/learning-modules/modules/js/array-methods/ponder1/)
-- [Practice with Functions](https://byui-cit.github.io/learning-modules/modules/js/organizing-functions/ponder1/)
+- [Accessibility Practice](https://wdd131.netlify.app/ponder/accessibility-practice)
+- [Progressive Enhancement](https://byui-cit.github.io/learning-modules/modules/design/progressive-enhancement/ponder1/)
+<!-- - [Practice with Array Methods](https://byui-cit.github.io/learning-modules/modules/js/array-methods/ponder1/)
+- [Practice with Functions](https://byui-cit.github.io/learning-modules/modules/js/organizing-functions/ponder1/) -->
 
 ## Prove
 
-[Build a Blog part 1](../../prove/blog-1)
-[Build a Blog part 2](../../prove/blog-2)
+- [NPS 4](../../prove/nps-4)
+- [Team 2](../../prove/team-2)
