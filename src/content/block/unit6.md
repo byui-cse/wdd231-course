@@ -1,12 +1,20 @@
 ---
-title: Unit Six - Personal Project
-summary: This unit will be spent mostly in planning and building a web application of your own design.
-tags: [design basics,
-		 	final project
+title: Unit Six - Forms
+summary: This unit will return to forms. We will look at creating safe forms that minimize errors
+tags: [forms,
+		 	validation
 			]
 ---
 
+## Prepare
+
+[Week 11 Exploration](../../prepare/unit6)
+
+## Ponder
+
+- [Form Validation](https://byui-cit.github.io/learning-modules/modules/js/form-validation/ponder1/)
+
 ## Prove
 
-- [Personal Project Plan](../../prove/personal-site-plan)
-- [Complete Personal Project](../../prove/personal-site-complete)
+- [NPS 7](../../prove/nps-7)
+- [Team 5](../../prove/team-5)

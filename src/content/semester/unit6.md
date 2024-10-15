@@ -8,7 +8,7 @@ tags: [forms,
 
 ## Prepare
 
-[Week 11 Exploration](../../prepare/unit6a)
+[Week 11 Exploration](../../prepare/unit6)
 
 ## Ponder
 
