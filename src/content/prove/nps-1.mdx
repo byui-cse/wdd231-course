@@ -301,7 +301,22 @@ Once you have completed this step feel free to review the instructor's code. Don
 
 ## **04** Make it dynamic
 
-The last step is to dynmaically load in all the info specific to this park. For this week we will be using data provided in a file called `js/parkService.mjs` Open that file up now. It has information about Yellowstone National Park, and so we will all make that site for now. Starting with part 2 however you will be able to choose any park you want!
+The last step is to dynamically load in all the info specific to this park. For this week we will be using data provided in a file called `js/parkService.mjs` Open that file up now. It has information about Yellowstone National Park, and so we will all make that site for now. Starting with part 2 however you will be able to choose any park you want!
+
+>If you have never seen the file extension `.mjs` before, it indicates that the file is an [ESModule](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). Modules are commonly used to organize code and make it more reusable. There should always be at least one thing that is exported from a module. We can use those exported things by importing them.
+>
+>For example, in the `parkService.mjs` file there is a function that looks like this:
+>```javascript
+> export function getParkData() {
+>  return park;
+>}
+>```
+>If we wanted to use that function in another file, like `main.js` for example we would do the following:
+>```javascript
+>import { getParkData } from './parkService.mjs';
+>const parkData = getParkData();
+>```
+>After importing the function we can use it just like as if it were declared in the file.
 
 You should see a large javascript object, and a function that is exported that just returns the object.
 
