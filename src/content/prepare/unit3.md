@@ -5,14 +5,10 @@ time: 60min
 
 - **Progressive Enhancement**:  
 "What is Progressive Enhancement?", "How can I apply it to a webpage to improve it's compatibility?"
-- **Social Media Meta**:  
-"What are social media meta tags in html?", "Why are they important?", "Which ones should I use?"
-- **Lighthouse**:  
-What is the Chrome Lighthouse tool?, How can it be used to optimize webpages?
-- **Search Engine Optimization**:  
-"What is Search Engine Optimization?", "How can I apply it to a webpage?"
 - **Web Accessibility**:  
 "What is Web Accessibility?", "How can I make accessible web pages?" "How can I find out how accessible a website is?", "How are these applied for the web?"
+- **localStorage**:  
+"What is localStorage?", "How is it used?"
 
 <!-- 
 ### Prompt
