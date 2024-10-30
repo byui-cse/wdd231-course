@@ -90,7 +90,7 @@ const parkInfoLinks = [
 
 Most of this should be review. Similar to what we did last week. There is one part that is new however, filtering to the correct address and phone number in the footer template.
 
-If you look at the data your were given (open up the `parkService.mjs` file) you will see that the contact information is marked with a `type` field. We can use the [Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method to get to just the right one. `Find` returns the first match. So to find the `Mailing` address you could do something like this:
+If you look at the data you were given (open up the `parkService.mjs` file) you will see that the contact information is marked with a `type` field. We can use the [Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method to get to just the right one. `Find` returns the first match. So to find the `Mailing` address you could do something like this:
 ```javascript
 function getMailingAddress(addresses) {
   const mailing = addresses.find((address) => address.type === "Mailing");

@@ -5,8 +5,8 @@ time: 60min
 
 - **Progressive Enhancement**:  
 "What is Progressive Enhancement?", "How can I apply it to a webpage to improve it's compatibility?"
-- **Web Accessibility**:  
-"What is Web Accessibility?", "How can I make accessible web pages?" "How can I find out how accessible a website is?", "How are these applied for the web?"
+- **Forms and Accessibility**:
+ "What accessibility concerns should I have when making html forms?", "How can I use HTML to overcome some of those accessibility concerns?", "How can I use CSS to overcome some of those accessibility concerns?"
 - **localStorage**:  
 "What is localStorage?", "How is it used?"
 

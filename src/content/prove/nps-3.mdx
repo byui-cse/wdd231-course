@@ -18,7 +18,7 @@ We need to use this key in our code, but we do want to protect it as best we can
 
 You have also been given a sample .env file named `.env.sample`  We will need to rename this file to just `.env`. If you open it then you will also notice that it has one line in it currently `VITE_NPS_API_KEY=yourkeyhere`. You should copy/paste your api key in where it says "yourkeyhere".
 
-You should also go back to the NPS API page and click on the green "Authorize" button. If you put your key in there also then you can use the tools built into that page to explore the API. For example, after you put your key in, go down to the section that says: `GET /parks`. Click on that and it should open up. Click the "Try it out" button and then type `yell` in the `parkCode` box. Then hit the blue "Execute" button. It should retrieve the data for Yellowstone park that we have been using thus far.
+You should also go back to the [NPS API Documentation](https://www.nps.gov/subjects/developer/api-documentation.htm#/) page and click on the green "Authorize" button. If you put your key in there also then you can use the tools built into that page to explore the API. For example, after you put your key in, go down to the section that says: `GET /parks`. Click on that and it should open up. Click the "Try it out" button and then type `yell` in the `parkCode` box. Then hit the blue "Execute" button. It should retrieve the data for Yellowstone park that we have been using thus far.
 
 Try typing `abli` in the parkCode box. Now you should see info for the Abraham Lincoln Historical Park. Spend a few more minutes exploring some of the other API endpoints to see what data is available.
 
@@ -53,7 +53,7 @@ export async function getParkData() {
 }
   ```
 
-If you goto the page in the browser and open up the developer tools you will see several errors. One of which is the error we threw in our function `response not ok`. But why was it not ok? If you look at the network tab and click on the line that says `park` (it should be red). Then click on the Preview tab. Here we can see the exact error that was returned. The request was made, but the response was a 403, this means we were not authorized!
+If you go to the page in the browser and open up the developer tools you will see several errors. One of which is the error we threw in our function `response not ok`. But why was it not ok? If you look at the network tab and click on the line that says `park` (it should be red). Then click on the Preview tab. Here we can see the exact error that was returned. The request was made, but the response was a 403, this means we were not authorized!
 
 ```json
 {
@@ -119,7 +119,7 @@ We need to make one last change. When you looked in the Network tab of your brow
 }
 ```
 
-This is different from what we were working on before. The information we are looking for is in `data`, and `data` is an array. We only need the first row of that array returned. So we need to make one more change to the `getParkInfo` function
+This is different from what we were working on before. The information we are looking for is in `data`, and `data` is an array. We only need the first row of that array returned. So we need to make one more change to the `getParkData` function
 
 ```javascript
 export async function getParkData() {
@@ -226,7 +226,23 @@ export async function getParkData() {
 
 Now when we need to request data from different API endpoints it will be much easier with much less duplicated code.
 
-## **05** Commit and push to Github
+## **05** Add environment variables to Netlify
+
+We added our API key to a `.env` file that will not get sent to Github. This means it will also not get sent to Netlify and our site there won't work. We need to add that information to Netlify manually.
+
+You should login to Netlify and then do the following:
+1. Go to your site.
+2. Click 'site configuration'
+3. Click 'environmental variables'
+4. Add Variable - Import a .env file
+5. Copy your .env line of code from VSCode and paste it in 'Import Variables' button
+6. Go to 'Deploys'
+7. Click 'Trigger Deploy'
+8. Clear cache and deploy site (give it a minute)
+
+
+
+## **06** Commit and push to Github
 
 Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
 

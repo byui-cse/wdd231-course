@@ -4,6 +4,7 @@ title: Unit 6 Exploration.
 time: 60min
 ---
 
-- HTML Forms: "How are forms used to gather information from users on the web?", "What problems should I watch for when creating HTML forms?", "How can I style HTML forms with CSS?", "What are the differences between the type, ID, and name?"
-- Forms and Accessibility: "What accessibility concerns should I have when making html forms?", "How can I use CSS to overcome some of those accessibility concerns?"
-- Form Validation: "How can I use HTML validation with HTML forms?", "When should I use Javascript validation on HTML forms?"
+- **Regular Expressions**:
+"What are regular expressions?", what are some examples of using regular expressions?", "How can I make my own regular expressions?"
+- **Git Branching**:
+"What is a branch in git?", "Why are they used?", "How can I make a branch?", "How can I bring my branch back into the main branch?"

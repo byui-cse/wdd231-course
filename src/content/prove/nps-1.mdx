@@ -22,7 +22,7 @@ Before we can view the site we have to actually install the tools we said we nee
 
 Then type: `npm install`. This looks at the list of dependencies in the `package.json` file and installs them into the project. It will create a new directory called `node_modules`.  You can delete that folder at any time and rebuild it with the command above.
 
-Finally type `npm run start`. This will start up our development environment and should open the page in your default browser.
+Finally type `npm run start`. This will start up our development environment and should open the page in your default browser. (If the page doesn't open automatically then find the line in your terminal that says: `http://localhost:5173/` and click on it while holding `cmd` on the Mac or `ctrl` on the PC)
 
 ## **02** Finish the HTML
 
@@ -41,7 +41,7 @@ Open up the `index.html` file. You see a fair amount of code in there already. B
   </body>
   ```
 
-If you goto the page in the browser, click on the URL then hit `tab` a couple times you will see the purpose of the section with the class `skip-links` This is to make navigating the site easier for folks who use a keyboard instead of a mouse.  Check out the CSS file to see how that is hidden and shown.
+If you go to the page in the browser, click on the URL then hit `tab` a couple times you will see the purpose of the section with the class `skip-links` This is to make navigating the site easier for folks who use a keyboard instead of a mouse.  Check out the CSS file to see how that is hidden and shown.
 
 Notice that there are two headers as well. Open up the real page for [Yellowstone National Park](https://www.nps.gov/yell/index.htm). The first header (global) is the same across all NPS websites. The other header is specific to the park. 
 
@@ -49,14 +49,17 @@ The page has a unique way of providing the icons as well. If you look inside the
 
 ```html
 <svg class="icon">
-    <use
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xlink:href="/images/sprite.symbol.svg#search"
-    ></use>
+    <use xlink:href="/images/sprite.symbol.svg#search"></use>
 </svg>
 ```
 
 The icons are all svgs and can be found in the file `images/sprite.symbol.svg`. Look through that file to see what icons you have access to.  This course is not going to dive deep into SVGs, but this provides an example of one way they can be used.
+
+>You have probably never used an `<svg>` element before. SVG is an image file format. It stands for "Scalable Vector Graphic". One nice thing about them for the web is the "scalable" part. We can make them as big or as small as we want with no loss in quality. Another nice thing is that we can gather lots of SVG icons together in one file...like `sprint-symbol.svg` then to use them we just need to look up the `id` of the icon we want in the file, then put it in the code below to display it:
+>
+>```html
+><svg class="icon"><use xlink:href="/images/sprite.symbol.svg#ICON_ID_HERE"></use></svg>
+>```
 
 The next step is to finish writing the HTML for both headers: the global and the park. Refer back to the real website as you do this. See the following image to see what your page should look like when you are done with this week. Just hard code the values for the park name etc for now. We will change that later.
 
@@ -65,6 +68,7 @@ Note! You do not need to build the menu that is shown when you click the `Menu` 
 import Figure from "../../components/Figure.astro";
 
 <Figure src="/images/nps1-finish.webp" alt="Part 1 finished">Week 1 Finish point</Figure>
+
 
 Once you have completed this step feel free to review the instructor's code. Don't just copy and paste this into your file! Review it, note the differences, and then add or remove whatever you think appropriate once you understand what the differences mean.
 

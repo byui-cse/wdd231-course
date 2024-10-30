@@ -59,10 +59,7 @@ You were given some of the code for the navigation already. If you look in the `
             >Toggle submenu for Plan Your Visit</span
             >
             <svg class="icon" role="presentation" focusable="false">
-            <use
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xlink:href="/images/sprite.symbol.svg#arrow"
-            ></use>
+              <use xlink:href="/images/sprite.symbol.svg#arrow"></use>
             </svg>
         </button>
         </div>
@@ -70,7 +67,7 @@ You were given some of the code for the navigation already. If you look in the `
     </ul>
 </nav>
 ```
-Note the button that will open and close the main menu. It has a menu icon, and the word "Menu". If you go and check an [offical page](https://www.nps.gov/yell/index.htm) however you will find that the icon and word change when the menu is open. We will need to modify our HTML to accomodate this.
+Note the button that will open and close the main menu. It has a menu icon, and the word "Menu". If you go and check an [official page](https://www.nps.gov/yell/index.htm) however you will find that the icon and word change when the menu is open. We will need to modify our HTML to accomodate this.
 
 Notice as well in the `.global-nav` section that each major link category is made up of an anchor and a button. On mobile click the button will toggle the list of links open and closed. On wide screens the button will be hidden and the links all shown. It would be worth opening up one of the official NPS sites to look at the rest of the structure in the HTML for those menus. The major thing that we are missing in our page is the actual list of links.
 
@@ -217,7 +214,7 @@ function enableNavigation() {
 
 >Caution!
 >
->When we click on the button we might also be clicking on the text inside the button!  In that case `ev.target` might not point to what we think it does. Before you try to set the `aria-expanded` attribute you shuold check to make sure we have the right target.  Each element has a property called `tagName` that you can use to check. We are looking for a "BUTTON". If `ev.target` isn't a button, it means we clicked on something insdie the button and we can use `Element.closest()` to get back up to the button element we were expecting.
+>When we click on the button we might also be clicking on the text inside the button!  In that case `ev.target` might not point to what we think it does. Before you try to set the `aria-expanded` attribute you should check to make sure we have the right target.  Each element has a property called `tagName` that you can use to check. We are looking for a "BUTTON". If `ev.target` isn't a button, it means we clicked on something inside the button and we can use `Element.closest()` to get back up to the button element we were expecting.
 
 Finally we need to make sure that the text on the button changes as well.
 

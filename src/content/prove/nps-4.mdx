@@ -32,7 +32,7 @@ Our new page will share many features from the Home page. So it would make sense
 
 Next we need to clear out the rest of the content in `main`. Then we need to create some elements for the new content. We need three: "Alerts", "Visitor Services", and "Activities", make sure to add a class or id to each so we can manipulate them later.
 
-As you consider your HTML structure keep semantics in mind. We have a *list* of alerts, a *list* of visitor centers, and a *list* of activities. In addition on the NPS page much of the content is hidden by default. How can we easily create this? Check out the [details element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details). It has good support [caniuse](https://caniuse.com/?search=details) at 97%. And it even has the ability to only allow one open at a time (see the `name` attribute). We will use this element to create our accordians.
+As you consider your HTML structure keep semantics in mind. Notice from the mockup we have a list of alerts, then the visitor center and activities lists are a little different. This is because these two lists are potentially longer. In addition on the NPS page much of the content is hidden by default. How can we easily create this? Check out the [details element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details). It has good support [caniuse](https://caniuse.com/?search=details) at 97%. And it even has the ability to only allow one open at a time (see the `name` attribute). We will use this element to create our accordions for the visitor center and activities, showing the list when the user clicks there.
 
 >Some of you may have noticed if you visited the caniuse link above that while `details` has 97% support, `details:name` only has 82% support in browsers. So 18% of the people that visit the site will not have that feature work. That seems like a lot. Is it really ok to use `name`?
 >
@@ -98,7 +98,17 @@ Next we should make a list of the other things we need to do:
 
 Some of this should feel like review. It is similar to what we did last week. See how far you can get on the first task. You will need to create a new function in `parkService.mjs` to retrieve the alerts. It will look very similar to the `getParkData` function. I would also recommend a new `setAlerts` function that will actually resemble the `setParkInfoLinks` function in `main.js`
 
-Then you will need a new template function that will build each alert. Refer to API documentation to know where the data you need is located in the data you will retrieve, and the Mockups above for this. You can find alert icons in the `sprite-symbol.svg` file. Note that alerts have a category and that there are several alert icons available. On the official site the title color changes to match the icon color. If you want yours to do this also then you will need to add some more custom properties to the `:root` of your CSS file:
+>You will be using the original park data from NPS 3 to get the parkCode property to use with your new API endpoint. For example, using this parkCode you will use the new endpoint with the park code to call getJson again to get a brand new set of data about the alerts for that park.
+
+Then you will need a new template function that will build each alert. Refer to API documentation to know where the data you need is located in the data you will retrieve, and the Mockups above for this. You can find alert icons in the `sprite-symbol.svg` file.
+
+>You have probably never used an `<svg>` element before. In the original HTML you were given there were examples of them being used. SVG is an image file format. It stands for "Scalable Vector Graphic". One nice thing about them for the web is the "scalable" part. We can make them as big or as small as we want with no loss in quality. Another nice thing is that we can gather lots of SVG icons together in one file...like `sprint-symbol.svg` then to use them we just need to look up the `id` of the icon we want in the file, then put it in the code below to display it:
+>
+>```html
+><svg class="icon" focusable="false" aria-hidden="true"><use xlink:href="/images/sprite.symbol.svg#ICON_ID_HERE"></use></svg>
+>```
+
+ Note that alerts data will have a category property and there are several alert icons available with that property in the id. Because one of the alert icons has an id of `alert-closure` and one of our alerts has a category of `park closure` you will need a conditional statement to find `park closure` and change it to `closure`. Note they will also need to be changed to lowercase to match the svg ids. On the official site the title color changes to match the icon color. If you want yours to do this also then you will need to add some more custom properties to the `:root` of your CSS file:
 
 ```css
   --alert-closure: #cb2027;
@@ -126,6 +136,8 @@ Then you should also add the following CSS rules to the "Utility Styles" section
 
 Write the code to display the information, and then style it. Once you are done (or if you get stuck) compare with the example below. Remember to **not** copy and paste the code. You will gain much more if you review the example and then fix your code. The goal here is not to simply finish the activity, but to learn more about web development.
 
+>A CSS style was applied to the SVG images in the original code you were given so that you could see them on a white background. You should have removed those styles in Part 1, but if you missed that part find the `svg` rule in your CSS and remove it.
+
 <details>
 
 <summary>Example 2</summary>
@@ -145,7 +157,9 @@ export function alertTemplate(alert) {
       alertType = alert.category.toLowerCase();
   }
   return `<li class="alert">
-  <svg class="icon" focusable="false" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#alert-${alertType}"></use></svg>
+  <svg class="icon" focusable="false" aria-hidden="true">
+    <use xlink:href="/images/sprite.symbol.svg#alert-${alertType}"></use>
+  </svg>
   <div>
     <h3 class="alert-${alertType}">${alert.title}</h3>
     <p>${alert.description}</p>
@@ -238,7 +252,85 @@ We already have the information for the activities section. It came with the gen
 
 <Figure src="/images/nps-conditions-activities-lg.webp" alt="Activities section large screen">Activities Section large screen</Figure>
 
-## **06** Optional Stretch - Change the open/close indicator on the details boxes
+## **06** Check your build
+
+We just made some changes to the structure of our site by adding a new HTML file. You probably don't realize it yet, but those changes actually broke the production version of the site. Let's take a look.
+            
+We can check the production build locally. If you run  `npm run build` it will update the files in the `dist` directory. You should do this periodically to check to make sure nothing is broken!
+
+>The `dist` directory does not need to go to Github. You should also add that to your `.gitignore` file.
+
+Before moving on go ahead and run <kbd>npm run build</kbd>. We can get Vite to preview that build directory by running another command: `npm run preview`. Check to see what still works and what is broken. (You always need run `npm run build` before you run `npm run preview` after you have made any changes.)
+
+When we made the changes to the product details page, we forgot to update Vite so that it knew about the changes. Let's do that now.
+
+Open up the <kbd>vite.config.js</kbd> file. Note the section that looks like this:
+```javascript
+build: {
+    outDir: "../dist",
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "src/index.html")
+      }
+    }
+  }
+```
+
+We need to add our new page to this list so Vite knows about it. Modify that file like this:
+```javascript
+build: {
+    outDir: "../dist",
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "src/index.html"),
+        conditions: resolve(__dirname, "src/conditions.html")
+      }
+    }
+  }
+```
+
+Anytime we add or remove more .HTML files to the site we will need to update this config or the production version of our site will break!
+
+We need to make one more change to fix our production site. Open `dist/index.html` and look for one of the SVG icons. Note the path. When we built that page we put `/images/sprite.symbol.svg` as the path. But in the `dist/index.html` it looks something like this: `/assets/sprite.symbol-V3c65r7X.svg`! What is going on?
+
+One of Vite's jobs is to manage assets. When it did it's thing, it scanned the `index.html` file and saw the SVGs that we were using. It then copied the file into `dist/assets/` and updated the path for us. There are a few reasons why it does this that we will not get into right now.
+
+Now look at the `/dist/conditions.html` file and find the section that has the alert icons. Note the path. It still says `/images/sprite.symbol.svg`, but it needs to look for the file in `dist/assets` so the icons won't show.
+
+We need to let Vite know that it needs to manage those paths as well. We can do that by making the following changes to `templates.mjs`:
+
+```javascript
+//add this at the top of the file
+import spritePath from '../images/sprite.symbol.svg';
+
+// ...bunch of stuff
+
+export function alertTemplate(alert) {
+  let alertType = "";
+  // most of the alerts are one word and line up with the icons nicely. "Park Closure" is the exception
+  switch (alert.category) {
+    case "Park Closure":
+      alertType = "closure";
+      break;
+    default:
+      alertType = alert.category.toLowerCase();
+  }
+  // note the new path below for the SVG!
+  return `<li class="alert">
+  <svg class="icon" focusable="false" aria-hidden="true">
+    <use xlink:href="${spritePath}#alert-${alertType}"></use>  
+  </svg>
+  <div>
+    <h3 class="alert-${alertType}">${alert.title}</h3>
+    <p>${alert.description}</p>
+  </div></li>`;
+}
+```
+
+Run `npm run build` and `npm run preview` again and make sure everything is working.
+
+
+## **07** Optional Stretch - Change the open/close indicator on the details boxes
 
 If you look at the real NPS website you will see that the accordians have an arrow that points up or down depending on whether it is open or closed. And it is on the far right instead of the left. We can make this change to ours as well...but this step is **optional**. 
 
@@ -246,7 +338,7 @@ If you want to give it a try check out this article [20 simple ways to style the
 
 You can use this url for the arrow image: `https://byui-cse.github.io/wdd231-course/images/arrow.svg`
 
-## **07** Commit and push to Github
+## **08** Commit and push to Github
 
 Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
 
