@@ -335,10 +335,10 @@ To finish we need to use the DOM methods to select each part of the page that ne
 
 As a review we will do the first one together.
 
-Remember that to manipulate any HTML element we first have to use the DOM methods to select it into our Javascript code. Commonly we use `document.querySelector` to do this. To update the link in the disclaimer we can use the `.disclaimer` selector, then we need to update two things: the `href` with the URL and the `innerHTML` with the name of the park. Review the following code:
+Remember that to manipulate any HTML element we first have to use the DOM methods to select it into our Javascript code. Commonly we use `document.querySelector` to do this. To update the link in the disclaimer we can use the `.disclaimer` selector (but remember to target the `a` *inside* of the `.disclaimer`), then we need to update two things: the `href` with the URL and the `innerHTML` with the name of the park. Review the following code:
 
 ```javascript
-const disclaimer = document.querySelector(".disclaimer");
+const disclaimer = document.querySelector(".disclaimer > a");
 disclaimer.href = parkData.url;
 disclaimer.innerHTML = parkData.fullName;
 ```
