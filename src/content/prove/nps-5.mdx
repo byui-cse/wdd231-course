@@ -230,7 +230,7 @@ For the button text we could add/remove classes to the elements, but there is ac
 
 You will need another rule for the closed Element.
 
-One you have the buttons working, add a transition to make the menu slide open over time instead of instantly.
+Once you have the buttons working, add a transition to make the menu slide open over time instead of instantly.
 
 <details>
 
@@ -313,7 +313,38 @@ function enableNavigation() {
 
 </details>
 
-## **05** Commit and push to Github
+## **05** Install ESLint
+
+This week as part of your research you should have studied Linters. Linters can be very helpful in identifying problems with your code and in general imrpoving it's quality.  For Javascript the most common linter is called [ESLint](https://eslint.org). Let's install and configure it on our project.
+
+First we need to install ESLint and it's dependencies into our project. We can use NPM for this. Run the following commands in the terminal in VSCode.  You need to make sure that you are in the correct directory. Type `ls` if you are on a Mac or Linux, or `dir` if you are Windows.  You should see the `package.json` file listed.
+
+1. Run the following command to install ESLint: `npm init @eslint/config@latest`
+2. Follow the prompts to configure ESLint. You can accept the default settings in most cases. the exceptions are:
+    - Framework: none of these.
+3. Add the following line to your `package.json` file in the `scripts` section: `"lint": "eslint *.js src/**/*.js",` This will allow us to run the linter by typing `npm run lint` at the command line. It will look for any Javascript files in the root directory `*.js` and any Javascript files inside the `src` directory (`src/**/*.js`)
+4. Try running that command now.
+5. You can also configure ESLint to automatically fix some of the errors it finds. To do this Add the following line to your `package.json` file in the `scripts` section: `"lint-fix": "eslint *.js src/**/*.js --fix",` Run the command `npm run lint-fix` to see the effect.
+6. Another popular option is to configure ESLint to automatically run on save. To do this you will need to install the ESLint extension in VSCode. Pick the one published by Microsoft. It should automatically be setup to fix errors when you save a file...but you can check by opening the VS Code Settings, then going to "Extentions->ESLint"
+
+When we setup ES Lint it selected a common set of recommended rules to enforce. We can change these to match our preferences. Open the file `eslint.config.mjs. Modify it to resemble the example below
+
+```javascript
+export default [
+  {
+    languageOptions: { globals: globals.browser },
+    rules: {
+      semi: "error"
+    }
+  },
+  pluginJs.configs.recommended
+];
+```
+
+This will enforce the use of semicolons at the end of every line. You can change the `semi: "error"` to `semi: "off"` to disable this rule, or to `semi: "warn"` to make it a warning instead of an error.
+You can also add other rules to the `rules` object. For example, to enforce the use of the `const` keyword instead of `let` or `var`, you can add the following `"prefer-const": "error"`  The [ESLint documentation](https://eslint.org/docs/latest/rules/) has a list of all the rules.
+
+## **06** Commit and push to Github
 
 Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
 
