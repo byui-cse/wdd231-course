@@ -51,7 +51,7 @@ You were given some of the code for the navigation already. If you look in the `
 </nav>
 ```
 
-Notice that each major link category is made up of an anchor and a button. On mobile click the button will toggle the list of links open and closed. On wide screens the button will be hidden and the links all shown. It would be worth opening up one of the official NPS sites to look at the rest of the structure in the HTML for those menus. The major thing that we are missing in our page is the actual list of links.
+Notice that each major link category is made up of an anchor and a button. On mobile click the button will toggle the list of links open and closed. On wide screens the button will be hidden and the links are all shown. It would be worth opening up one of the official NPS sites to look at the rest of the structure in the HTML for those menus. The major thing that we are missing in our page is the actual list of links.
 
 It was mentioned above that we will focus on the Second section, so we won't add any more HTML for the first. If we do our classnames and styling correct however the first section should get styled correctly when we style the second. 
 
@@ -59,7 +59,7 @@ Remember to type `npm run start` to start up your development server.
 
 ## **02** Write the HTML to build the menus
 
-Working in the `index.html` file, add the HTML to build out the menus in the "Explore the National Park Service" section of the navigation. You can use the markup that is already there as a model for this new section.  Pay close attnetion to the screenshots above to make sure that you get all the elements necessary for both the small screen and wide screen.
+Working in the `index.html` file, add the HTML to build out the menus in the "Explore the National Park Service" section of the navigation. You can use the markup that is already there as a model for this new section.  Pay close attention to the screenshots above to make sure that you get all the elements necessary for both the small screen and wide screen.
 
 There are a lot of links under some of the sections. You only need to include the first 4 in each section.
 
@@ -114,18 +114,16 @@ There are a lot of links under some of the sections. You only need to include th
             <li><a href="#" >Trip Ideas</a></li>
         </ul>  
     </li>
-    <!-- ... duplicate the section above for the rest of the link list items ... -->
+    <!-- ... duplicate the li above for the rest of the link list items ... -->
     </ul>
 </nav>
 ```
 
 </details>
 
-
 ## **03** Style
 
 It would be worth making a list of what needs to happen for our menu to function correctly. We will be approaching this mobile first, so lets first make a list of what needs to happen for that to look right
-
 
 1. Hide the submenus by default.
 2. Style the menu as a single column list that spans the entire width of the screen.
@@ -133,7 +131,7 @@ It would be worth making a list of what needs to happen for our menu to function
 4. The words of the submenu category should take up most of the width, be given a lighter background, and the button should be a square at the end 
 5. When the submenu button (`global-nav__split-button__toggle`) is clicked, the submenu should slide down to open...with a transition.
 6. The links should be white on the dark background with no underline until hovered.
-7. the Background of the button should darken slightly when hovered.
+7. The Background of the button should darken slightly when hovered.
 
 Begin writing the CSS that will style the menu. I would recommend skipping step one at first. You will want it to show while you work out the CSS. Once you have it styled correctly then hide it by default. 
 

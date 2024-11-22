@@ -24,6 +24,38 @@ By the end of this unit (Unit 3) it is recommended that you have most of the HTM
 
 Keep the requirements list above in mind as you code up the HTML and CSS of your application. 
 
+>### Divide and conquer
+>
+>As a team you should talk about how you will divide up the work. Should one person do all of the HTML and one all of the CSS? That could work but the CSS person will not be able to do much until the HTML is done.
+>
+>Should one person work on one page and one another? Again this can work but some of the HTML and CSS should be the same across both pages. Think Header and Footer for example, or fonts and colors.
+>
+>One other plan would be for one person to work on the parts of the pages that should be the same across the whole site, and the other work on the content areas. In this case we have removed most of the blockers and no one is stuck waiting on someone else.
+>
+>Before moving forward it is highly recommended that each team take a few minutes and write down all of the tasks that need to be done in order to complete the project. Try and make each task about 5-30 minutes in scope. Any task that takes longer than 30 min should be broken into smaller tasks.
+>
+> You could use a tool like [Trello](https://trello.com) to help organize your tasks. Create three columns to start: Backlog, Doing, and Done.
+
+>One last thought.  Remember that you can have more than one CSS file as part of your project...you can either `link` them all in, or check out [@import](https://developer.mozilla.org/en-US/docs/Web/CSS/@import)
+>
+>What might this look like? Let's say that you decided to break your CSS up into the following parts:
+>- variables
+>- global styles
+>- header/navigation styles
+>- footer styles
+>- page specific styles
+>
+>You might then create a `base.css` file and the contents would be the following:
+>```css
+>@import 'variables.css';
+>@import 'global.css';
+>@import 'header.css';
+>@import 'footer.css';
+>```
+>Then in your `index.html` file you could add two `link` elements. One would bring in the `base.css` and the other a file that contained all the styles for the main content area of the home page called `home.css`
+>
+>This breaks up the work across multiple files to make it easier to collaborate on with your team. For more details on this...check out [Organizing your CSS](https://byui-cit.github.io/learning-modules/modules/css/@import/)
+
 ## Meet with the instructor
 
 Each unit your team should meet with the instructor to review progress and discuss potential problems. Your instructor will give you more details about how this is to happen. It is your responsibility to make sure this meeting does occur!
