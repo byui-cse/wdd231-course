@@ -331,13 +331,13 @@ When we setup ES Lint it selected a common set of recommended rules to enforce. 
 
 ```javascript
 export default [
+  pluginJs.configs.recommended,
   {
     languageOptions: { globals: globals.browser },
     rules: {
       semi: "error"
     }
-  },
-  pluginJs.configs.recommended
+  }
 ];
 ```
 
