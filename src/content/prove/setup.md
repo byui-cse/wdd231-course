@@ -38,4 +38,6 @@ After it is done cloning, VS Code will ask if you want to open the repository, s
 
  Select the "main" branch. Then in the "build command" box enter `npm run build`. Then "Deploy Site". Netlify will produce a randomized URL for the site that you need to remember. Copy it and put it somewhere you can find it easily. This is the link to your "production" site and is the one you will be turning in. (You could even put this into the Readme.md file to make it easy to find!)
 
+> Make sure as well that in the "Publish Directory" field it says `dist` as well.
+
 > The build version of the site will be considered the production version. This should always work! The instructor should be able to go to that address at any time and not see any errors. Netlify will update your site everytime it sees a change to the "main" branch. So after committing you should probably go check Netlify to make sure nothing broke.
