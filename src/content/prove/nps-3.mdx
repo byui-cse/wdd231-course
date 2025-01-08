@@ -177,7 +177,7 @@ async function init() {
 
 Feel free to pick any park you want to set your version to. You do not need to keep it on Yellowstone. Just set the `parkCode` to the correct one for the location you choose. You may need to adjust the images you are picking to make sure that they all work together. (They are the same size and shape)
 
-## **05** Refactor
+## **05** Refactor Javascript
 
 Once again we should review our code and see if there are any optimizations to be made. There is one in this case. We will be pulling more than just the park info from the api. For example what if we wanted detailed information about the Visitor centers? Referring back to the API docs there is a `visitorcenters` endpoint. If we made a new function called `getVisitorCenterData` it might look like this:
 
@@ -226,7 +226,41 @@ export async function getParkData() {
 
 Now when we need to request data from different API endpoints it will be much easier with much less duplicated code.
 
-## **05** Add environment variables to Netlify
+## **06** Refactor CSS
+
+We have been writing our Javascript in a very modular form.  Breaking up our work into modules allows us to be more organized and write more re-usable code. We can get some of the same benefits with CSS. If you look at the current CSS file you can see that it is already organized somewhat. There are comments that try to indicate what the CSS is doing. Based on those comments, one way we could categorize our CSS is the following:
+
+1. Variables
+2. Global styles
+3. Header styles
+4. Footer styles
+5. Blocks
+6. Utilities
+7. Main Home styles
+
+> A "block" is just a portion of our page that is somewhat self-contained.  You might be saying "well wouldn't the header and footer just be more blocks then?" And the answer is technically "yes".  Sometimes as our blocks get more complex they warrent their own file...and sometimes we might group the styles for smaller, simpler blocks together. If this seems a bit arbitrary...it is. 😁
+> You may not end up with much in `blocks.css` yet...but we will add more.
+
+Let's create a CSS file for each of those sections. Just to help our organization let's first create a folder in `css` called `partials`. Create your files in there. As you copy/paste the actual CSS out of the `style.css` file replace the lines with an `import`. At the end `style.css` will be very short and look something like this:
+
+```css
+/* style.css */
+@import "partials/variables.css";
+@import "partials/global.css";
+@import "partials/header.css";
+@import "partials/footer.css";
+@import "partials/blocks.css";
+@import "partials/utilities.css";
+@import "home.css";
+```
+
+> Why didn't I put `home.css` in the partials folder? There is a reason why that one is getting treated a bit different...but it will be explained later.
+
+Now when you need to make a change to anything in the CSS for the header...you know exactly where to find it! Having your CSS broken up like this also helps avoid conflicts when working in a team. See the following for more info: [Organizing your CSS](https://byui-cit.github.io/learning-modules/modules/css/@import/)
+
+Test your page to make sure nothing broke after moving everything around.
+
+## **07** Add environment variables to Netlify
 
 We added our API key to a `.env` file that will not get sent to Github. This means it will also not get sent to Netlify and our site there won't work. We need to add that information to Netlify manually.
 
@@ -241,8 +275,7 @@ You should login to Netlify and then do the following:
 8. Clear cache and deploy site (give it a minute)
 
 
-
-## **06** Commit and push to Github
+## **08** Commit and push to Github
 
 Run `npm run build`, then `npm run preview` to check your production build and make sure it works the same as your normal development site (`npm run start`).
 

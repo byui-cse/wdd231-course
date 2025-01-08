@@ -28,7 +28,7 @@ After reviewing the mockups type `npm run start` to start. Remember that this wi
 
 ## **02** Begin the new page
 
-Our new page will share many features from the Home page. So it would make sense to use the `index.html` as a starting point. Before we duplicate it however, let's update a couple of links. Under the banner image there is a link to `Info` and another to `Alerts`. We are going to point both of these to the new page we are about to make.  set the `href` of both of those links to `conditions.html`. Next duplicate the index page, and call the new file one `conditions.html`. Create a `conditions.js` file as well in the `js` folder. Update the `script` element to point to this new file.
+Our new page will share many features from the Home page. So it would make sense to use the `index.html` as a starting point. Before we duplicate it however, let's update a couple of links. Under the banner image there is a link to `Info` and another to `Alerts`. We are going to point both of these to the new page we are about to make.  set the `href` of both of those links to `conditions.html`. Next duplicate the index page, and call the new file one `conditions.html`. Create a `conditions.js` file as well in the `js` folder. Update the `script` element to point to this new file. Create a new `conditions.css` file as well for the main styling of this new page and `@import` it into `styles.css`
 
 Next we need to clear out the rest of the content in `main`. Then we need to create some elements for the new content. We need three: "Alerts", "Visitor Services", and "Activities", make sure to add a class or id to each so we can manipulate them later.
 
@@ -108,7 +108,7 @@ Then you will need a new template function that will build each alert. Refer to 
 ><svg class="icon" focusable="false" aria-hidden="true"><use xlink:href="/images/sprite.symbol.svg#ICON_ID_HERE"></use></svg>
 >```
 
- Note that alerts data will have a category property and there are several alert icons available with that property in the id. Because one of the alert icons has an id of `alert-closure` and one of our alerts has a category of `park closure` you will need a conditional statement to find `park closure` and change it to `closure`. Note they will also need to be changed to lowercase to match the svg ids. On the official site the title color changes to match the icon color. If you want yours to do this also then you will need to add some more custom properties to the `:root` of your CSS file:
+ Note that alerts data will have a category property and there are several alert icons available with that property in the id. Because one of the alert icons has an id of `alert-closure` and one of our alerts has a category of `park closure` you will need a conditional statement to find `park closure` and change it to `closure`. Note they will also need to be changed to lowercase to match the svg ids. On the official site the title color changes to match the icon color. If you want yours to do this also then you will need to add some more custom properties to the `:root` of your CSS file (remember that we moved this into `variables.css`):
 
 ```css
   --alert-closure: #cb2027;
@@ -117,7 +117,7 @@ Then you will need a new template function that will build each alert. Refer to 
   --alert-danger: #720f04;
 ```
 
-Then you should also add the following CSS rules to the "Utility Styles" section of your stylesheet.
+Then you should also add the following CSS rules to `utilities.css`.
 
 ```css
 .alert-information {
@@ -192,7 +192,7 @@ async function init() {
 init();
 ```
 
-### styles.css
+### conditions.css
 
 ```css
 /* alerts */
@@ -329,8 +329,26 @@ export function alertTemplate(alert) {
 
 Run `npm run build` and `npm run preview` again and make sure everything is working.
 
+## **07** Optimize
 
-## **07** Optional Stretch - Change the open/close indicator on the details boxes
+You may have noticed that in our `style.css` we include both `home.css` which contains styles that are only needed on `index.html` and `conditions.css` which is only needed on `conditions.html`. This seems a bit inefficient. It would be better if we only sent the CSS that would be needed for the current page. Since we have broken our CSS up into partials we can easily do that.
+
+Open `style.css` and remove the imports for `home.css` and `conditions.css`. We will only leave CSS in the `style.css` that applies to all pages. One way we could include the page specific files would be to add another `link` element to each HTML file. This would certainly work, but because we are using Vite as a build tool we have a better option.
+
+Open up `conditions.js` and add the following lines to the top: 
+
+```javascript
+import "../css/style.css"; // we can do this type of import because we are using Vite
+import "../css/conditions.css";
+```
+
+...do the same in `main.js` only import in `home.css` instead of `conditions.css`
+
+Then open up `index.html` and `conditions.html` and *remove* the `link` to the stylesheet.
+
+When Vite does it's thing it will notice those imports and see that they are not for Javascript. It will then grab the CSS and package it up. Then it will add the appropriate `link` elements to the HTML. Now we can easily have CSS that only applies to one page and not another.
+
+## **08** Optional Stretch - Change the open/close indicator on the details boxes
 
 If you look at the real NPS website you will see that the accordians have an arrow that points up or down depending on whether it is open or closed. And it is on the far right instead of the left. We can make this change to ours as well...but this step is **optional**. 
 
@@ -338,7 +356,7 @@ If you want to give it a try check out this article [20 simple ways to style the
 
 You can use this url for the arrow image: `https://byui-cse.github.io/wdd231-course/images/arrow.svg`
 
-## **08** Commit and push to Github
+## **09** Commit and push to Github
 
 Commit your changes, then push them to GitHub. Wait a few minutes then check to make sure they show on Netlify.
 
