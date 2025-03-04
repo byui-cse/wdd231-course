@@ -220,7 +220,7 @@ Finally we need to make sure that the text on the button changes as well.
 
 For the button text we could add/remove classes to the elements, but there is actually a better way. We can take advantage of the fact that we are setting `aria-expanded` based on the menu state, and that the elements we want to show and hide are children of the button. We can use a [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) to write the CSS to swap our labels.
 
-```CSS
+```css
 .global-nav__toggle[aria-expanded="true"] > .global-nav__toggle--open {
   display: flex;
 }

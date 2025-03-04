@@ -35,7 +35,7 @@ Each request will follow a similar pattern: `baseUrl` + `resourcePath` + `parame
 ```bash
 https://developer.nps.gov/api/v1/alerts?parkCode=yell&limit=10
 ```
-In this case the `resourcePath` is `alerts`, and the parameters are `?parkCode=yell&limit=10`. The "?" is a special character in URLs. It tells the browser that everything after it is a parameter. The parameters are key/value pairs. The key is the name of the parameter, and the value is the value of the parameter. In this case we have two parameters: `parkCode` and `limit`. The `parkCode` is set to `yell` and the `limit` is set to `10`. Multiple parameters are separated by an `&` character.
+In this case the `resourcePath` is `alerts`, and the parameters are `?parkCode=yell&limit=10`. The "?" is a special character in URLs. It tells the browser that everything after it is a URL Search parameter. The parameters are key/value pairs. The key is the name of the parameter, and the value is the value of the parameter. In this case we have two parameters: `parkCode` and `limit`. The `parkCode` is set to `yell` and the `limit` is set to `10`. Multiple parameters are separated by an `&` character.
 
 Let's update the `getParkData` function with this information.
 
