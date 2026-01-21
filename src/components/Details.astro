@@ -1,0 +1,47 @@
+---
+// import type { HTMLAttributes } from "astro/types";
+
+// type Props = HTMLAttributes<"summary">;
+
+const { summary, class: className, ...props } = Astro.props;
+---
+
+<details class:list={[className]} {...props}>
+  <summary>{summary}</summary>
+  <slot />
+</details>
+
+<style>
+  details {
+    padding: 0.5em;
+    border: 1px solid;
+    margin-bottom: 1em;
+  }
+  summary {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: 0 50%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  details[open] summary {
+    transform: scale(1.1); /* Slightly scale up the summary */
+  }
+  details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  details > summary::before {
+    content: "\2794";
+    font-size: 1.5em;
+    line-height: 0;
+    padding-top: 4px;
+    transition: transform 0.2s;
+  }
+  details summary::marker,
+  details summary::-webkit-details-marker {
+    display: none;
+    content: "";
+  }
+</style>

@@ -41,7 +41,8 @@ const prove = defineCollection({
 		title: z.string(),
 		description: z.string().optional(),
 		// Transform string to Date object
-		time: z.string()
+		time: z.string(),
+		aiUsage: z.enum(['red', 'yellow', 'green']).optional().default('green'),
 	}),
 });
 const prepare = defineCollection({
@@ -51,7 +52,8 @@ const prepare = defineCollection({
 		title: z.string(),
 		description: z.string().optional(),
 		// Transform string to Date object
-		time: z.string()
+		time: z.string(),
+		aiUsage: z.enum(['red', 'yellow', 'green']).optional().default('green'),
 	}),
 });
 

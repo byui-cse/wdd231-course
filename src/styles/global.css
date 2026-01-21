@@ -45,6 +45,10 @@
   font-display: swap;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: var(--global-bg);
 }
@@ -65,8 +69,8 @@ body {
 }
 
 main {
-  width: 720px;
-  max-width: calc(100% - 2em);
+  width: clamp(320px, 100%, 70ch);
+  /* max-width: calc(100% - 2em); */
   margin: auto;
   padding: 3em 1em;
 }

@@ -1,0 +1,92 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"dialog">;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<dialog class:list={[className]} {...props}>
+  <button
+    aria-label="Close"
+    onclick="this.closest('dialog').close('Close button')">X</button
+  >
+  {className}
+
+  <div>
+    <slot />
+  </div>
+</dialog>
+<button class:list={[className]}>Open</button>
+<script define:vars={{ className }}>
+  const el = document.querySelector(`button.${className}`);
+  console.log(el);
+  el?.addEventListener("click", (e) => {
+    document.querySelector(`dialog.${className}`)?.showModal();
+  });
+  // document
+  //   .querySelector(`.${className} button`)
+  //   ?.addEventListener("click", () => {
+  //     document.querySelector(`dialog.${className}`)?.close();
+  //   });
+</script>
+<style>
+  dialog {
+    padding: 0.5em;
+    border: 1px solid;
+    margin-bottom: 1em;
+    width: 60vw;
+    height: 40vw;
+  }
+  dialog[open] {
+    top: 0;
+    margin-top: 10%;
+  }
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  dialog {
+    /* Exit Stage To */
+    transform: translateY(-20px);
+
+    &,
+    &::backdrop {
+      transition:
+        display 1s allow-discrete,
+        overlay 1s allow-discrete,
+        opacity 1s ease,
+        transform 1s ease;
+
+      /* Exit Stage To */
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* On Stage */
+    &[open] {
+      opacity: 1;
+      transform: translateY(0px);
+
+      &::backdrop {
+        opacity: 0.8;
+      }
+    }
+
+    /* Enter Stage From */
+    @starting-style {
+      &[open],
+      &[open]::backdrop {
+        opacity: 0;
+      }
+
+      &[open] {
+        transform: translateY(10px);
+      }
+    }
+
+    &::backdrop {
+      background-color: black;
+    }
+  }
+</style>

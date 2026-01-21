@@ -1,26 +1,14 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1>WDD 231 Web Frontend Development I</h1>
-      <p>
-        This is a landing page for the content site for the BYU-Idaho WDD 231
-        course. Select whether you are taking the course on the <a
-          href="semester/">Semester</a
-        > or on the <a href="block/">Block</a>
-      </p>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1>WDD 231 Web Frontend Development I</h1>
+  <p>
+    This is a landing page for the content site for the BYU-Idaho WDD 231
+    course. Select whether you are taking the course on the <a
+      href={import.meta.env.BASE_URL + "/semester/"}>Semester</a
+    > or on the <a href={import.meta.env.BASE_URL + "/block/"}>Block</a>
+  </p>
+</BaseLayout>

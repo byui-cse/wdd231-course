@@ -1,0 +1,112 @@
+---
+const { level } = Astro.props;
+---
+
+<!-- <button popovertarget="ai-details">
+  {
+    level === "green" && (
+      <img
+        src="/images/green-light.png"
+        alt="AI Usage Level Green"
+        title="Encouraged AI Usage"
+      />
+    )
+  }
+  {
+    level === "yellow" && (
+      <img
+        src="/images/yellow-light.png"
+        alt="AI Usage Level Yellow"
+        title="Instructor-Specified AI Usage"
+      />
+    )
+  }
+  {
+    level === "red" && (
+      <img
+        src="/images/red-light.png"
+        alt="AI Usage Level Red"
+        title="Disallowed AI Usage"
+      />
+    )
+  }
+</button> -->
+
+{ level ? ( <div id="ai-details">
+    {
+    level === "red" && (
+        <img
+        src={import.meta.env.BASE_URL + "/images/red-light.png"}
+        alt="AI Usage Level Red"
+        title="Disallowed AI Usage"
+      />
+      <div>
+        <h4>Red: Disallowed AI Usage</h4>
+        
+        <p>You cannot use AI in any way on this assignment</p>
+      </div>
+    )
+  }
+  {
+    level === "yellow" && (
+        <img
+      src={import.meta.env.BASE_URL + "/images/yellow-light.png"}
+        alt="AI Usage Level Yellow"
+        title="Instructor-Specified AI Usage"
+      />
+      <div>
+        <h4>Yellow: Instructor-Specified AI Usage</h4>
+        
+        <p>
+          You may use AI as described in the assignment with the appropriate
+          attribution.
+        </p>
+      </div>
+    )
+  }
+  {
+    level === "green" && (
+        <img
+        src={import.meta.env.BASE_URL + "/images/green-light.png"}
+        alt="AI Usage Level Green"
+        title="Encouraged AI Usage"
+      />
+      <div>
+        <h4>Green: Encouraged AI Usage</h4>
+        <p>
+          You may, and are encouraged to use AI responsibly and creatively.
+          Reflect on your experience with it, and describe how you used it.
+        </p>
+      </div>
+    )
+  }
+</div> ): ""}
+
+<style>
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  img {
+    /* width: 48px; */
+    height: 80px;
+  }
+  h4 {
+    margin: 0 0 0.25em 0;
+  }
+  p {
+    margin: 0;
+    line-height: 1.5;
+    }
+  #ai-details {
+    display: flex;
+    gap: 1em;
+    font-size: .8em;
+    border: 1px solid rgb(var(--gray-light));
+    padding: .5em;
+    text-align: left;
+    margin-bottom: 1em;
+  }
+</style>

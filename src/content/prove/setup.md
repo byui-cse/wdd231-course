@@ -30,7 +30,7 @@ Next get the URL for the new repository (Green "Code" button.) then open a new w
 
 After it is done cloning, VS Code will ask if you want to open the repository, say yes.
 
-## **03** Configure Netlify
+## **04** Configure Netlify
 
  We will be using a product called Netlify to host our site. Create an account there and login (I would recommend just using the Github button).
 
@@ -39,3 +39,7 @@ After it is done cloning, VS Code will ask if you want to open the repository, s
  Select the "main" branch. Then in the "build command" box enter `npm run build`. Make sure as well that in the "Publish Directory" field it says `dist`. Then "Deploy Site". Netlify will produce a randomized URL for the site that you need to remember. Copy it and put it somewhere you can find it easily. This is the link to your "production" site and is the one you will be turning in. (You could even put this into the Readme.md file to make it easy to find!)
 
 > The build version of the site will be considered the production version. This should always work! The instructor should be able to go to that address at any time and not see any errors. Netlify will update your site everytime it sees a change to the "main" branch. So after committing you should probably go check Netlify to make sure nothing broke.
+
+## **05** Submit Netlify URL
+
+Now that you have your site hosted on Netlify, please submit your link in Microsoft Teams. Your instructor should have created a channel called `NPS Links` for you to submit this in. You can either download the [Teams application](https://www.microsoft.com/en-us/microsoft-teams/download-app) on your computer or phone, or you can use the "Microsoft Education" link in ILearn to access the Team for this course. If you download the client, make sure to use the SSO login with your BYUI login.
