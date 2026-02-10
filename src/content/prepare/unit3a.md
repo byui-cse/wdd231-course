@@ -4,8 +4,8 @@ title: Unit 3 Exploration.
 time: 30min
 ---
 
-- **Progressive Enhancement**:  
-"What is Progressive Enhancement?", "How can I apply it to a webpage to improve it's compatibility?"
+- **localStorage**:  
+"What is localStorage?", "How is it used?", "Can you give an example of storing Javascript objects in localStorage?"
 - **Social Media Meta**:  
 "What are social media meta tags in html?", "Why are they important?", "Which ones should I use?"
 - **Lighthouse**:  
