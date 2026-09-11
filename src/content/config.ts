@@ -57,4 +57,12 @@ const prepare = defineCollection({
 	}),
 });
 
-export const collections = { blog, semester, block, prove, prepare };
+const resources = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+	}),
+});
+
+export const collections = { blog, semester, block, prove, prepare, resources };

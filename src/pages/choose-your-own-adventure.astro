@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Choose Your Own Adventure | WDD 231"
+  description="A competency-based learning path for WDD 231 Web Frontend Development I."
+>
+  <article>
+    <h1>Choose Your Own Adventure</h1>
+
+    <p class="lead">
+      WDD 231 is becoming a more student-directed course. Instead of requiring
+      everyone to complete the same sequence of assignments, you will choose
+      meaningful work that helps you develop and demonstrate the course
+      competencies.
+    </p>
+
+    <p>
+      You choose the project, resources, practice activities, and sometimes the
+      order in which you work. The course still provides clear outcomes,
+      checkpoints, feedback, and evidence requirements so that independence does
+      not mean working without direction.
+    </p>
+
+    <h2>How the approach works</h2>
+
+    <ol>
+      <li>
+        <strong>Choose a focus.</strong> Select a competency or a small group of related
+        competency slices that fit your current needs and interests.
+      </li>
+      <li>
+        <strong>Make a learning contract.</strong> Describe what you will learn, how
+        you will practice, what support you need, and what evidence will demonstrate
+        your progress.
+      </li>
+      <li>
+        <strong>Build and investigate.</strong> Use the resources that fit your starting
+        point. Create a working increment, test it, and document what you discover.
+      </li>
+      <li>
+        <strong>Show your learning.</strong> Demonstrate the work, explain your decisions,
+        respond to a small variation, and use feedback to choose your next step.
+      </li>
+    </ol>
+
+    <h2>What stays consistent</h2>
+
+    <p>
+      Your path may be different from another student's path, but the standard
+      for meaningful learning remains consistent. Strong evidence usually
+      includes a working artifact, an explanation of important decisions, a
+      verification or test, and a discussion of one problem, limitation, or
+      tradeoff. You should be able to explain and adapt the work rather than
+      simply show that it runs.
+    </p>
+
+    <h2>Start here</h2>
+
+    <ul class="resources">
+      <li>
+        <a href={import.meta.env.BASE_URL + "/ponder/learning-contract/"}>
+          Create a Learning Contract
+        </a>
+        <span>— Write a focused plan for your next learning increment.</span>
+      </li>
+      <li>
+        <a
+          href={import.meta.env.BASE_URL +
+            "/ponder/model-first-learning-contract/"}
+        >
+          Model the First Learning Contract
+        </a>
+        <span>— See a fully completed example for the first shared week.</span>
+      </li>
+      <li>
+        <a
+          href={import.meta.env.BASE_URL +
+            "/ponder/recommended-11-contract-path/"}
+        >
+          Recommended 10-Contract Path
+        </a>
+        <span
+          >— Follow a suggested 10-contract sequence if you are unsure what to
+          do next.</span
+        >
+      </li>
+      <li>
+        <a href={import.meta.env.BASE_URL + "/resources/competencies/"}>
+          WDD 231 Competency Guide
+        </a>
+        <span>— Review the skills, evidence, and proficiency descriptions.</span
+        >
+      </li>
+      <li>
+        <a href={import.meta.env.BASE_URL + "/ponder/competency-pass-off/"}>
+          Pass Off a Competency or Slice
+        </a>
+        <span
+          >— Prepare for the peer conversation and instructor or TA
+          demonstration.</span
+        >
+      </li>
+    </ul>
+
+    <h2>Remember</h2>
+
+    <p>
+      You are responsible for choosing a useful next step, asking for help when
+      you need it, and producing honest evidence of what you can do. Your
+      instructor's role is to help you set an appropriate scope, connect you
+      with resources, challenge your understanding, and confirm your progress.
+    </p>
+
+    <h2>Grading</h2>
+    <p>
+      You should treat this course as a pass/fail course. To pass the course,
+      you must pass off all of the requiredcompetencies or slices at Proficient
+      or better. This will earn you a B in the course. In order to get an A you
+      must either demonstrate Advanced mastery on 4 or more competencies or pass
+      off competency 9 at Proficient or higher (Performance and deployment).
+    </p>
+  </article>
+
+  <style>
+    article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+    }
+
+    .lead {
+      font-size: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    .resources {
+      padding-left: 1.25rem;
+    }
+
+    .resources a {
+      font-weight: 700;
+    }
+
+    .resources span {
+      display: block;
+      margin-top: 0.15rem;
+    }
+  </style>
+</BaseLayout>

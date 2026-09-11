@@ -1,0 +1,306 @@
+---
+title: Ponder - Recommended 10-Contract Path
+description: A suggested sequence through the WDD 231 competencies for students who want help choosing their learning-contract path.
+time: 30 minutes
+aiUsage: green
+---
+
+## When to use this path
+
+You are free to choose your own route through the competencies. If you are unsure what to study next, use this recommended path as a starting point.
+
+This pathway assumes one learning contract per week for 10 weeks. Each contract targets a manageable group of competency slices. The path is intentionally cumulative: early contracts establish a foundation, middle contracts add application and interaction, and later contracts focus on quality, collaboration, and delivery.
+
+You do not need to complete an entire competency in one contract. A contract may:
+
+- target one slice of a competency,
+- combine related slices from several competencies, or
+- revisit an earlier competency at a deeper level.
+
+The goal is to visit every competency and its major parts by the end of the path, not to complete 10 unrelated assignments.
+
+Review the [WDD 231 Competency Guide](../resources/competencies/) before writing each contract. Use the [model first learning contract](../model-first-learning-contract/) as the example for the level of detail expected.
+
+## At a glance
+
+| Contract | Main focus | Supporting focus |
+| --- | --- | --- |
+| 1 | Project setup and semantic page structure | Responsive CSS, keyboard access, basic DOM event |
+| 2 | JavaScript, DOM, and events | Data-driven rendering and modules |
+| 3 | Responsive CSS and inclusive visual design | Semantic HTML and interaction feedback |
+| 4 | APIs and asynchronous programming | Data-driven rendering and error states |
+| 5 | Application state and persistence | JavaScript structure and validation |
+| 6 | Navigation and interaction | URL parameters, multi-page flows, and accessible state |
+| 7 | SEO and accessibility review | Inclusive visual design and content structure |
+| 8 | Work and communicate like a teammate | Integration, decision records, and code review |
+| 9 | Integrate and verify your learning | Debugging, refactoring, and AI verification |
+| 10 | Performance and deployment (optional extension) | Full-project integration and professional delivery |
+
+Debugging and responsible AI-assisted development are practiced in every contract rather than saved for one week. Contract 9 provides extra time to consolidate those practices across the project. Students should record AI use, validate suggestions, and explain their final work whenever AI is involved.
+
+When AI is used, practice the complete cycle: ask focused questions for
+explanation, examples, debugging hypotheses, or comparisons; break large tasks
+into questions you can evaluate; check suggestions against documentation and
+tests; reject suggestions that are incorrect, insecure, inaccessible, or
+inappropriate; and explain which final decisions are your own.
+
+## Contract 1: Establish a sound foundation
+
+### Competency slices
+
+- Project setup and build familiarity
+- Semantic HTML structure
+- Headings, landmarks, navigation, forms, labels, buttons, and meaningful links
+- A first slice of keyboard accessibility
+- Mobile-first CSS foundation
+- One basic DOM event
+
+### Suggested outcome
+
+I can run my project locally and create a semantic, readable page shell with a header, navigation, main content, and footer. I can move through its controls with a keyboard and use one JavaScript event to make a focused DOM update.
+
+### Suggested evidence
+
+- Working page running from the documented project command
+- Explanation of the selected semantic elements
+- Narrow and wide viewport checks
+- Keyboard walkthrough
+- Explanation of the event and DOM element it changes
+
+Use the [model first learning contract](../model-first-learning-contract/) for a fully completed example of this contract.
+
+## Contract 2: Make the page data-driven
+
+### Competency slices
+
+- JavaScript variables, functions, arrays, and objects
+- DOM selection and rendering
+- Click, input, submit, or change event handling
+- Data-driven repeated content
+- Module imports and exports
+- Separation of data, rendering, and event-handling responsibilities
+
+### Suggested outcome
+
+I can represent repeated page content as data, render it with reusable JavaScript functions, and organize the code into modules with clear responsibilities.
+
+### Suggested evidence
+
+- An array or object containing repeated content
+- A rendering function that generates the repeated UI
+- A second data item added without duplicating the markup
+- A brief explanation of the module and function boundaries
+
+Suggested resources include [Practice with JSON](https://byui-cit.github.io/learning-modules/modules/js/json/ponder1/) and [Practice with the DOM](https://byui-cit.github.io/learning-modules/modules/js/dom-basics/ponder1/).
+
+## Contract 3: Improve responsive and inclusive presentation
+
+### Competency slices
+
+- Flexbox or Grid layout
+- Mobile-first responsive behavior
+- Typography, spacing, and visual hierarchy
+- Custom properties and organized shared/component styles
+- Resilient handling of long text and different images
+- Color contrast and readable text sizing
+- Reflow, zoom, or text enlargement
+- Motion and touch-target considerations
+
+### Suggested outcome
+
+I can create a responsive layout that remains readable and usable at different viewport sizes and can explain how my spacing, typography, contrast, and layout choices support inclusive use.
+
+### Suggested evidence
+
+- Screenshots or a live demonstration at narrow and wide widths
+- A contrast check and explanation of any correction
+- A reflow or zoom check
+- One responsive problem documented from diagnosis to fix
+- Explanation of why a layout method was selected
+
+Do not treat “it looks good on my screen” as sufficient evidence. Test more than one viewport and use an inspection tool or checklist.
+
+## Contract 4: Integrate an API
+
+### Competency slices
+
+- `fetch` and `async`/`await`
+- Response status and JSON handling
+- Data transformation and rendering
+- Loading, empty, and error states
+- Network inspection and safe environment handling
+
+### Suggested outcome
+
+I can retrieve data from a documented API, transform the response for my interface, render it dynamically, and provide useful feedback during loading, empty, and error conditions.
+
+### Suggested evidence
+
+- A working API feature
+- Network request and response inspection
+- Tests for success, empty, and failure conditions
+- Explanation of the asynchronous request flow
+- A note about how secrets or environment configuration are handled
+
+Suggested resources include [Fetch Basics](https://byui-cit.github.io/learning-modules/modules/js/fetch-basics/) and [Practice with APIs](https://byui-cit.github.io/learning-modules/modules/js/apis/ponder1/).
+
+## Contract 5: Add application state and persistence
+
+### Competency slices
+
+- Identifying and managing interface state
+- Keeping state changes reflected in the DOM
+- Saving and retrieving appropriate data with `localStorage`
+- Validating missing, malformed, or outdated values
+
+### Suggested outcome
+
+I can manage a meaningful piece of interface state and persist it when appropriate. I can explain where the state lives, what changes it, and what the application does when stored data is missing or invalid.
+
+### Suggested evidence
+
+- A user flow that changes state
+- Persistence demonstrated after a refresh
+- A test using missing or malformed stored data
+- Explanation of the state transitions and validation approach
+
+Suggested resource: [localStorage Practice](https://byui-cit.github.io/learning-modules/modules/js/localStorage/ponder1).
+
+## Contract 6: Connect navigation and interaction flows
+
+### Competency slices
+
+- URL search parameters and multi-page navigation
+- Identifier validation
+- Detail retrieval or selection
+- Useful handling of missing or invalid URLs
+- Open and closed interaction states
+- Synchronized visual, keyboard, and ARIA state
+- Appropriate Escape, focus, or click-away behavior
+
+### Suggested outcome
+
+I can connect a user flow across navigation and interface interaction. I can link from a collection view to a detail view using a URL parameter, handle invalid context, and build one accessible open-and-close interaction with clear state.
+
+### Suggested evidence
+
+- A working list-to-detail flow
+- A direct visit to a detail URL after refresh
+- Tests for valid, missing, and unknown identifiers
+- Explanation of how the parameter controls the data flow
+- A working menu, modal, accordion, or similar interaction
+- Keyboard demonstration and explanation of synchronized state
+- Reuse of the interaction logic across pages or multiple instances
+
+Suggested resource: [URL Parameters](https://byui-cit.github.io/learning-modules/modules/js/url-params/ponder1/).
+
+## Contract 7: Review SEO and accessibility
+
+### Competency slices
+
+- Page titles and descriptions
+- Heading hierarchy and meaningful link text
+- Image alternatives and content structure
+- WCAG-informed semantic and visual checks
+- Contrast, focus, reflow, and keyboard review
+
+### Suggested outcome
+
+I can audit a key page for SEO and accessibility concerns, make prioritized improvements, and explain how the changes help both users and search engines.
+
+### Suggested evidence
+
+- An audit checklist or tool results from before the changes
+- A prioritized list of issues
+- The improved page
+- A second check showing what changed
+- Explanation of how at least one change relates to a relevant WCAG principle
+
+Suggested resource: the [WDD 231 Competency Guide](../resources/competencies/) and the [WebAIM keyboard accessibility checklist](https://webaim.org/techniques/keyboard/).
+
+## Contract 8: Work and communicate like a teammate
+
+### Competency slices
+
+- Breaking work into tasks with a definition of done
+- Progress, blocker, and integration communication
+- Technical decision records
+- Specific and respectful code review
+- Integrating team changes while maintaining quality
+
+### Suggested outcome
+
+I can contribute a well-scoped piece of work to a team, communicate its status and risks, explain an important technical decision, and give or apply actionable review feedback.
+
+### Suggested evidence
+
+- An issue, task, or milestone with a clear completion condition
+- A role or contribution summary
+- One decision record with alternatives and rationale
+- A code review or feedback exchange
+- Evidence of successful integration and the resolution of one conflict or dependency
+
+This contract may be completed individually if a team project is not available, using a peer review or simulated project handoff.
+
+## Contract 9: Integrate and verify your learning
+
+### Cross-cutting practices and supporting slices
+
+- Debugging and evidence-based troubleshooting
+- Refactoring for clarity and maintainability
+- Independent testing and regression checking
+- Responsible AI-assisted development, when AI is used
+
+### Suggested outcome
+
+I can review my project as a whole, investigate a real problem with evidence, improve one area for clarity or maintainability, and explain how I verified the result. If I used AI, I can account for and defend that use.
+
+### Suggested evidence
+
+- A project quality review with prioritized improvements
+- A bug report with expected and actual behavior
+- The evidence gathered during investigation
+- The initial hypothesis and how it changed, if applicable
+- The fix, refactor, and verification steps
+- An AI-use and verification note, when applicable
+
+This is also a good contract for evaluating AI debugging help. If AI is used, document its hypotheses and identify which ones your own evidence supported or rejected.
+
+## Contract 10: Deliver a reliable project
+
+### Competency slices
+
+This is an optional extension for students who want an additional challenge. It combines:
+
+- Performance checks and image or network improvements
+- Lint, build, and preview workflows
+- Deployment and production verification
+- Recognition of local-versus-production differences
+- Investigation of an incorrect asset path, missing environment variable, or build failure
+- Integration of earlier competency evidence
+
+### Suggested outcome
+
+I can prepare and deploy a working project, use a measurement or quality check to identify one improvement, verify the deployed result, and explain the tradeoff behind my change.
+
+### Suggested evidence
+
+- Successful lint, build, and preview results
+- A performance or production issue identified with evidence
+- A documented improvement
+- A deployed URL tested outside the local development environment
+- Explanation of one production-specific problem or decision
+
+Suggested resources include the project's existing build and deployment instructions and the [Lighthouse documentation](https://developer.chrome.com/docs/lighthouse/overview/).
+
+## How to adapt this path
+
+Use this sequence as a default, then adjust it through your contracts.
+
+- If a competency is already comfortable, combine its contract with a more challenging supporting slice.
+- If a competency is new, spend the contract on a smaller slice and use the prepared practice materials.
+- If a project is blocked by an API, deployment issue, or team dependency, write a temporary contract around the underlying skill rather than waiting.
+- If evidence shows that a competency is not yet proficient, repeat it with a new context instead of moving on automatically.
+- If you complete the optional performance and deployment contract early, use the time to deepen accessibility, testing, or refactoring.
+
+At the end of the 10 weeks, you should be able to point to evidence for every competency in the guide and examples of both cross-cutting practices. Some evidence may come from the same project or contract. That is expected: professional work often demonstrates several competencies at once.

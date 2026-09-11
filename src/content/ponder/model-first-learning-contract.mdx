@@ -1,0 +1,183 @@
+---
+title: Ponder - Model the First Learning Contract
+description: Follow a fully worked example of planning a shared first-week project with focused competency targets.
+time: 45 minutes
+aiUsage: green
+---
+
+## Purpose
+
+This activity models how student-directed work will begin in WDD 231. For the first week, everyone will work on the same general outcome so that we can learn the process together. Later contracts can be more individual and can follow different paths.
+
+This example also demonstrates an important idea:
+
+> A learning contract does not need to complete an entire competency. It can target a useful slice of one competency, or combine related slices from several competencies.
+
+Review the [WDD 231 Competency Guide](../resources/competencies/) as you read this example.
+
+## Recommended first-week focus
+
+For the first week, I recommend that the whole class build the first version of a small, responsive page shell for a web project. The page does not need to be a complete application. It should establish a solid foundation that later work can extend.
+
+Everyone should work on these items:
+
+1. **Project setup:** Run the project locally, understand the key folders and scripts, and make a small change that can be viewed in the browser.
+2. **Semantic page structure:** Create a meaningful header, navigation, main content area, and footer using appropriate HTML elements.
+3. **Responsive visual foundation:** Add mobile-first styles, readable typography, consistent spacing, and a layout that works at narrow and wide viewport sizes.
+4. **Basic keyboard experience:** Make sure links and buttons can be reached and understood using the keyboard.
+5. **One small DOM enhancement:** Use JavaScript to make one focused change in response to a user action, such as showing a menu, changing a message, or updating a timestamp.
+
+This is intentionally a small slice of several competencies:
+
+- Semantic and accessible HTML
+- Responsive CSS and inclusive visual design
+- JavaScript, the DOM, and events
+- Project setup and build workflow
+
+It also begins the two cross-cutting practices that will continue throughout the course:
+
+- Debugging and evidence-based troubleshooting
+- Responsible AI-assisted development, when AI is used
+
+It is not intended to certify mastery of any of these competencies or practices. The goal is to practice planning, produce a useful first increment, and learn how certification evidence will work.
+
+
+## Resources for this week
+
+Use the resources that match your starting point. Everyone does not need to spend the same amount of time on every resource.
+
+- [Course setup instructions](../../prove/setup/) for the project environment and required commands.
+- [Running JavaScript](https://byui-cit.github.io/learning-modules/modules/js/introduction/ponder1/) for a review of how JavaScript runs in the project.
+- [Practice with the DOM](https://byui-cit.github.io/learning-modules/modules/js/dom-basics/ponder1/) for selecting elements and responding to events.
+- The [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) when deciding which element best represents content.
+- The [WebAIM keyboard accessibility checklist](https://webaim.org/techniques/keyboard/) for a focused keyboard review.
+- The [WDD 231 Competency Guide](../resources/competencies/) for the indicators and proficiency language used in the contract.
+
+The resource list is a menu, not a checklist. Start with the course setup instructions and then choose the resources that address your gaps.
+
+## Fully completed example contract
+
+The following is an example of what a complete first contract could look like.
+
+```md
+# Learning Contract: My first accessible project shell
+
+Student: Jordan Lee
+Date: September 9
+Target review date: September 13
+
+## Primary competency
+
+My primary competency is Semantic and accessible HTML. For this first contract,
+I am targeting only these parts of that competency:
+
+- I can organize a page with meaningful semantic elements.
+- I can create navigation and content that have clear names and a logical order.
+- I can move through the main page controls with a keyboard.
+
+I am also working on supporting slices of Responsive CSS and inclusive visual
+design, JavaScript, the DOM, and events, and project setup. I am not claiming
+that this contract completes any of those full competencies.
+
+## My starting point
+
+I have created simple HTML pages before and can use headings, paragraphs, and
+links. I can write basic CSS, but I usually adjust margins until the page looks
+right without checking other viewport sizes. I have used JavaScript examples,
+but I need more practice connecting an event to a specific DOM update.
+
+## My learning plan
+
+First, I will complete the course setup and confirm that the project runs locally.
+I will then create a page shell for a fictional local hiking guide. It will have
+a header with the site name, a navigation area, a main section introducing the
+guide, and a footer with contact information.
+
+I will use the course setup instructions to verify my environment, the DOM
+practice module to review event handling, the MDN element reference when choosing
+semantic elements, and the WebAIM checklist to test keyboard access.
+
+I will practice by building the page in this order:
+
+1. Write the semantic HTML structure and meaningful link text.
+2. Add mobile-first CSS for readable text, spacing, and a simple wide-screen
+   layout.
+3. Add one button that toggles a short navigation panel on narrow screens.
+4. Test the page at narrow and wide viewport sizes and with the keyboard.
+
+My first milestone, due September 11, is a page that runs locally and includes
+the semantic structure, visible content, and first mobile layout. I will ask for
+feedback before spending time on visual polish.
+
+## Evidence of learning
+
+I will submit or demonstrate:
+
+- A link to my working page and the relevant project files.
+- A short explanation identifying the header, navigation, main, and footer and
+  explaining why I chose those elements.
+- A screenshot or brief recording showing the page at narrow and wide widths.
+- A keyboard test in which I reach the navigation and main interactive control
+  without using a mouse.
+- A short explanation of how the button event changes the DOM.
+- One problem I encountered, my hypothesis about its cause, the fix I tried, and
+  how I verified the fix.
+
+I will know I am ready for review when:
+
+- The project starts with the documented command and the page loads without
+  console errors.
+- The page has a meaningful semantic structure and a logical keyboard order.
+- The layout remains readable and usable at both narrow and wide widths.
+- I can explain the JavaScript event, the DOM element it changes, and one reason
+  for an HTML or CSS decision without reading an explanation from someone else.
+
+## Support and risks
+
+The help I may need is a short instructor or peer conversation about choosing
+semantic elements and debugging the navigation toggle. I will ask for help after
+I have recorded the expected behavior, actual behavior, and one hypothesis.
+
+My main risk is spending too much time making the page look finished. If that
+happens, I will stop visual polish, complete the evidence checklist, and ask for
+feedback on the next smallest improvement.
+
+## AI use, if applicable
+
+I may use AI to explain the difference between semantic elements, suggest
+debugging questions, or give feedback on my accessibility test plan. I will not
+ask it to produce the complete page.
+
+If I use AI, I will record the question I asked, identify which suggestions I
+accepted or rejected, and verify the result with the browser, documentation, and
+keyboard testing. I will be able to explain the final HTML, CSS, and JavaScript
+without relying on the AI conversation.
+```
+
+## What the instructor would assess
+
+The instructor is not looking for a polished final website during this first week. The review should focus on whether the student can make and explain a sound first increment.
+
+Look for:
+
+- A project that runs and can be inspected.
+- Semantic structure that matches the content's purpose.
+- A readable layout at more than one viewport size.
+- A basic keyboard path through the page.
+- One understandable event-to-DOM interaction.
+- Evidence of testing and a clear explanation of one problem or decision.
+- A debugging record showing how a problem was investigated and verified, when a problem occurred.
+- An AI-use note and independent verification, when AI was used.
+
+A student may use a different theme or implementation. The contract is successful if the student demonstrates the agreed slices and can explain the work.
+
+## Reflection after the first week
+
+After the review, answer these questions:
+
+- Which part of the contract took more or less time than expected?
+- Which evidence best demonstrated what you learned?
+- Which competency slice should become the next contract?
+- What should change in your next plan: scope, resources, support, or evidence?
+
+Your next contract may continue this project, choose a new project, deepen one of these competency slices, or combine a different set of competencies.
