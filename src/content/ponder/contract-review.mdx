@@ -1,0 +1,181 @@
+---
+title: Ponder - Peer Contract Review
+description: Explain your learning contract to a classmate in an interactive conversation that helps you both understand the slices more deeply.
+time: 20-30 minutes
+aiUsage: green
+---
+
+# Peer Contract Review
+
+## Purpose
+
+A peer contract review is a two-way conversation about the slices in one learning contract. You explain your work, your partner asks questions, and together you find gaps and connections. Your peer does not certify anything. The review prepares you for the [instructor or TA competency pass-off](./competency-pass-off-new).
+
+> Record each review in your [Competency Progress Tracker](../competency-progress-tracker.md).
+
+## This is a conversation, not a presentation
+
+The review works best when both people are actively thinking. Your role as reviewer depends on how well you know the material.
+
+**If you know the slices well (higher mastery):**
+
+- Ask questions that help your partner connect the dots, not questions that give away the answer.
+- Ask "why?" and "what would happen if...?" instead of correcting.
+- Let your partner finish thinking before you add anything.
+
+**If you are newer to the slices (lower mastery):**
+
+- Keep asking questions until you understand it yourself.
+- Ask your partner to show it again, use a different example, or explain a term.
+- Your confusion is useful. If your partner cannot explain it simply, that points to a gap worth reviewing.
+
+Either way, both of you should leave understanding the slices better than when you started. If only one person is talking, change the format: ask a question or switch roles.
+
+## Before you meet
+
+- [ ] List the slices in your contract.
+- [ ] Make sure your work runs and you can show it.
+- [ ] Gather at least one piece of evidence for each slice (a test, screenshot, inspection result, or note).
+- [ ] Fill in the top of the [review record](#review-record).
+
+Do not memorize a script. You should understand the work well enough to explain it in your own words.
+
+## The conversation
+
+Work through these steps for every slice in the contract.
+
+1. **State the goal.** What did you intend to learn or be able to do, and how does it connect to your project?
+2. **Show it working.** Demonstrate a normal case and, when relevant, an edge case (empty data, invalid input, narrow viewport, failed request).
+3. **Explain the learning.** What was difficult or surprising? What did you try first? What changed after testing or feedback?
+4. **Ask and answer questions.** The reviewer chooses questions from the [question bank](#question-bank). Follow up on answers, and swap roles if the reviewer has something to demonstrate too.
+5. **Summarize.** Write down one thing to review and one thing you are ready to demonstrate at the pass-off.
+
+## Question bank
+
+Choose a few questions that fit the slice. You do not need to ask them all. Follow-up questions based on what you hear are often better than these.
+
+### Any slice
+
+- What were you trying to learn or improve?
+- What part is hardest to explain?
+- What choice had more than one reasonable option?
+- What evidence shows your solution works?
+- What did you try when you got stuck?
+- What would break first if the requirements changed?
+
+<details>
+<summary>HTML and accessibility</summary>
+
+- Why these HTML elements instead of similar-looking ones?
+- How would a keyboard user move through this page?
+- What would a screen reader user learn from the headings, labels, and names?
+- Which accessibility check did you perform?
+- What happens if the content gets longer or an image fails to load?
+
+</details>
+
+<details>
+<summary>CSS and visual design</summary>
+
+- Why Flexbox, Grid, or another layout approach?
+- What happens at a viewport width you did not design for?
+- How did you check contrast, text size, spacing, or reflow?
+- Which styles are shared and which belong to one component?
+- What changes if the user zooms or increases text size?
+
+</details>
+
+<details>
+<summary>JavaScript and modules</summary>
+
+- What starts the code running, and what happens next?
+- Which function is responsible for each part of the process?
+- What data does this function receive and return?
+- What happens with unexpected input?
+- How could you reuse this code elsewhere?
+
+</details>
+
+<details>
+<summary>APIs and asynchronous code</summary>
+
+- What happens while the request is in progress?
+- How do you know the response succeeded?
+- What happens when the response is empty or malformed?
+- What did you inspect in the Network panel?
+- How does the interface behave if the API is unavailable?
+
+</details>
+
+<details>
+<summary>State, URLs, and interactions</summary>
+
+- Where is the current state stored, and what changes it?
+- What happens after a refresh or a direct visit to this URL?
+- What happens when an identifier or saved data is missing or invalid?
+- How do the visual state and accessibility state stay in sync?
+- How would this work with two copies of the interaction on the page?
+
+</details>
+
+<details>
+<summary>Debugging and AI use</summary>
+
+- What was the original symptom, and what did you expect instead?
+- What evidence led to your root-cause hypothesis?
+- Which causes did you rule out?
+- How did you verify the fix and check for regressions?
+- If you used AI, what did it suggest, what did you reject, and how did you verify the result?
+
+</details>
+
+## Tips
+
+**Explaining:** start with the goal before opening the code, use real examples, and say what you do not know. A clear explanation of one slice beats a rushed tour of the whole project.
+
+**Reviewing:** ask to understand, not to prove you know more. Give your partner time to think. Point to specific evidence when giving feedback, and end with one strength and one suggested next step.
+
+## Review record
+
+Copy this into your notes or tracker.
+
+```md
+Contract: [Name]
+Date: [Date]
+Peer conversation partner: [Name]
+Slices reviewed: [List each slice]
+
+1. What I demonstrated across the contract:
+
+[Brief description of what you accomplished and learned]
+
+2. Evidence I showed:
+
+- [Artifact]
+- [Test or verification]
+- [Explanation, challenge, or decision]
+
+3. What my peer helped me notice:
+
+[Gaps, challenges, or connections discovered in the conversation]
+
+4. What I learned by asking questions or listening:
+
+[Something that became clearer for you as the reviewer]
+
+5. Review status: [Every slice reviewed / More review needed]
+
+6. My next step:
+
+[Specific next action]
+```
+
+## You are done when
+
+- every slice in the contract has been discussed,
+- you have evidence or a clear explanation for each slice,
+- both partners have asked and answered questions,
+- gaps and next steps are recorded, and
+- your Competency Progress Tracker is updated.
+
+When every slice of a competency has been reviewed, request the [competency pass-off](./competency-pass-off-new).
