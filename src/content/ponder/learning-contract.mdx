@@ -32,7 +32,7 @@ A strong contract is:
 
 ## Step 1: Choose a competency
 
-Review the [WDD 231 Competency Guide](../resources/competencies/) before choosing. It explains what each competency includes, gives examples of observable practice, and describes what proficiency means at the course level.
+Review the [WDD 231 Competency Guide](../resources/competencies/) before choosing. It explains what each competency includes, gives examples of observable practice, and describes what proficiency means at the course level. You may also want to review the [recommended path](../recommended-11-contract-path) to see how the competencies build on each other.
 
 Choose one primary competency from the guide, or propose an equivalent competency for approval.
 
@@ -69,6 +69,10 @@ Consider:
 - What part do you currently need help with?
 - What evidence would show meaningful growth?
 
+Use this starting point to choose one **question guiding your learning**: What can you already accomplish but cannot yet explain, predict, or adapt confidently? Your competency slices define the scope; your question identifies what you will investigate within that scope.
+
+For example: “My layout works with the sample content. What determines whether it still works when the content becomes longer?” If the topic is new, start with a question about behavior you want to understand.
+
 ## Step 3: Write your contract
 
 Copy the template below into your submission and complete every section. Use concrete language and link to resources when possible.
@@ -100,6 +104,10 @@ I still need to learn or improve:
 
 [Name the specific gaps or questions you have.]
 
+## Question guiding my learning
+
+[Write one question about something within these slices that I cannot yet explain, predict, or adapt confidently.]
+
 ## My learning plan
 
 I will use these resources:
@@ -110,6 +118,10 @@ I will use these resources:
 I will practice by:
 
 [Describe the feature, experiment, exercise, or project work you will complete.]
+
+I will challenge my work by:
+
+[Choose meaningful changes or conditions related to my slices. Before each check, I will predict the behavior, test it, and investigate unexpected results. See the peer-review preparation guidance.]
 
 My first milestone, due [date], is:
 
@@ -123,6 +135,7 @@ I will submit or demonstrate:
 - [Short explanation of how it works]
 - [One test, experiment, or verification result]
 - [One bug, challenge, or design decision and what I learned from it]
+- [Brief investigation notes: challenge, my prediction, observed result, change or learning, verification, and remaining uncertainty]
 
 I will know I am ready when:
 
@@ -149,6 +162,8 @@ I will verify AI suggestions by:
 [Describe the documentation, tests, experiments, or review you will use.]
 ```
 
+Plan your investigations using the [peer-review preparation guidance](../contract-review/#try-to-break-your-work). Record your own predictions before testing and your observations afterward. AI may suggest challenges, but your contract should describe planned work rather than claim results you have not observed.
+
 >Alternatively you can also use the [Learning Contract skill](/learning-contract-skill.zip) to help create your contract. It does expect a certain structure to work correctly.
 >
 >In the directory you are using for your work (probably something like /wdd231), create two folders: `contracts` and `reviews`. Take the first contract we completed ([first contract](../model-first-learning-contract)) and save it as `c1.md` in the `contracts` folder. Then make sure that the first peer review record is saved as `r1.md` in the `reviews` folder. You can then use the skill to create a new contract.
@@ -169,7 +184,9 @@ Before submitting, check your plan against these questions:
 - Could another person tell whether I met my outcome?
 - Is my first milestone small enough to finish on time?
 - Does my evidence demonstrate understanding, not just a finished feature?
+- Does my plan help me answer my guiding question?
 - Have I included a way to test or verify my work?
+- Have I planned meaningful challenges to investigate before peer review?
 - If my plan fails, do I know what I will try next?
 
 If the answer to any question is no, revise the contract before submitting it.
@@ -199,10 +216,20 @@ render the results in the DOM, and handle loading, empty, and error states.
 I can use events and functions, but I am not yet confident about async/await,
 reading a response object, or deciding where error handling belongs.
 
+## Question guiding my learning
+
+What determines whether my search feature recovers usefully when a request
+fails or returns data I did not expect?
+
 ## My learning plan
 
 I will review the Fetch Basics module and the API documentation for my project.
 I will build a small search feature before integrating it into my main project.
+
+I will challenge it with an unavailable API, an empty result, and an unexpected
+response shape. Before each check I will record my prediction, then inspect the
+Network panel and interface, investigate surprises, and verify any repair by
+repeating the check and checking that a normal search still works.
 
 My first milestone is a button that makes one request and displays either the
 returned name or a visible error message.
@@ -210,11 +237,14 @@ returned name or a visible error message.
 ## Evidence of learning
 
 I will demonstrate the feature, explain the request and response flow, show a
-network request in browser developer tools, and document one bug involving an
-unexpected response shape and how I fixed it.
+network request in browser developer tools, and bring brief investigation notes
+showing my predictions, observed results, any changes and verification, and
+remaining uncertainty. Checks that succeed will count as useful evidence too.
 
 I will know I am ready when I can explain the code without reading a script and
 can modify it to handle an empty result.
+I can use my investigation results to answer my guiding question and explain
+what my checks do and do not establish.
 ```
 
 ## Step 5: Submit and discuss

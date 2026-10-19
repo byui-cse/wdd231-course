@@ -60,19 +60,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <ul class="resources">
       <li>
-        <a href={import.meta.env.BASE_URL + "/ponder/learning-contract/"}>
-          Create a Learning Contract
+        <a href={import.meta.env.BASE_URL + "/resources/competencies/"}>
+          WDD 231 Competency Guide
         </a>
-        <span>— Write a focused plan for your next learning increment.</span>
-      </li>
-      <li>
-        <a
-          href={import.meta.env.BASE_URL +
-            "/ponder/model-first-learning-contract/"}
+        <span>— Review the skills, evidence, and proficiency descriptions.</span
         >
-          Model the First Learning Contract
-        </a>
-        <span>— See a fully completed example for the first shared week.</span>
       </li>
       <li>
         <a
@@ -87,12 +79,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         >
       </li>
       <li>
-        <a href={import.meta.env.BASE_URL + "/resources/competencies/"}>
-          WDD 231 Competency Guide
-        </a>
-        <span>— Review the skills, evidence, and proficiency descriptions.</span
+        <a
+          href={import.meta.env.BASE_URL +
+            "/ponder/model-first-learning-contract/"}
         >
+          Model the First Learning Contract
+        </a>
+        <span>— See a fully completed example for the first shared week.</span>
       </li>
+      <li>
+        <a href={import.meta.env.BASE_URL + "/ponder/ai-workflow/"}>
+          AI Workflow
+        </a>
+        <span>— Moving from a contract to a project.</span>
+      </li>
+      <li>
+        <a href={import.meta.env.BASE_URL + "/ponder/learning-contract/"}>
+          Create a Learning Contract
+        </a>
+        <span>— Write a focused plan for your next learning increment.</span>
+      </li>
+
       <li>
         <a href={import.meta.env.BASE_URL + "/ponder/contract-review/"}>
           Peer Contract Review
@@ -108,15 +115,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           Pass Off a Competency with the instructor
         </a>
         <span>— Prepare for the instructor or TA demonstration.</span>
-      </li>
-      <li>
-        <a href={import.meta.env.BASE_URL + "/ponder/competency-pass-off/"}>
-          Pass Off a Competency or Slice (old instructions)
-        </a>
-        <span
-          >— Prepare for the peer conversation and instructor or TA
-          demonstration.</span
-        >
       </li>
     </ul>
 

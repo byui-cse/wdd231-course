@@ -1,0 +1,7 @@
+interface:
+  display_name: "Learning Contract Builder"
+  short_description: "Draft the next WDD 231 learning contract"
+  default_prompt: "Use $learning-contract-builder to draft my next weekly WDD 231 learning contract."
+
+policy:
+  allow_implicit_invocation: true

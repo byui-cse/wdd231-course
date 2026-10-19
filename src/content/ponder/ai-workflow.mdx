@@ -1,0 +1,251 @@
+---
+title: Ponder - From Learning Contract to AI-Assisted Development
+description: Turn a learning goal into a specification, use AI to develop a small increment, and gather evidence that you understand and can improve the result.
+time: 60-90 minutes for a first practice cycle; reuse throughout each contract
+aiUsage: green
+---
+
+## Purpose
+
+Your learning contract identifies what you intend to learn. How do you turn that plan into useful work when AI can help you design and implement a solution?
+
+Use this activity to practice a workflow you can repeat throughout the course:
+
+**Contract → Specify → Generate → Inspect → Test → Revise → Explain**
+
+You decide what the solution must accomplish, investigate how it works, and gather evidence that it meets the requirements. AI can help at every stage, but you remain responsible for the decisions and the resulting user experience. Follow the AI-use expectations in your assignment and approved contract.
+
+For your first use, work from the shared [model first learning contract](../model-first-learning-contract/). This activity follows its hiking-guide page shell and navigation example. Use the version of the contract you discussed with your instructor if you adapted the theme or details. Repeat the cycle as you develop the rest of the work. You can return to an earlier step whenever a question, test, or new requirement changes your understanding.
+
+## Before you begin
+
+Have these available:
+
+- Your [learning contract](../learning-contract/), including its competency slices and guiding question.
+- A project you can run locally, or a small practice project for this contract.
+- An AI assistant and a browser with developer tools.
+- A place for brief notes alongside your contract and review evidence.
+
+These instructions work with different AI tools, including editor extensions such as Copilot or Codex in VS Code. Use your tool's way of sharing files or text. Replace bracketed text in the prompts with your own information. You do not need a particular mode, command, or model to follow the workflow.
+
+If your assistant can edit project files, review and save your current work before asking for changes. A version-control commit gives you a useful point to return to. Share relevant project context without including passwords, private information, or API secrets.
+
+## 1. Connect your contract to one small increment
+
+Choose the smallest useful feature, experiment, or repair that will help answer your guiding question. A whole website is usually too large for one cycle.
+
+For the shared first contract, begin here:
+
+| Part of the contract | Focus for this cycle |
+| --- | --- |
+| Competency slices | Semantic structure, meaningful navigation, and keyboard access, supported by responsive CSS and one DOM interaction |
+| Guiding question | How can I keep the page's navigation understandable and usable when the content gets longer or someone uses only a keyboard? |
+| Small increment | The hiking-guide page shell with a button that shows and hides a navigation panel on narrow screens |
+| Learning evidence | Predictions and browser observations with longer link text, different widths, and keyboard-only use |
+
+You do not need to generate the whole page shell at once. Start with semantic structure and visible navigation, then add layout and the toggle in separate cycles. This activity helps you carry out the first contract; it does not replace its other evidence or setup requirements.
+
+For later contracts, replace this example with an increment that matches your slices. If your contract focuses on APIs, your increment might be one request with loading, success, empty, and error states.
+
+Keep the guiding question visible while you work. Producing more features does not necessarily help you answer it.
+
+## 2. Specify what the increment must do
+
+A **specification** describes the intended behavior and constraints. **Acceptance criteria** are observable conditions you will check to decide whether the result meets that specification.
+
+Start with the user and their task, then describe normal behavior, relevant difficult conditions, and what is outside this increment. You can use AI to help develop this description before asking it to write code.
+
+### Ask AI to help you clarify the specification
+
+Share the relevant contract sections and describe the current project. If the assistant can inspect files, identify the files you want it to read. Otherwise, provide relevant excerpts and explain where they belong. Do not assume the assistant has seen a file just because it is open in your editor.
+
+For the first contract, try this prompt after sharing your contract and relevant files. Adapt the details for later contracts:
+
+```text
+Help me prepare a small specification for one increment of my learning contract.
+Do not write code or change files yet.
+
+My competency slices: semantic page structure, meaningful navigation, keyboard
+access, supported by responsive CSS and one DOM interaction.
+My guiding question: How can I keep navigation understandable and usable when
+the content gets longer or someone uses only a keyboard?
+What I can already do: [my actual starting point from my contract]
+The user and task: a visitor needs to understand my hiking guide and navigate
+its main sections on a small screen or using only a keyboard.
+My proposed increment: a page shell with navigation, developed in small stages,
+eventually adding a button that toggles the navigation on narrow screens.
+Project context: [relevant files, current behavior, and technologies]
+Constraints: [assignment requirements and project conventions]
+
+Ask a few focused questions about missing decisions that affect the behavior
+or scope. Identify assumptions rather than silently choosing for me.
+Then help me draft a concise specification with observable acceptance criteria,
+relevant edge cases, and an explicit list of what is outside this increment.
+Keep it small enough to investigate and explain this week.
+```
+
+Answer the questions using your project goals and contract. It is fine to say, “I do not know the tradeoffs; explain the options before I decide.” If the assistant proposes extra features, decide whether they help your learning goal before accepting them.
+
+### Review and save the specification
+
+Here is a possible specification for the navigation increment in the first contract. Review it against your own project before using it:
+
+```md
+# Increment: Hiking-guide page shell and navigation
+
+User and task:
+A visitor wants to understand the hiking guide and navigate its main sections
+using a small screen, a keyboard, or both.
+
+Context and constraints:
+Use the project created during course setup and follow its existing conventions.
+Use semantic HTML, responsive CSS, and JavaScript for one navigation toggle.
+Do not add a framework or dependency.
+
+Acceptance criteria:
+- The page has a header with the guide name, navigation, main introductory
+  content, and a footer. Navigation links have meaningful names and working
+  destinations within this page.
+- At narrow widths, a named button shows and hides the navigation panel.
+  It works with keyboard activation and reports its expanded state accurately.
+- Hidden navigation links are not reachable with the keyboard. When the panel
+  is open, its links are reachable in a logical order with visible focus.
+- At wide widths, navigation is visible and reachable without using the toggle.
+  Moving between narrow and wide widths leaves the controls in a usable state.
+- At 320, 768, and 1280 CSS pixels wide, text remains readable and navigation
+  does not cause page-level horizontal scrolling.
+- Link text three times as long remains available without overlapping or
+  hiding neighboring content.
+- At 200% browser zoom, content and links remain available and usable.
+
+Outside this increment:
+Live APIs, filtering, saved favorites, additional pages, and visual polish.
+
+Learning investigation:
+Before testing, I will predict how longer link text and a hidden navigation
+panel affect layout and keyboard access. I will inspect the HTML, CSS, and DOM
+updates responsible, then try another width or content length.
+```
+
+These are selected checks for this increment, not proof of complete accessibility or standards conformance. Add other checks that your contract and feature require.
+
+Read the draft critically. Could you actually check each criterion? “Looks professional” is vague; “links have visible keyboard focus” can be demonstrated. Resolve contradictory or unclear requirements, remove unnecessary scope, and save the specification in your project notes or a small Markdown file. No particular filename is required.
+
+Before generating code, make sure you can explain the specification yourself. It describes your intended solution, even when AI helped you write it.
+
+## 3. Generate a bounded implementation
+
+Give the assistant the specification you reviewed, the relevant project files, and the boundary of the change. Ask it to implement the smallest useful part first. For the first contract, generate or revise the semantic page shell with visible navigation first. Inspect and check that structure before a later cycle adds responsive styles and the JavaScript toggle.
+
+For that first cycle, replace the increment placeholder below with: “Create the semantic page shell with navigation links to sections of this page. Keep navigation visible for now; the responsive toggle will be a later increment.” Only the criteria relevant to that increment should be expected to pass at this stage. Return to the complete specification when the pieces are integrated.
+
+```text
+Use this reviewed specification: [attach it or paste its text].
+Read these project files first: [paths or shared excerpts].
+
+Implement this first increment: [bounded part of the specification].
+Follow the existing project conventions and preserve unrelated work.
+Do not add features or dependencies beyond the specification. If a requirement
+conflicts with the existing project, explain the conflict before changing scope.
+
+Before editing, briefly identify the files you expect to change and your approach.
+If you cannot edit files directly, provide changes grouped by filename and tell
+me where they belong.
+
+Afterward, summarize the changes, explain the key HTML/CSS/JavaScript decisions,
+and distinguish checks you actually ran from checks I still need to perform.
+```
+
+Read the proposed approach. Correct misunderstandings before the assistant builds on them. You can follow up with, “That includes filtering, which is outside this increment. Limit the change to the page shell and navigation.”
+
+Apply or review the changes in your editor, then run the project locally. If code arrives in chat, check the filenames and insertion locations before copying it. If the assistant edits files, inspect the diff: the view showing what changed. Keep the change small enough that you can review it.
+
+If the project does not run, give the assistant the actual error message and relevant context. Avoid asking for a complete rewrite before investigating the cause.
+
+## 4. Inspect how the result works
+
+Trace the parts responsible for the acceptance criteria and your guiding question. For the first contract, find the header, navigation, main content, and footer. Locate the link names, layout rules, focus styles, and, once added, the button event and DOM updates that control visibility and expanded state. For a later API feature, trace the request, response processing, and interface states.
+
+Use AI to support this investigation:
+
+```text
+Help me understand [specific behavior] in [relevant code].
+Point to the elements, declarations, or functions responsible and explain how
+they interact. Suggest one small change I could investigate in browser tools.
+Leave the outcome for me to predict before you explain it. Do not edit files.
+```
+
+Check explanations against the actual code, browser evidence, and relevant documentation. An explanation can sound convincing while describing code that is not present. If you cannot follow a section, ask about that section or request a simpler implementation that still meets the specification.
+
+Pause here if the result is too large or unfamiliar to investigate. More generated code will usually make that difficulty worse.
+
+## 5. Test the specification and try to break the result
+
+Start with a normal user task, then check the acceptance criteria and the challenges you planned. Before each investigation, record your own prediction. AI may suggest additional cases, but make your prediction before asking it to explain the expected outcome.
+
+For the first contract, replace a navigation label with much longer text, try widths between the listed sizes, enlarge the page, and use the navigation with only the keyboard. Open and close the panel, then resize the page. Predict which controls will be reachable and check what actually happens. Inspect layout, computed styles, and DOM changes to explain unexpected behavior. For a later API feature, test an unavailable service or unexpected response as well as a successful request.
+
+Keep notes brief:
+
+| Challenge | My prediction before testing | Observed result and evidence | Change or learning | Verification and remaining uncertainty |
+| --- | --- | --- | --- | --- |
+| [condition I changed] | [what I expect and why] | [what actually happened] | [explanation or repair] | [what I rechecked and what is still unknown] |
+
+Run automated checks when they help, and manually check relevant behavior in the browser. A successful build or automated accessibility check does not establish that a person can complete the task. An assistant's claim that something “passes” is only useful when you know what was checked and can inspect the evidence.
+
+You do not need to find a failure in every check. Explain what each successful check establishes and what it leaves untested. See [Try to break your work](../contract-review/#try-to-break-your-work) for peer-review preparation guidance.
+
+## 6. Revise using evidence
+
+When something fails, describe the expected behavior, the observed behavior, and how to reproduce it. Include the evidence you gathered and a hypothesis when you have one. Ask for a focused repair.
+
+```text
+This acceptance criterion is not met: [criterion].
+To reproduce it: [steps and conditions].
+Expected behavior: [expectation].
+Observed behavior: [result].
+Evidence: [relevant code, browser inspection, or error message].
+My current hypothesis: [possible cause, or say I am unsure].
+
+Help me investigate the cause and propose the smallest appropriate repair.
+Explain why the repair addresses it. Keep the other acceptance criteria intact
+and identify what I should recheck afterward.
+```
+
+Review the repair and repeat the failing check. Check normal behavior and related criteria too: a change that fixes one condition can break another. Then try another relevant variation to see whether your explanation still holds.
+
+If repeated repairs do not help, stop the generation cycle. Reduce the example, inspect the relevant mechanism, consult documentation, or ask a peer or instructor for help. If you discover that the requirement itself needs to change, revise the specification explicitly. Record contract changes when they affect the agreed learning outcome or evidence.
+
+## 7. Explain what you learned and prepare for review
+
+Return to your guiding question and answer it in your own words, using the evidence you gathered. Identify an important decision, a challenge, what became more stable, and any remaining uncertainty. Be ready to show the relevant code and browser behavior.
+
+Add a short note alongside your existing evidence:
+
+```md
+Contract and guiding question:
+Specification and relevant project files:
+
+My explanation, supported by investigation results:
+
+One consequential AI suggestion I accepted, changed, or rejected, and why:
+
+What I verified and what remains uncertain:
+
+My next step:
+```
+
+You do not need to submit a transcript of the entire AI conversation. Keep the specification, useful investigation notes, and the evidence needed for your contract and [peer review](../contract-review/). Reuse existing notes rather than writing the same account twice.
+
+You can ask AI to quiz you about the work, but attempt your own explanation before reading its answer. Being able to repeat an explanation is different from predicting or adapting the behavior yourself.
+
+## You are ready for peer review when
+
+- Your increment addresses the agreed contract slices and has a specification you can explain.
+- You can locate and explain the code responsible for important behavior.
+- You have checked the acceptance criteria and recorded predictions and observations from meaningful challenges.
+- Any repairs have been verified, including checks of normal behavior.
+- You can answer your guiding question with evidence and identify the limits of your checks.
+- Unresolved findings and the next step are recorded honestly.
+
+Use these results to plan your next cycle. That may mean another small increment, a deeper investigation, or a revised contract. The [competency pass-off](../competency-pass-off-new/) will ask you to connect this work to the broader competency and demonstrate that you can explain and adapt it.
